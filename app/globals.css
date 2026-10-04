@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafafa;
+  --foreground: #18181b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #09090b;
+    --foreground: #fafafa;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+@utility container {
+  max-width: 896px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@utility btn-primary {
+  @apply inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-zinc-900 text-white font-medium text-sm hover:bg-zinc-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+@utility btn-secondary {
+  @apply inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-white text-zinc-900 font-medium text-sm border border-zinc-300 hover:bg-zinc-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+@utility input-base {
+  @apply w-full px-3 py-2.5 rounded-lg border border-zinc-300 bg-white text-zinc-900 placeholder:text-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all disabled:bg-zinc-100 disabled:cursor-not-allowed;
+}
+
+@utility select-base {
+  @apply w-full px-3 py-2.5 rounded-lg border border-zinc-300 bg-white text-zinc-900 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-transparent transition-all disabled:bg-zinc-100 disabled:cursor-not-allowed;
+}
+
+@utility card {
+  @apply bg-white border border-zinc-200 rounded-xl shadow-sm;
+}
+
+@utility card-hover {
+  @apply card hover:border-zinc-300 hover:shadow-md transition-all duration-200;
+}
