@@ -38,7 +38,7 @@ export function CourseRow({
 
   return (
     <div className="bg-white">
-      <div className="md:grid md:grid-cols-[1fr_80px_140px_50px] gap-3 px-4 py-3 items-start">
+      <div className="md:grid md:grid-cols-[1fr_80px_140px_50px] gap-x-4 gap-y-3 px-4 py-3 items-start">
         <div className="space-y-2 md:space-y-0">
           <label htmlFor={`course-name-${course.id}`} className="block text-xs font-medium text-zinc-700 md:hidden">
             Course name
