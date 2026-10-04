@@ -449,17 +449,18 @@ From graduate page: "Grades for transferred courses shall be used in calculating
 
 ---
 
-## Summary of Verification Status
+## Summary of Verification Status (Post-Implementation)
 
-| University | Grading Scale | GPA Formula | Repeat Policy | Pass/Fail | Withdrawal | Transfer | Overall |
-|------------|---------------|-------------|---------------|-----------|------------|----------|---------|
-| Jimma | ✅ Verified | ✅ Verified | ⚠️ Partial | ⚠️ Partial | ✅ Verified | ❌ Needs | ⚠️ Partial |
-| Addis Ababa | ❌ Needs | ⚠️ Partial | ❌ Needs | ⚠️ Partial | ⚠️ Partial | ❌ Needs | ❌ Needs |
-| Bahir Dar | ⚠️ Partial* | ✅ Verified | ⚠️ Partial | ✅ Verified (CMHS) | ⚠️ Partial | ⚠️ Partial | ⚠️ Partial |
-| Hawassa | ✅ Verified | ✅ Verified | ✅ Verified | ✅ Verified | ✅ Verified | ❌ Needs | ⚠️ Partial |
-| Haramaya | ❌ Needs | ⚠️ Partial | ❌ Needs | ❌ Needs | ❌ Needs | ⚠️ Partial | ❌ Needs |
+| University | Grading Scale | GPA Formula | Repeat Policy | Pass/Fail | Withdrawal | Transfer | Overall | Config Status |
+|------------|---------------|-------------|---------------|-----------|------------|----------|---------|---------------|
+| Jimma | ✅ Verified | ✅ Verified | ⚠️ Partial | ⚠️ Partial | ✅ Verified | ❌ Needs | ⚠️ Partial | ✅ Implemented |
+| Addis Ababa | ⚠️ Partial* | ⚠️ Partial | ❌ Needs | ⚠️ Partial | ⚠️ Partial | ❌ Needs | ❌ Needs | ✅ Implemented (needs-verification) |
+| Bahir Dar | ⚠️ Partial** | ✅ Verified | ⚠️ Partial | ✅ Verified (CMHS) | ⚠️ Partial | ⚠️ Partial | ⚠️ Partial | ✅ Implemented |
+| Hawassa | ✅ Verified | ✅ Verified | ✅ Verified | ✅ Verified | ✅ Verified | ❌ Needs | ✅ Verified | ✅ Implemented |
+| Haramaya | ❌ Needs | ⚠️ Partial | ❌ Needs | ❌ Needs | ❌ Needs | ⚠️ Partial | ❌ Needs | ✅ Implemented (needs-verification) |
 
-*BDU has conflicting scales between CMHS handbook and older Engineering faculty regulation
+*AAU grading scale from secondary sources referencing Senate Legislation; needs direct PDF extraction
+**BDU has conflicting scales: CMHS handbook (verified) vs older Engineering faculty regulation (likely outdated)
 
 ---
 
@@ -532,3 +533,80 @@ This research document is a **foundation for development**, not a claim of offic
 4. Source reference displayed in UI where applicable
 
 Until verification is complete for a specific university, StudentOS will provide a **generic calculator with clear disclaimer** rather than claiming official support.
+
+---
+
+## Post-Implementation Notes (Checkpoint 4)
+
+### Implementation Date: 2026-10-04
+
+All five universities have been configured in `lib/universities/` with the following approach:
+
+1. **Jimma University** (`jimma.ts`) — Status: `partially-verified`
+   - Grading scale, GPA/CGPA formulas, withdrawal, incomplete policies: **Verified** from official registrar page
+   - Repeat course, pass/fail: **Partially Verified** from registrar page
+   - Transfer policy: **Needs Verification** — explicitly marked in config
+   - Non-GPA grades: I, P, W, AU, CR, S, U
+
+2. **Addis Ababa University** (`addis-ababa.ts`) — Status: `needs-verification`
+   - Grading scale: **Partially Verified** — from secondary sources referencing Senate Legislation Articles 90-91; direct PDF extraction needed
+   - Credit system (ECTS): **Partially Verified** — conversion needs verification
+   - GPA/CGPA formulas: **Partially Verified** — from secondary sources
+   - Repeat, withdrawal/incomplete, transfer policies: **Needs Verification** — explicitly marked
+   - Pass/Fail: **Partially Verified** — from Senate Legislation reference
+   - Non-GPA grades: W, DO, NG, I, P
+
+3. **Bahir Dar University** (`bahir-dar.ts`) — Status: `partially-verified`
+   - CMHS grading scale: **Verified** from official 2025 student handbook
+   - GPA/CGPA formulas: **Verified**
+   - Pass/Fail (CMHS): **Verified**
+   - Older Engineering faculty regulation (inverse scale): documented as `bahirDarEngineeringScaleLegacy` — **Likely Outdated**
+   - Repeat policy (Doctoral): **Verified** from Senate Legislation; Undergraduate: **Needs Verification**
+   - Withdrawal, Incomplete (NG): **Partially Verified**
+   - Transfer: **Partially Verified**
+   - Non-GPA grades: P, F, I, W, NG
+
+4. **Hawassa University** (`hawassa.ts`) — Status: `verified`
+   - Grading scale: **Verified** from official registrar page
+   - GPA/SGPA & CGPA formulas: **Verified**
+   - Repeat policy (Fx/F distinction): **Verified**
+   - Pass/Fail: **Verified**
+   - Withdrawal/Incomplete: **Verified**
+   - Transfer: **Needs Verification** — explicitly marked
+   - Medical school scale: documented as `hawassaMedicalScale`
+   - Non-GPA grades: W, DO, NG, P
+
+5. **Haramaya University** (`haramaya.ts`) — Status: `needs-verification`
+   - Grading scale: **Needs Verification** — Article 116 not accessible from PDF
+   - ECTS credit system: **Verified** from multiple sources
+   - Module-based curriculum: **Verified** (Article 107.1)
+   - GPA/CGPA formulas (CANG/SANG terminology): **Partially Verified**
+   - Transfer policy: **Partially Verified** — grades for transferred courses confirmed used in CGPA
+   - Repeat, Pass/Fail, Withdrawal, Incomplete: **Needs Verification** — explicitly marked
+   - Program-specific requirements documented for BEd IT, BA History, Graduate
+
+### Configuration Architecture
+
+- Each university has its own configuration file exporting:
+  - `UniversityRules` object with full type safety
+  - Non-GPA grade list and checker function
+  - Grade point lookup function
+  - Program-specific scales where documented (legacy/alternative scales)
+
+- Central `index.ts` provides:
+  - `supportedUniversities` tuple for type-safe iteration
+  - `getUniversityConfig(id)` for runtime lookup
+  - `getGradePointForUniversity(universityId, letterGrade)` for grade conversion
+  - `isNonGpaGradeForUniversity(universityId, grade)` for exclusion checks
+  - Type-safe `SupportedUniversityId` union type
+
+### Verification Principle Applied
+
+Rules that could not be verified from official Tier 1 sources are:
+1. Marked with `status: "needs-verification"` or `status: "partially-verified"` in the configuration
+2. Documented in the `notes` field with specific gaps
+3. Policy strings explicitly state "needs verification from official [source]"
+4. Empty grading scale arrays where completely unverified (Haramaya)
+5. Helper functions return `null`/`false` for unverified data rather than guessing
+
+This ensures StudentOS never silently applies unverified rules to student calculations.
