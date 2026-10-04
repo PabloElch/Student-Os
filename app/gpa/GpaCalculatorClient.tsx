@@ -2,18 +2,24 @@
 
 import { useState, useMemo, useCallback } from "react";
 import { calculateSemesterGPA, CourseGrade } from "@/lib/calculations/gpa";
-import { getAllUniversityConfigs, getGradePointForUniversity, isNonGpaGradeForUniversity, SupportedUniversityId } from "@/lib/universities";
+import { getGradePointForUniversity, isNonGpaGradeForUniversity, getUniversityConfig, SupportedUniversityId, GradeRule } from "@/lib/universities";
 import { UniversitySelector } from "@/components/calculator/UniversitySelector";
 import { CourseRow } from "@/components/calculator/CourseRow";
 import { GpaResult } from "@/components/calculator/GpaResult";
 
 interface CourseInput {
+  id: string;
   name: string;
   credits: string;
   grade: string;
 }
 
+function generateId(): string {
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+}
+
 const initialCourse: CourseInput = {
+  id: generateId(),
   name: "",
   credits: "",
   grade: "",
@@ -22,10 +28,9 @@ const initialCourse: CourseInput = {
 export function GPACalculatorClient() {
   const [selectedUniversity, setSelectedUniversity] = useState<SupportedUniversityId>("jimma");
   const [courses, setCourses] = useState<CourseInput[]>([initialCourse]);
-  const [creditsErrors, setCreditsErrors] = useState<Record<number, string>>({});
+  const [creditsErrors, setCreditsErrors] = useState<Record<string, string>>({});
 
-  const universityConfigs = getAllUniversityConfigs();
-  const currentConfig = universityConfigs.find((u) => u.id === selectedUniversity);
+  const currentConfig = getUniversityConfig(selectedUniversity);
 
   const validateCredits = useCallback((value: string): string | undefined => {
     if (!value.trim()) return "Enter a credit value";
@@ -36,59 +41,60 @@ export function GPACalculatorClient() {
     return undefined;
   }, []);
 
-  const handleCreditsChange = useCallback((index: number, value: string) => {
-    setCourses((prev) => {
-      const next = [...prev];
-      next[index] = { ...next[index], credits: value };
-      return next;
-    });
+  const handleCreditsChange = useCallback((id: string, value: string) => {
+    setCourses((prev) =>
+      prev.map((course) => (course.id === id ? { ...course, credits: value } : course))
+    );
     const error = validateCredits(value);
     setCreditsErrors((prev) => {
       const next = { ...prev };
-      if (error) next[index] = error;
-      else delete next[index];
+      if (error) next[id] = error;
+      else delete next[id];
       return next;
     });
   }, [validateCredits]);
 
-  const handleGradeChange = useCallback((index: number, grade: string) => {
-    setCourses((prev) => {
-      const next = [...prev];
-      next[index] = { ...next[index], grade };
-      return next;
-    });
+  const handleGradeChange = useCallback((id: string, grade: string) => {
+    setCourses((prev) =>
+      prev.map((course) => (course.id === id ? { ...course, grade } : course))
+    );
   }, []);
 
-  const handleNameChange = useCallback((index: number, name: string) => {
-    setCourses((prev) => {
-      const next = [...prev];
-      next[index] = { ...next[index], name };
-      return next;
-    });
+  const handleNameChange = useCallback((id: string, name: string) => {
+    setCourses((prev) =>
+      prev.map((course) => (course.id === id ? { ...course, name } : course))
+    );
   }, []);
 
   const handleAddCourse = useCallback(() => {
-    setCourses((prev) => [...prev, initialCourse]);
+    setCourses((prev) => [...prev, { ...initialCourse, id: generateId() }]);
   }, []);
 
-  const handleRemoveCourse = useCallback((index: number) => {
-    setCourses((prev) => prev.filter((_, i) => i !== index));
+  const handleRemoveCourse = useCallback((id: string) => {
+    setCourses((prev) => prev.filter((course) => course.id !== id));
     setCreditsErrors((prev) => {
       const next = { ...prev };
-      delete next[index];
-      const reindexed: Record<number, string> = {};
-      Object.entries(next).forEach(([key, value]) => {
-        const numKey = parseInt(key, 10);
-        reindexed[numKey > index ? numKey - 1 : numKey] = value;
-      });
-      return reindexed;
+      delete next[id];
+      return next;
     });
   }, []);
 
   const handleReset = useCallback(() => {
-    setCourses([initialCourse]);
+    setCourses([{ ...initialCourse, id: generateId() }]);
     setCreditsErrors({});
   }, []);
+
+  const gradeOptions = useMemo((): { value: string; label: string; points: number }[] => {
+    if (!currentConfig?.gradingScale?.length) return [];
+    return [
+      { value: "", label: "Select grade", points: 0 },
+      ...currentConfig.gradingScale.map((g: GradeRule) => ({
+        value: g.letter,
+        label: `${g.letter} (${g.points.toFixed(2)})`,
+        points: g.points,
+      })),
+    ];
+  }, [currentConfig]);
 
   const calculationInput = useMemo((): CourseGrade[] => {
     return courses
@@ -114,6 +120,7 @@ export function GPACalculatorClient() {
   }, [calculationInput]);
 
   const validCourseCount = calculationInput.length;
+  const hasGradingScale = currentConfig?.gradingScale?.length > 0;
 
   return (
     <div className="space-y-8">
@@ -132,48 +139,50 @@ export function GPACalculatorClient() {
 
         <div>
           <h2 className="text-lg font-semibold text-zinc-900 mb-4">Courses</h2>
-          {courses.length === 0 ? (
-            <div className="text-center py-8 text-zinc-500">
-              <p>No courses added yet.</p>
+
+          {!hasGradingScale && currentConfig && (
+            <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
+              Grading scale not available for {currentConfig.name}. Please select another university.
             </div>
-          ) : (
-            <div className="space-y-4">
-              {courses.map((course, index) => (
+          )}
+
+          <div className="border border-zinc-200 rounded-xl overflow-hidden">
+            <div className="hidden md:grid grid-cols-[1fr_80px_140px_50px] gap-3 px-4 py-3 bg-zinc-50 border-b border-zinc-200 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+              <div>Course Name</div>
+              <div className="text-right">Credits</div>
+              <div>Grade</div>
+              <div></div>
+            </div>
+
+            <div className="divide-y divide-zinc-200">
+              {courses.map((course) => (
                 <CourseRow
-                  key={`${index}-${course.name}-${course.credits}-${course.grade}`}
-                  index={index}
+                  key={course.id}
+                  course={course}
                   universityId={selectedUniversity}
-                  name={course.name}
-                  credits={course.credits}
-                  grade={course.grade}
+                  gradeOptions={gradeOptions}
+                  creditsError={creditsErrors[course.id]}
                   onNameChange={handleNameChange}
                   onCreditsChange={handleCreditsChange}
                   onGradeChange={handleGradeChange}
                   onRemove={handleRemoveCourse}
                   canRemove={courses.length > 1}
-                  creditsError={creditsErrors[index]}
                 />
               ))}
             </div>
-          )}
+          </div>
 
           <button
             type="button"
             onClick={handleAddCourse}
             className="btn-secondary w-full sm:w-auto mt-4"
-            disabled={!currentConfig?.gradingScale.length}
+            disabled={!hasGradingScale}
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
             Add Course
           </button>
-
-          {!currentConfig?.gradingScale.length && (
-            <p className="mt-3 text-sm text-zinc-500">
-              Grading scale not available for {currentConfig?.name}. Please select another university.
-            </p>
-          )}
         </div>
 
         <div className="border-t border-zinc-200 pt-6">
