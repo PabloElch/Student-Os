@@ -1,4 +1,10 @@
 import Link from "next/link";
+import { GPACalculatorClient } from "./GpaCalculatorClient";
+
+export const metadata = {
+  title: "GPA Calculator — StudentOS",
+  description: "Calculate your semester GPA for Ethiopian universities. Supports Jimma, Addis Ababa, Bahir Dar, Hawassa, and Haramaya Universities with verified grading scales.",
+};
 
 export default function GPACalculatorPage() {
   return (
@@ -14,15 +20,7 @@ export default function GPACalculatorPage() {
       </header>
 
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12">
-        <div className="card p-8 text-center">
-          <h1 className="text-2xl font-bold text-zinc-900 mb-3">GPA Calculator</h1>
-          <p className="text-zinc-600 mb-6 max-w-md mx-auto">
-            Enter your courses, credits, and grades to calculate your semester GPA.
-          </p>
-          <Link href="/" className="btn-secondary">
-            ← Back to Home
-          </Link>
-        </div>
+        <GPACalculatorClient />
       </main>
 
       <footer className="border-t border-zinc-200 bg-white py-8">
