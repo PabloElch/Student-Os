@@ -1,4 +1,10 @@
 import Link from "next/link";
+import { PlannerCalculatorClient } from "./PlannerCalculatorClient";
+
+export const metadata = {
+  title: "GPA Target Planner for Ethiopian University Students | StudentOS",
+  description: "Find out what GPA you need to reach your target CGPA with StudentOS. Plan your academic performance using supported Ethiopian university grading configurations.",
+};
 
 export default function PlannerPage() {
   return (
@@ -14,15 +20,7 @@ export default function PlannerPage() {
       </header>
 
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12">
-        <div className="card p-8 text-center">
-          <h1 className="text-2xl font-bold text-zinc-900 mb-3">GPA Planner</h1>
-          <p className="text-zinc-600 mb-6 max-w-md mx-auto">
-            Enter your current CGPA, completed credits, target CGPA, and upcoming credits to see what you need.
-          </p>
-          <Link href="/" className="btn-secondary">
-            ← Back to Home
-          </Link>
-        </div>
+        <PlannerCalculatorClient />
       </main>
 
       <footer className="border-t border-zinc-200 bg-white py-8">
