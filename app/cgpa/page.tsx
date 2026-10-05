@@ -1,4 +1,10 @@
 import Link from "next/link";
+import { CgpaCalculatorClient } from "./CgpaCalculatorClient";
+
+export const metadata = {
+  title: "CGPA Calculator for Ethiopian University Students | StudentOS",
+  description: "Calculate your cumulative GPA with StudentOS. Enter your courses, credits, and grades using supported Ethiopian university grading configurations.",
+};
 
 export default function CGPACalculatorPage() {
   return (
@@ -14,15 +20,7 @@ export default function CGPACalculatorPage() {
       </header>
 
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12">
-        <div className="card p-8 text-center">
-          <h1 className="text-2xl font-bold text-zinc-900 mb-3">CGPA Calculator</h1>
-          <p className="text-zinc-600 mb-6 max-w-md mx-auto">
-            Enter your previous semester GPAs and credits to calculate your cumulative GPA.
-          </p>
-          <Link href="/" className="btn-secondary">
-            ← Back to Home
-          </Link>
-        </div>
+        <CgpaCalculatorClient />
       </main>
 
       <footer className="border-t border-zinc-200 bg-white py-8">
