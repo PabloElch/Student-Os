@@ -1,69 +1,168 @@
 import Link from "next/link";
+import { Navbar } from "@/components/navigation/Navbar";
+import { Footer } from "@/components/footer/Footer";
+
+const universities = [
+  { name: "Jimma University", status: "partially-verified" },
+  { name: "Addis Ababa University", status: "needs-verification" },
+  { name: "Bahir Dar University", status: "partially-verified" },
+  { name: "Hawassa University", status: "verified" },
+  { name: "Haramaya University", status: "needs-verification" },
+] as const;
+
+const statusLabels = {
+  verified: "Verified",
+  "partially-verified": "Partially verified",
+  "needs-verification": "Needs verification",
+} as const;
+
+const statusColors = {
+  verified: "bg-green-100 text-green-800",
+  "partially-verified": "bg-amber-100 text-amber-800",
+  "needs-verification": "bg-zinc-100 text-zinc-800",
+} as const;
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-zinc-50">
-      <header className="border-b border-zinc-200 bg-white sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <h1 className="text-xl font-semibold text-zinc-900">StudentOS</h1>
-        </div>
-      </header>
+      <Navbar />
 
-      <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12">
-        <section className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-zinc-900 mb-4">StudentOS</h2>
-          <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
+      <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12 md:py-20">
+        <section className="text-center mb-16 md:mb-20" aria-labelledby="hero-heading">
+          <h1 id="hero-heading" className="text-3xl md:text-4xl font-bold text-zinc-900 mb-6 leading-tight">
             Your academic toolkit for Ethiopian university students.
+          </h1>
+          <p className="text-lg md:text-xl text-zinc-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+            StudentOS helps you calculate your GPA and CGPA using university-specific grading scales,
+            and plan what you need to reach your target CGPA.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/gpa"
+              className="btn-primary text-center"
+            >
+              Calculate GPA
+            </Link>
+            <Link
+              href="/cgpa"
+              className="btn-secondary text-center"
+            >
+              Calculate CGPA
+            </Link>
+            <Link
+              href="/planner"
+              className="btn-secondary text-center"
+            >
+              Plan My GPA
+            </Link>
+          </div>
+          <p className="mt-6 text-sm text-zinc-500">No account required · Anonymous calculation</p>
         </section>
 
-        <nav className="space-y-4" aria-label="Calculator navigation">
-          <Link
-            href="/gpa"
-            className="block group bg-white border border-zinc-200 rounded-xl p-6 hover:border-zinc-300 hover:shadow-md transition-all duration-200"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-lg font-semibold text-zinc-900 group-hover:text-zinc-800">GPA Calculator</h3>
-                <p className="text-zinc-500 text-sm mt-1">Calculate your semester GPA from courses and grades</p>
-              </div>
-              <span className="text-zinc-400 group-hover:text-zinc-600">→</span>
-            </div>
-          </Link>
+        <section className="mb-16 md:mb-20" aria-labelledby="tools-heading">
+          <h2 id="tools-heading" className="text-2xl font-bold text-zinc-900 text-center mb-10">Available Tools</h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            <article className="card p-6">
+              <h3 className="text-lg font-semibold text-zinc-900 mb-3">GPA Calculator</h3>
+              <p className="text-zinc-600 text-sm mb-4">
+                Calculate your semester GPA using your courses, credits, and grades.
+              </p>
+              <Link
+                href="/gpa"
+                className="inline-flex items-center text-sm font-medium text-zinc-900 hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded"
+              >
+                Open Calculator
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </article>
 
-          <Link
-            href="/cgpa"
-            className="block group bg-white border border-zinc-200 rounded-xl p-6 hover:border-zinc-300 hover:shadow-md transition-all duration-200"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-lg font-semibold text-zinc-900 group-hover:text-zinc-800">CGPA Calculator</h3>
-                <p className="text-zinc-500 text-sm mt-1">Calculate your cumulative GPA across semesters</p>
-              </div>
-              <span className="text-zinc-400 group-hover:text-zinc-600">→</span>
-            </div>
-          </Link>
+            <article className="card p-6">
+              <h3 className="text-lg font-semibold text-zinc-900 mb-3">CGPA Calculator</h3>
+              <p className="text-zinc-600 text-sm mb-4">
+                Calculate your cumulative GPA across all your completed courses.
+              </p>
+              <Link
+                href="/cgpa"
+                className="inline-flex items-center text-sm font-medium text-zinc-900 hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded"
+              >
+                Open Calculator
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </article>
 
-          <Link
-            href="/planner"
-            className="block group bg-white border border-zinc-200 rounded-xl p-6 hover:border-zinc-300 hover:shadow-md transition-all duration-200"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-lg font-semibold text-zinc-900 group-hover:text-zinc-800">GPA Planner</h3>
-                <p className="text-zinc-500 text-sm mt-1">Plan what you need to reach your target CGPA</p>
-              </div>
-              <span className="text-zinc-400 group-hover:text-zinc-600">→</span>
-            </div>
-          </Link>
-        </nav>
+            <article className="card p-6">
+              <h3 className="text-lg font-semibold text-zinc-900 mb-3">GPA Target Planner</h3>
+              <p className="text-zinc-600 text-sm mb-4">
+                Find out what GPA you need in your upcoming credits to reach your target CGPA.
+              </p>
+              <Link
+                href="/planner"
+                className="inline-flex items-center text-sm font-medium text-zinc-900 hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded"
+              >
+                Open Planner
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </article>
+          </div>
+        </section>
+
+        <section className="mb-16 md:mb-20" aria-labelledby="universities-heading">
+          <h2 id="universities-heading" className="text-2xl font-bold text-zinc-900 text-center mb-10">Supported Universities</h2>
+          <p className="text-zinc-600 text-sm text-center mb-8 max-w-2xl mx-auto">
+            StudentOS currently includes grading configurations for the following Ethiopian universities.
+            Verification status varies by institution.
+          </p>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {universities.map((uni) => (
+              <article
+                key={uni.name}
+                className="card p-4 text-center"
+              >
+                <h3 className="font-medium text-zinc-900 mb-2">{uni.name}</h3>
+                <span
+                  className={`inline-flex items-center px-2 py-1 rounded text-xs ${statusColors[uni.status]}`}
+                >
+                  {statusLabels[uni.status]}
+                </span>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-16" aria-labelledby="trust-heading">
+          <h2 id="trust-heading" className="text-2xl font-bold text-zinc-900 text-center mb-6">Built for Ethiopian University Students</h2>
+          <div className="card p-6 md:p-8 max-w-3xl mx-auto">
+            <ul className="space-y-3 text-zinc-600 text-sm">
+              <li className="flex items-start gap-3">
+                <svg className="w-5 h-5 flex-shrink-0 text-zinc-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>StudentOS uses university-specific grading configurations where available.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-5 h-5 flex-shrink-0 text-zinc-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>University academic rules can differ. Not all rules are fully verified.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <svg className="w-5 h-5 flex-shrink-0 text-zinc-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>Confirm important academic decisions against official university regulations.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
       </main>
 
-      <footer className="border-t border-zinc-200 bg-white py-8">
-        <div className="max-w-4xl mx-auto px-4 text-center text-sm text-zinc-500">
-          <p>No account required · Anonymous calculation · Built for Ethiopian students</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
