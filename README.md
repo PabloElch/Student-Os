@@ -3,6 +3,12 @@
 
 Academic toolkit for Ethiopian university students.
 
+## 🚀 Live Demo
+
+**https://wutete.vercel.app**
+
+Try Wutete live — GPA calculator, CGPA calculator, and GPA target planner for Ethiopian university students.
+
 ## Features
 
 - GPA Calculator
