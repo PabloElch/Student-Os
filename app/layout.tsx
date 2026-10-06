@@ -16,10 +16,10 @@ const siteUrl = "https://studentos.pages.dev";
 
 export const metadata: Metadata = {
   title: {
-    default: "StudentOS — GPA & CGPA Calculator for Ethiopian University Students",
-    template: "%s | StudentOS",
+    default: "Wutete — GPA, CGPA & Academic Planning for Ethiopian University Students",
+    template: "%s | Wutete",
   },
-  description: "Calculate your GPA and CGPA and find out what GPA you need to reach your target. StudentOS is an academic toolkit built for Ethiopian university students.",
+  description: "Calculate your GPA and CGPA and find out what GPA you need to reach your target. Wutete is an academic toolkit built for Ethiopian university students.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
@@ -28,22 +28,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "StudentOS",
-    title: "StudentOS — GPA & CGPA Calculator for Ethiopian University Students",
-    description: "Calculate your GPA and CGPA and find out what GPA you need to reach your target. StudentOS is an academic toolkit built for Ethiopian university students.",
+    siteName: "Wutete",
+    title: "Wutete — GPA, CGPA & Academic Planning for Ethiopian University Students",
+    description: "Calculate your GPA and CGPA and find out what GPA you need to reach your target. Wutete is an academic toolkit built for Ethiopian university students.",
     images: [
       {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "StudentOS - Academic Toolkit for Ethiopian University Students",
+        alt: "Wutete - Academic Toolkit for Ethiopian University Students",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "StudentOS — GPA & CGPA Calculator for Ethiopian University Students",
-    description: "Calculate your GPA and CGPA and find out what GPA you need to reach your target. StudentOS is an academic toolkit built for Ethiopian university students.",
+    title: "Wutete — GPA, CGPA & Academic Planning for Ethiopian University Students",
+    description: "Calculate your GPA and CGPA and find out what GPA you need to reach your target. Wutete is an academic toolkit built for Ethiopian university students.",
     images: ["/og-image.svg"],
   },
   robots: {

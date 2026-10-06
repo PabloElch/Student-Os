@@ -1,4 +1,5 @@
-# StudentOS
+# Wutete
+ውጤቴ
 
 Academic toolkit for Ethiopian university students.
 

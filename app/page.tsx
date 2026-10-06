@@ -33,7 +33,7 @@ export default function Home() {
             Your academic toolkit for Ethiopian university students.
           </h1>
           <p className="text-lg md:text-xl text-zinc-600 max-w-3xl mx-auto mb-10 leading-relaxed">
-            StudentOS helps you calculate your GPA and CGPA using university-specific grading scales,
+            Wutete helps you calculate your GPA and CGPA using university-specific grading scales,
             and plan what you need to reach your target CGPA.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -115,7 +115,7 @@ export default function Home() {
         <section className="mb-16 md:mb-20" aria-labelledby="universities-heading">
           <h2 id="universities-heading" className="text-2xl font-bold text-zinc-900 text-center mb-10">Supported Universities</h2>
           <p className="text-zinc-600 text-sm text-center mb-8 max-w-2xl mx-auto">
-            StudentOS currently includes grading configurations for the following Ethiopian universities.
+            Wutete currently includes grading configurations for the following Ethiopian universities.
             Verification status varies by institution.
           </p>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
@@ -143,7 +143,7 @@ export default function Home() {
                 <svg className="w-5 h-5 flex-shrink-0 text-zinc-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>StudentOS uses university-specific grading configurations where available.</span>
+                <span>Wutete uses university-specific grading configurations where available.</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-5 h-5 flex-shrink-0 text-zinc-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">

@@ -7,7 +7,7 @@ const siteUrl = "https://studentos.pages.dev";
 
 export const metadata: Metadata = {
   title: "CGPA Calculator",
-  description: "Calculate your cumulative GPA with StudentOS. Enter your courses, credits, and grades using supported Ethiopian university grading configurations.",
+  description: "Calculate your cumulative GPA with Wutete. Enter your courses, credits, and grades using supported Ethiopian university grading configurations.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/cgpa",
@@ -16,22 +16,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: `${siteUrl}/cgpa`,
-    siteName: "StudentOS",
-    title: "CGPA Calculator — StudentOS",
-    description: "Calculate your cumulative GPA with StudentOS using supported Ethiopian university grading configurations.",
+    siteName: "Wutete",
+    title: "CGPA Calculator — Wutete",
+    description: "Calculate your cumulative GPA with Wutete using supported Ethiopian university grading configurations.",
     images: [
       {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "StudentOS CGPA Calculator",
+        alt: "Wutete CGPA Calculator",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CGPA Calculator — StudentOS",
-    description: "Calculate your cumulative GPA with StudentOS using supported Ethiopian university grading configurations.",
+    title: "CGPA Calculator — Wutete",
+    description: "Calculate your cumulative GPA with Wutete using supported Ethiopian university grading configurations.",
     images: ["/og-image.svg"],
   },
   robots: {

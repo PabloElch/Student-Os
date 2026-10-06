@@ -22,9 +22,9 @@ export function Navbar() {
           <Link
             href="/"
             className="flex items-center gap-2 text-zinc-900 hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded-lg"
-            aria-label="StudentOS Home"
+            aria-label="Wutete Home"
           >
-            <span className="text-xl font-semibold">StudentOS</span>
+            <span className="text-xl font-semibold">Wutete</span>
           </Link>
 
           <div className="hidden md:flex md:items-center md:gap-1">

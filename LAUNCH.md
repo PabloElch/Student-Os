@@ -1,4 +1,4 @@
-# StudentOS Launch & Validation Documentation
+# Wutete Launch & Validation Documentation
 
 ## Deployment
 
@@ -26,8 +26,8 @@
 ## SEO Implementation
 
 ### Homepage (`/`)
-- **Title:** `StudentOS — GPA & CGPA Calculator for Ethiopian University Students`
-- **Description:** `Calculate your GPA and CGPA and find out what GPA you need to reach your target. StudentOS is an academic toolkit built for Ethiopian university students.`
+- **Title:** `Wutete — GPA, CGPA & Academic Planning for Ethiopian University Students`
+- **Description:** `Calculate your GPA and CGPA and find out what GPA you need to reach your target. Wutete is an academic toolkit built for Ethiopian university students.`
 - **Open Graph:** Configured with site name, title, description, and OG image
 - **Twitter Card:** summary_large_image with OG image
 - **Canonical:** `/`
@@ -41,14 +41,14 @@
 
 ### CGPA Calculator (`/cgpa`)
 - **Title:** `CGPA Calculator`
-- **Description:** `Calculate your cumulative GPA with StudentOS. Enter your courses, credits, and grades using supported Ethiopian university grading configurations.`
+- **Description:** `Calculate your cumulative GPA with Wutete. Enter your courses, credits, and grades using supported Ethiopian university grading configurations.`
 - **Open Graph:** Configured
 - **Twitter Card:** Configured
 - **Canonical:** `/cgpa`
 
 ### GPA Target Planner (`/planner`)
 - **Title:** `GPA Target Planner`
-- **Description:** `Find out what GPA you need to reach your target CGPA with StudentOS. Plan your academic performance using supported Ethiopian university grading configurations.`
+- **Description:** `Find out what GPA you need to reach your target CGPA with Wutete. Plan your academic performance using supported Ethiopian university grading configurations.`
 - **Open Graph:** Configured
 - **Twitter Card:** Configured
 - **Canonical:** `/planner`
@@ -114,7 +114,7 @@ Use tool without account ✓
 ```
 
 ### Checklist
-- [x] Homepage explains StudentOS immediately
+- [x] Homepage explains Wutete immediately
 - [x] All three tools discoverable from homepage
 - [x] Calculator pages work without account creation
 - [x] Mobile experience is usable (tested at 320px, 375px, 390px, 430px, 768px, 1024px, 1440px)
@@ -179,11 +179,11 @@ Use tool without account ✓
 ## Launch Copy
 
 ### Core Message
-> StudentOS is an academic toolkit built for Ethiopian university students. Calculate your GPA, calculate your CGPA, and find out what GPA you need to reach your target.
+> Wutete is an academic toolkit built for Ethiopian university students. Calculate your GPA, calculate your CGPA, and find out what GPA you need to reach your target.
 
 ### Telegram/WhatsApp (Short)
 ```
-StudentOS — GPA & CGPA Calculator for Ethiopian university students.
+Wutete — GPA, CGPA & Academic Planning for Ethiopian university students.
 
 Calculate your semester GPA, cumulative CGPA, and plan what you need to reach your target CGPA. No account required. Built for Ethiopian universities.
 
@@ -192,7 +192,7 @@ Try it: https://studentos.pages.dev
 
 ### Facebook (Medium)
 ```
-StudentOS is an academic toolkit built for Ethiopian university students.
+Wutete is an academic toolkit built for Ethiopian university students.
 
 ✅ Calculate your semester GPA
 ✅ Calculate your cumulative CGPA  
@@ -207,9 +207,9 @@ https://studentos.pages.dev
 
 ### YouTube Description (Long)
 ```
-StudentOS — GPA & CGPA Calculator for Ethiopian University Students
+Wutete — GPA, CGPA & Academic Planning for Ethiopian University Students
 
-StudentOS helps Ethiopian university students calculate their GPA and CGPA using university-specific grading scales, and plan what they need to reach their target CGPA.
+Wutete helps Ethiopian university students calculate their GPA and CGPA using university-specific grading scales, and plan what they need to reach their target CGPA.
 
 Features:
 • GPA Calculator — semester GPA with course-by-course entry
@@ -225,7 +225,7 @@ Supported Universities:
 
 No account required. No ads. No tracking. Free to use.
 
-Try StudentOS: https://studentos.pages.dev
+Try Wutete: https://studentos.pages.dev
 
 Feedback: https://github.com/studentos/studentos/issues
 

@@ -7,7 +7,7 @@ const siteUrl = "https://studentos.pages.dev";
 
 export const metadata: Metadata = {
   title: "GPA Target Planner",
-  description: "Find out what GPA you need to reach your target CGPA with StudentOS. Plan your academic performance using supported Ethiopian university grading configurations.",
+  description: "Find out what GPA you need to reach your target CGPA with Wutete. Plan your academic performance using supported Ethiopian university grading configurations.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/planner",
@@ -16,22 +16,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: `${siteUrl}/planner`,
-    siteName: "StudentOS",
-    title: "GPA Target Planner — StudentOS",
-    description: "Find out what GPA you need to reach your target CGPA with StudentOS.",
+    siteName: "Wutete",
+    title: "GPA Target Planner — Wutete",
+    description: "Find out what GPA you need to reach your target CGPA with Wutete.",
     images: [
       {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "StudentOS GPA Target Planner",
+        alt: "Wutete GPA Target Planner",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "GPA Target Planner — StudentOS",
-    description: "Find out what GPA you need to reach your target CGPA with StudentOS.",
+    title: "GPA Target Planner — Wutete",
+    description: "Find out what GPA you need to reach your target CGPA with Wutete.",
     images: ["/og-image.svg"],
   },
   robots: {

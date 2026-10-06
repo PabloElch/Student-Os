@@ -6,7 +6,7 @@ const footerLinks = [
   { href: "/planner", label: "GPA Planner" },
 ] as const;
 
-const feedbackUrl = "https://github.com/studentos/studentos/issues/new?template=feedback.md";
+const feedbackUrl = "https://github.com/PabloElch/Student-Os/issues/new?template=feedback.md";
 
 export function Footer() {
   return (
@@ -17,7 +17,7 @@ export function Footer() {
             href="/"
             className="text-xl font-semibold text-zinc-900 hover:text-zinc-700"
           >
-            StudentOS
+            Wutete
           </Link>
           <p className="mt-2 text-sm text-zinc-600 max-w-md">
             Your academic toolkit for Ethiopian university students. Calculate GPA, CGPA, and plan your academic targets.
