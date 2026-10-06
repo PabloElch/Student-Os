@@ -1,0 +1,6 @@
+# StudentOS robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://studentos.pages.dev/sitemap.xml

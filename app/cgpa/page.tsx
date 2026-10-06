@@ -1,10 +1,43 @@
 import { CgpaCalculatorClient } from "./CgpaCalculatorClient";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "CGPA Calculator for Ethiopian University Students | StudentOS",
+const siteUrl = "https://studentos.pages.dev";
+
+export const metadata: Metadata = {
+  title: "CGPA Calculator",
   description: "Calculate your cumulative GPA with StudentOS. Enter your courses, credits, and grades using supported Ethiopian university grading configurations.",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/cgpa",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: `${siteUrl}/cgpa`,
+    siteName: "StudentOS",
+    title: "CGPA Calculator — StudentOS",
+    description: "Calculate your cumulative GPA with StudentOS using supported Ethiopian university grading configurations.",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "StudentOS CGPA Calculator",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CGPA Calculator — StudentOS",
+    description: "Calculate your cumulative GPA with StudentOS using supported Ethiopian university grading configurations.",
+    images: ["/og-image.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function CGPACalculatorPage() {

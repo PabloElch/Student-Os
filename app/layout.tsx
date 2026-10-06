@@ -12,9 +12,44 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://studentos.pages.dev";
+
 export const metadata: Metadata = {
-  title: "StudentOS — Academic Toolkit for Ethiopian University Students",
-  description: "Calculate your GPA, CGPA, and plan your academic targets. Built for Ethiopian university students.",
+  title: {
+    default: "StudentOS — GPA & CGPA Calculator for Ethiopian University Students",
+    template: "%s | StudentOS",
+  },
+  description: "Calculate your GPA and CGPA and find out what GPA you need to reach your target. StudentOS is an academic toolkit built for Ethiopian university students.",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "StudentOS",
+    title: "StudentOS — GPA & CGPA Calculator for Ethiopian University Students",
+    description: "Calculate your GPA and CGPA and find out what GPA you need to reach your target. StudentOS is an academic toolkit built for Ethiopian university students.",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "StudentOS - Academic Toolkit for Ethiopian University Students",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "StudentOS — GPA & CGPA Calculator for Ethiopian University Students",
+    description: "Calculate your GPA and CGPA and find out what GPA you need to reach your target. StudentOS is an academic toolkit built for Ethiopian university students.",
+    images: ["/og-image.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

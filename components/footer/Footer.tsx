@@ -6,6 +6,8 @@ const footerLinks = [
   { href: "/planner", label: "GPA Planner" },
 ] as const;
 
+const feedbackUrl = "https://github.com/studentos/studentos/issues/new?template=feedback.md";
+
 export function Footer() {
   return (
     <footer className="border-t border-zinc-200 bg-white">
@@ -22,7 +24,7 @@ export function Footer() {
           </p>
         </div>
 
-        <nav aria-label="Footer navigation" className="flex flex-wrap gap-4 md:gap-6">
+        <nav aria-label="Footer navigation" className="flex flex-wrap gap-4 md:gap-6 mb-6">
           {footerLinks.map((link) => (
             <Link
               key={link.href}
@@ -32,6 +34,14 @@ export function Footer() {
               {link.label}
             </Link>
           ))}
+          <a
+            href={feedbackUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-zinc-600 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 rounded"
+          >
+            Feedback
+          </a>
         </nav>
 
         <div className="mt-6 pt-6 border-t border-zinc-200">

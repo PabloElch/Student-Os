@@ -1,0 +1,8 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#FAFAFA"/>
+  <text x="600" y="280" font-family="system-ui, sans-serif" font-size="64" font-weight="bold" fill="#18181B" text-anchor="middle">StudentOS</text>
+  <text x="600" y="360" font-family="system-ui, sans-serif" font-size="28" fill="#52525B" text-anchor="middle">GPA & CGPA Calculator for Ethiopian University Students</text>
+  <text x="600" y="420" font-family="system-ui, sans-serif" font-size="20" fill="#71717A" text-anchor="middle">Calculate your GPA, CGPA, and plan your academic targets</text>
+  <rect x="500" y="480" width="200" height="50" rx="8" fill="#18181B"/>
+  <text x="600" y="516" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#FAFAFA" text-anchor="middle">studentos.pages.dev</text>
+</svg>
