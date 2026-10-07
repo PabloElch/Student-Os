@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const footerLinks = [
+  { href: "/dashboard", label: "Dashboard" },
   { href: "/gpa", label: "GPA Calculator" },
   { href: "/cgpa", label: "CGPA Calculator" },
   { href: "/planner", label: "GPA Planner" },
