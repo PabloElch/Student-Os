@@ -14,12 +14,15 @@ export const navItems = [
   { href: "/gpa", label: "GPA Calculator" },
   { href: "/cgpa", label: "CGPA Calculator" },
   { href: "/planner", label: "GPA Planner" },
+  { href: "/grade-scale", label: "Grade Scale" },
 ] as const;
 
 export const footerLinks = [
   { href: "/gpa", label: "GPA Calculator" },
   { href: "/cgpa", label: "CGPA Calculator" },
   { href: "/planner", label: "GPA Planner" },
+  { href: "/grade-scale", label: "Grade Scale" },
+  { href: "/grade-converter", label: "Grade Converter" },
   { href: "/about", label: "About" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },

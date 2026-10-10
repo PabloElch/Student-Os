@@ -35,13 +35,19 @@ export default function Home() {
             >
               Plan My GPA
             </Link>
+            <Link
+              href="/grade-converter"
+              className="btn-secondary text-center"
+            >
+              Grade Converter
+            </Link>
           </div>
           <p className="mt-6 text-sm text-zinc-500">No account required · Anonymous calculation</p>
         </section>
 
         <section className="mb-16 md:mb-20" aria-labelledby="tools-heading">
           <h2 id="tools-heading" className="text-2xl font-bold text-zinc-900 text-center mb-10">Available Tools</h2>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-4">
             <article className="card p-6">
               <h3 className="text-lg font-semibold text-zinc-900 mb-3">GPA Calculator</h3>
               <p className="text-zinc-600 text-sm mb-4">
@@ -84,6 +90,22 @@ export default function Home() {
                 className="inline-flex items-center text-sm font-medium text-zinc-900 hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded"
               >
                 Open Planner
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </article>
+
+            <article className="card p-6">
+              <h3 className="text-lg font-semibold text-zinc-900 mb-3">Grade Converter</h3>
+              <p className="text-zinc-600 text-sm mb-4">
+                Convert a percentage mark into a letter grade and grade points.
+              </p>
+              <Link
+                href="/grade-converter"
+                className="inline-flex items-center text-sm font-medium text-zinc-900 hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded"
+              >
+                Open Converter
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
