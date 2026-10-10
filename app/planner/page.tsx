@@ -2,26 +2,25 @@ import { PlannerCalculatorClient } from "./PlannerCalculatorClient";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import type { Metadata } from "next";
-
-const siteUrl = "https://studentos.pages.dev";
+import { siteConfig } from "@/lib/config/site";
 
 export const metadata: Metadata = {
   title: "GPA Target Planner",
-  description: "Find out what GPA you need to reach your target CGPA with Wutete. Plan your academic performance using supported Ethiopian university grading configurations.",
-  metadataBase: new URL(siteUrl),
+  description: "Find out what GPA you need to reach your target CGPA with Wutete. Plan your academic performance using the standard Ethiopian university grading scale.",
+  metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: "/planner",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: `${siteUrl}/planner`,
-    siteName: "Wutete",
+    url: `${siteConfig.url}/planner`,
+    siteName: siteConfig.name,
     title: "GPA Target Planner — Wutete",
     description: "Find out what GPA you need to reach your target CGPA with Wutete.",
     images: [
       {
-        url: "/og-image.svg",
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
         alt: "Wutete GPA Target Planner",
@@ -32,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GPA Target Planner — Wutete",
     description: "Find out what GPA you need to reach your target CGPA with Wutete.",
-    images: ["/og-image.svg"],
+    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,

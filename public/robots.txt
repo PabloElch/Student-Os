@@ -1,6 +1,6 @@
-# StudentOS robots.txt
+# Wutete robots.txt
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://studentos.pages.dev/sitemap.xml
+Sitemap: https://wutete.vercel.app/sitemap.xml

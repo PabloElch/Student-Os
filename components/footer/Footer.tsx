@@ -1,13 +1,5 @@
 import Link from "next/link";
-
-const footerLinks = [
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/gpa", label: "GPA Calculator" },
-  { href: "/cgpa", label: "CGPA Calculator" },
-  { href: "/planner", label: "GPA Planner" },
-] as const;
-
-const feedbackUrl = "https://github.com/PabloElch/Student-Os/issues/new?template=feedback.md";
+import { footerLinks, feedbackUrl } from "@/lib/config/site";
 
 export function Footer() {
   return (

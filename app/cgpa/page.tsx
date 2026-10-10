@@ -2,26 +2,25 @@ import { CgpaCalculatorClient } from "./CgpaCalculatorClient";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import type { Metadata } from "next";
-
-const siteUrl = "https://studentos.pages.dev";
+import { siteConfig } from "@/lib/config/site";
 
 export const metadata: Metadata = {
   title: "CGPA Calculator",
-  description: "Calculate your cumulative GPA with Wutete. Enter your courses, credits, and grades using supported Ethiopian university grading configurations.",
-  metadataBase: new URL(siteUrl),
+  description: "Calculate your cumulative GPA with Wutete. Enter your courses, credits, and grades using the standard Ethiopian university grading scale.",
+  metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: "/cgpa",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: `${siteUrl}/cgpa`,
-    siteName: "Wutete",
+    url: `${siteConfig.url}/cgpa`,
+    siteName: siteConfig.name,
     title: "CGPA Calculator — Wutete",
     description: "Calculate your cumulative GPA with Wutete using supported Ethiopian university grading configurations.",
     images: [
       {
-        url: "/og-image.svg",
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
         alt: "Wutete CGPA Calculator",
@@ -32,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CGPA Calculator — Wutete",
     description: "Calculate your cumulative GPA with Wutete using supported Ethiopian university grading configurations.",
-    images: ["/og-image.svg"],
+    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,

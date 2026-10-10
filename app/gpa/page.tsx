@@ -2,26 +2,25 @@ import { GPACalculatorClient } from "./GpaCalculatorClient";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import type { Metadata } from "next";
-
-const siteUrl = "https://studentos.pages.dev";
+import { siteConfig } from "@/lib/config/site";
 
 export const metadata: Metadata = {
   title: "GPA Calculator",
-  description: "Calculate your semester GPA for Ethiopian universities. Supports Jimma, Addis Ababa, Bahir Dar, Hawassa, and Haramaya Universities with verified grading scales.",
-  metadataBase: new URL(siteUrl),
+  description: "Calculate your semester GPA for Ethiopian universities. Supports Jimma, Addis Ababa, Bahir Dar, Hawassa, and Haramaya Universities with the standard Ethiopian grading scale.",
+  metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: "/gpa",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: `${siteUrl}/gpa`,
-    siteName: "Wutete",
+    url: `${siteConfig.url}/gpa`,
+    siteName: siteConfig.name,
     title: "GPA Calculator — Wutete",
     description: "Calculate your semester GPA for Ethiopian universities with university-specific grading scales.",
     images: [
       {
-        url: "/og-image.svg",
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
         alt: "Wutete GPA Calculator",
@@ -32,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GPA Calculator — Wutete",
     description: "Calculate your semester GPA for Ethiopian universities with university-specific grading scales.",
-    images: ["/og-image.svg"],
+    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,
