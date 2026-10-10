@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Wutete",
   description: "Calculate your GPA and CGPA and find out what GPA you need to reach your target. Wutete is an academic toolkit built for Ethiopian university students.",
-  url: "https://wutete.vercel.app/",
+  url: "https://wutete.vercel.app",
   ogImage: "/og-image.svg",
   links: {
     twitter: "https://twitter.com",
