@@ -2,26 +2,6 @@ import Link from "next/link";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
 
-const universities = [
-  { name: "Jimma University", status: "partially-verified" },
-  { name: "Addis Ababa University", status: "needs-verification" },
-  { name: "Bahir Dar University", status: "partially-verified" },
-  { name: "Hawassa University", status: "verified" },
-  { name: "Haramaya University", status: "needs-verification" },
-] as const;
-
-const statusLabels = {
-  verified: "Verified",
-  "partially-verified": "Partially verified",
-  "needs-verification": "Needs verification",
-} as const;
-
-const statusColors = {
-  verified: "bg-green-100 text-green-800",
-  "partially-verified": "bg-amber-100 text-amber-800",
-  "needs-verification": "bg-zinc-100 text-zinc-800",
-} as const;
-
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-zinc-50">
@@ -109,29 +89,6 @@ export default function Home() {
                 </svg>
               </Link>
             </article>
-          </div>
-        </section>
-
-        <section className="mb-16 md:mb-20" aria-labelledby="universities-heading">
-          <h2 id="universities-heading" className="text-2xl font-bold text-zinc-900 text-center mb-10">Supported Universities</h2>
-          <p className="text-zinc-600 text-sm text-center mb-8 max-w-2xl mx-auto">
-            Wutete currently includes grading configurations for the following Ethiopian universities.
-            Verification status varies by institution.
-          </p>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-            {universities.map((uni) => (
-              <article
-                key={uni.name}
-                className="card p-4 text-center"
-              >
-                <h3 className="font-medium text-zinc-900 mb-2">{uni.name}</h3>
-                <span
-                  className={`inline-flex items-center px-2 py-1 rounded text-xs ${statusColors[uni.status]}`}
-                >
-                  {statusLabels[uni.status]}
-                </span>
-              </article>
-            ))}
           </div>
         </section>
 
