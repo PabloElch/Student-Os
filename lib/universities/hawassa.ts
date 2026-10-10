@@ -1,22 +1,10 @@
 import { UniversityRules, GradeRule } from "./types";
+import { standardEthiopianGradingScale } from "./standard-scale";
 
 export const hawassaUniversity: UniversityRules = {
   id: "hawassa",
   name: "Hawassa University",
-  gradingScale: [
-    { letter: "A+", points: 4.00, minimumMark: 90, maximumMark: 100 },
-    { letter: "A", points: 4.00, minimumMark: 85, maximumMark: 89 },
-    { letter: "A-", points: 3.75, minimumMark: 80, maximumMark: 84 },
-    { letter: "B+", points: 3.50, minimumMark: 75, maximumMark: 79 },
-    { letter: "B", points: 3.00, minimumMark: 70, maximumMark: 74 },
-    { letter: "B-", points: 2.75, minimumMark: 65, maximumMark: 69 },
-    { letter: "C+", points: 2.50, minimumMark: 60, maximumMark: 64 },
-    { letter: "C", points: 2.00, minimumMark: 50, maximumMark: 59 },
-    { letter: "C-", points: 1.75, minimumMark: 45, maximumMark: 49 },
-    { letter: "D", points: 1.00, minimumMark: 40, maximumMark: 44 },
-    { letter: "FX", points: 0.00, minimumMark: 30, maximumMark: 39 },
-    { letter: "F", points: 0.00, minimumMark: 0, maximumMark: 29 },
-  ],
+  gradingScale: standardEthiopianGradingScale,
   creditSystem: {
     unit: "credit point",
     ectsConversion: undefined,
@@ -42,7 +30,7 @@ export const hawassaUniversity: UniversityRules = {
   },
   status: "verified",
   notes:
-    "Grading scale, GPA/SGPA and CGPA formulas, repeat course policy (Fx/F distinction), pass/fail, withdrawal, and incomplete policies all verified from official registrar page. Assessment structure: continuous assessment 50%, final exam 50%. Medical/Health Sciences may set own guidelines. Medical school uses fixed scale: A(85-100)=4.0, B+(80-84.9)=3.5, B(70-79.9)=3.0, C+(65-69.9)=2.5, C(60-64.9)=2.0, D+(55-59.9)=1.5?, D(50-54.9)=1.0, F(<50)=0. Transfer policy needs verification.",
+    "Grading scale uses the standard Ethiopian university grading scale as the default mapping. Original Hawassa scale had 12 grades with different boundaries (B- at 65-69, C+ at 60-64, C at 50-59, C- at 45-49, D at 40-44, FX at 30-39, F at 0-29); Wutete uses the standard 9-grade scale. GPA/SGPA and CGPA formulas, repeat course policy (Fx/F distinction), pass/fail, withdrawal, and incomplete policies all verified from official registrar page. Assessment structure: continuous assessment 50%, final exam 50%. Medical/Health Sciences may set own guidelines. Medical school uses fixed scale: A(85-100)=4.0, B+(80-84.9)=3.5, B(70-79.9)=3.0, C+(65-69.9)=2.5, C(60-64.9)=2.0, D+(55-59.9)=1.5?, D(50-54.9)=1.0, F(<50)=0. Transfer policy needs verification.",
 };
 
 export const hawassaNonGpaGrades = ["W", "DO", "NG", "P"] as const;

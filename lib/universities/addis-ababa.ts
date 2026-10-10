@@ -1,20 +1,10 @@
 import { UniversityRules } from "./types";
+import { standardEthiopianGradingScale } from "./standard-scale";
 
 export const addisAbabaUniversity: UniversityRules = {
   id: "addis-ababa",
   name: "Addis Ababa University",
-  gradingScale: [
-    { letter: "A+", points: 4.00, minimumMark: 95, maximumMark: 100 },
-    { letter: "A", points: 4.00, minimumMark: 90, maximumMark: 94 },
-    { letter: "A-", points: 3.75, minimumMark: 85, maximumMark: 89 },
-    { letter: "B+", points: 3.50, minimumMark: 80, maximumMark: 84 },
-    { letter: "B", points: 3.00, minimumMark: 75, maximumMark: 79 },
-    { letter: "B-", points: 2.75, minimumMark: 70, maximumMark: 74 },
-    { letter: "C+", points: 2.50, minimumMark: 65, maximumMark: 69 },
-    { letter: "C", points: 2.00, minimumMark: 50, maximumMark: 64 },
-    { letter: "D", points: 1.00, minimumMark: 40, maximumMark: 49 },
-    { letter: "F", points: 0.00, minimumMark: 0, maximumMark: 39 },
-  ],
+  gradingScale: standardEthiopianGradingScale,
   creditSystem: {
     unit: "ECTS",
     ectsConversion: 2,
@@ -39,7 +29,7 @@ export const addisAbabaUniversity: UniversityRules = {
   },
   status: "needs-verification",
   notes:
-    "Grading scale extracted from secondary sources referencing Senate Legislation Articles 90-91; needs direct verification from official PDF. Credit system ECTS-based per documentation but conversion needs verification. GPA/SGPA and CGPA formulas partially verified from secondary sources. Repeat, withdrawal/incomplete, and transfer policies need verification from official legislation.",
+    "Grading scale uses the standard Ethiopian university grading scale as the default mapping. Original AAU scale had different boundaries (A+ at 95, C at 50-64, D at 40-49, F at 0-39) and included B-; Wutete uses the standard 9-grade scale. Credit system ECTS-based per documentation but conversion needs verification. GPA/SGPA and CGPA formulas partially verified from secondary sources. Repeat, withdrawal/incomplete, and transfer policies need verification from official legislation.",
 };
 
 export const addisAbabaNonGpaGrades = ["W", "DO", "NG", "I", "P"] as const;

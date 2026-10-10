@@ -1,9 +1,10 @@
 import { UniversityRules } from "./types";
+import { standardEthiopianGradingScale, getGradePointFromStandardScale } from "./standard-scale";
 
 export const haramayaUniversity: UniversityRules = {
   id: "haramaya",
   name: "Haramaya University",
-  gradingScale: [],
+  gradingScale: standardEthiopianGradingScale,
   creditSystem: {
     unit: "ECTS",
     ectsConversion: undefined,
@@ -28,17 +29,18 @@ export const haramayaUniversity: UniversityRules = {
   },
   status: "needs-verification",
   notes:
-    "Grading scale (Article 116) not accessible from PDF - needs verification. ECTS-based credit system verified from multiple sources. Module-based curriculum per Article 107.1. GPA/CGPA formulas use CANG/SANG terminology. Transfer policy partially verified (grades for transferred courses included in CGPA). Repeat, pass/fail, withdrawal, incomplete, and academic standing policies all need verification from official legislation. Program-specific: BEd IT (242 ECTS, CGPA >= 2.00, major CGPA >= 2.00, at least C in Industrial Project, no F grades); BA History (142 credit hours, CGPA >= 2.00, no F grades); Graduate remedial courses not counted in SGPA/CGPA but appear on transcript; minimum CGPA 2.00 UG / 3.00 graduate.",
+    "Grading scale uses the standard Ethiopian university grading scale as the default mapping. ECTS-based credit system verified from multiple sources. Module-based curriculum per Article 107.1. GPA/CGPA formulas use CANG/SANG terminology. Transfer policy partially verified (grades for transferred courses included in CGPA). Repeat, pass/fail, withdrawal, incomplete, and academic standing policies all need verification from official legislation. Program-specific: BEd IT (242 ECTS, CGPA >= 2.00, major CGPA >= 2.00, at least C in Industrial Project, no F grades); BA History (142 credit hours, CGPA >= 2.00, no F grades); Graduate remedial courses not counted in SGPA/CGPA but appear on transcript; minimum CGPA 2.00 UG / 3.00 graduate.",
 };
 
 export const haramayaNonGpaGrades: readonly string[] = [];
 
 export function isNonGpaGradeHaramaya(_grade: string): boolean {
+  void _grade;
   return false;
 }
 
-export function getGradePointHaramaya(_letterGrade: string): number | null {
-  return null;
+export function getGradePointHaramaya(letterGrade: string): number | null {
+  return getGradePointFromStandardScale(letterGrade);
 }
 
 export const haramayaProgramRequirements = {

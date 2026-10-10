@@ -7,6 +7,7 @@ import { hawassaUniversity, hawassaNonGpaGrades, isNonGpaGradeHawassa, getGradeP
 import { haramayaUniversity, haramayaNonGpaGrades, isNonGpaGradeHaramaya, getGradePointHaramaya, haramayaProgramRequirements } from "./haramaya";
 
 export * from "./types";
+export * from "./standard-scale";
 export {
   jimmaUniversity,
   jimmaNonGpaGrades,

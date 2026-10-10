@@ -1,19 +1,10 @@
 import { UniversityRules, GradeRule } from "./types";
+import { standardEthiopianGradingScale } from "./standard-scale";
 
 export const bahirDarUniversity: UniversityRules = {
   id: "bahir-dar",
   name: "Bahir Dar University",
-  gradingScale: [
-    { letter: "A+", points: 4.00, minimumMark: 90, maximumMark: 100 },
-    { letter: "A", points: 4.00, minimumMark: 85, maximumMark: 89 },
-    { letter: "A-", points: 3.75, minimumMark: 80, maximumMark: 84 },
-    { letter: "B+", points: 3.50, minimumMark: 75, maximumMark: 79 },
-    { letter: "B", points: 3.00, minimumMark: 70, maximumMark: 74 },
-    { letter: "B-", points: 2.75, minimumMark: 65, maximumMark: 69 },
-    { letter: "C", points: 2.00, minimumMark: 60, maximumMark: 64 },
-    { letter: "D", points: 1.00, minimumMark: 50, maximumMark: 59 },
-    { letter: "F", points: 0.00, minimumMark: 0, maximumMark: 49 },
-  ],
+  gradingScale: standardEthiopianGradingScale,
   creditSystem: {
     unit: "credit hour / ECTS",
     ectsConversion: undefined,
@@ -39,7 +30,7 @@ export const bahirDarUniversity: UniversityRules = {
   },
   status: "partially-verified",
   notes:
-    "CMHS (College of Medicine and Health Sciences) grading scale verified from official 2025 student handbook. GPA/CGPA formulas verified. Pass/Fail policy verified for CMHS. Conflicting older Engineering faculty regulation uses inverse scale (1.0 = best) - likely outdated. Undergraduate repeat, withdrawal, incomplete, and transfer policies need verification from current Senate Legislation. Program-specific exceptions: Medicine/Health Sciences require minimum C grade for all courses; Doctoral requires CGPA >= 3.00 and no grade below B.",
+    "Grading scale uses the standard Ethiopian university grading scale as the default mapping. Original CMHS scale included B- (65-69 at 2.75) instead of C+ (2.50); Wutete uses the standard 9-grade scale. GPA/CGPA formulas verified. Pass/Fail policy verified for CMHS. Conflicting older Engineering faculty regulation uses inverse scale (1.0 = best) - likely outdated. Undergraduate repeat, withdrawal, incomplete, and transfer policies need verification from current Senate Legislation. Program-specific exceptions: Medicine/Health Sciences require minimum C grade for all courses; Doctoral requires CGPA >= 3.00 and no grade below B.",
 };
 
 export const bahirDarNonGpaGrades = ["P", "F", "I", "W", "NG"] as const;
