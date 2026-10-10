@@ -210,6 +210,12 @@ export default function GradeScalePage() {
               >
                 GPA Target Planner
               </Link>
+              <Link
+                href="/gpa-simulator"
+                className="btn-secondary text-center"
+              >
+                GPA Simulator
+              </Link>
             </div>
           </section>
         </article>

@@ -33,6 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/gpa-simulator`,
+      lastModified: staticLastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/grade-scale`,
       lastModified: staticLastModified,
       changeFrequency: "yearly",

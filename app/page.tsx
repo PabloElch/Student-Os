@@ -16,7 +16,7 @@ export default function Home() {
             Wutete helps you calculate your GPA and CGPA using university-specific grading scales,
             and plan what you need to reach your target CGPA.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
             <Link
               href="/gpa"
               className="btn-primary text-center"
@@ -36,6 +36,12 @@ export default function Home() {
               Plan My GPA
             </Link>
             <Link
+              href="/gpa-simulator"
+              className="btn-secondary text-center"
+            >
+              GPA Simulator
+            </Link>
+            <Link
               href="/grade-converter"
               className="btn-secondary text-center"
             >
@@ -47,7 +53,7 @@ export default function Home() {
 
         <section className="mb-16 md:mb-20" aria-labelledby="tools-heading">
           <h2 id="tools-heading" className="text-2xl font-bold text-zinc-900 text-center mb-10">Available Tools</h2>
-          <div className="grid gap-6 md:grid-cols-4">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <article className="card p-6">
               <h3 className="text-lg font-semibold text-zinc-900 mb-3">GPA Calculator</h3>
               <p className="text-zinc-600 text-sm mb-4">
@@ -90,6 +96,22 @@ export default function Home() {
                 className="inline-flex items-center text-sm font-medium text-zinc-900 hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded"
               >
                 Open Planner
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </article>
+
+            <article className="card p-6">
+              <h3 className="text-lg font-semibold text-zinc-900 mb-3">GPA What-If Simulator</h3>
+              <p className="text-zinc-600 text-sm mb-4">
+                Compare baseline vs. hypothetical grades to see the impact on your semester GPA and projected CGPA.
+              </p>
+              <Link
+                href="/gpa-simulator"
+                className="inline-flex items-center text-sm font-medium text-zinc-900 hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded"
+              >
+                Open Simulator
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

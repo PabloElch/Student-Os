@@ -219,6 +219,9 @@ export function CgpaCalculatorClient() {
             Source: {currentConfig.source.title} ({currentConfig.source.dateAccessed})
           </p>
         )}
+        <p className="mt-3 text-sm text-zinc-600">
+          <a href="/gpa-simulator" className="text-zinc-900 underline hover:text-zinc-700">Try the GPA What-If Simulator</a> to compare baseline vs. hypothetical grades.
+        </p>
       </div>
     </div>
   );
