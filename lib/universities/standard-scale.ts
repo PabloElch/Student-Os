@@ -1,5 +1,7 @@
 import { GradeRule } from "./types";
 
+export type { GradeRule } from "./types";
+
 export const standardEthiopianGradingScale: GradeRule[] = [
   { letter: "A+", points: 4.00, minimumMark: 90, maximumMark: 100 },
   { letter: "A", points: 4.00, minimumMark: 85, maximumMark: 89 },
