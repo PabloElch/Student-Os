@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
+import { HomepageCalculator } from "@/components/calculator/HomepageCalculator";
 
 const tools = [
   {
@@ -188,69 +189,82 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Calculator Preview */}
-        <section className="mb-14 md:mb-20" aria-labelledby="preview-heading">
-          <h2 id="preview-heading" className="sr-only">Calculator preview</h2>
-          <div className="card p-6 md:p-8">
-            <div className="text-center mb-6">
-              <h3 className="text-lg font-semibold text-charcoal mb-2">Quick GPA Preview</h3>
-              <p className="text-sm text-neutral">Try adding a course to see how it works</p>
+        {/* How to Calculate GPA */}
+        <section className="mb-14 md:mb-20" aria-labelledby="how-to-heading">
+          <h2 id="how-to-heading" className="text-2xl font-bold text-charcoal mb-4">
+            How to calculate GPA
+          </h2>
+          <div className="text-neutral leading-relaxed">
+            <p className="mb-3">
+              Wutete uses the standard Ethiopian university grading scale to calculate your semester GPA. Each course&apos;s grade points are weighted by credit hours, then divided by the total credits.
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-sm">
+              <li>Select your university (or use the standard Ethiopian scale)</li>
+              <li>Add courses with course name, credit hours, and grade</li>
+              <li>The calculator automatically looks up each grade&apos;s grade points</li>
+              <li>Grades not recognized by your university&apos;s scale are excluded from GPA</li>
+              <li>GPA = Σ(credits × grade points) ÷ Σ(credits)</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* FAQs */}
+        <section className="mb-14 md:mb-20" aria-labelledby="faqs-heading">
+          <h2 id="faqs-heading" className="text-2xl font-bold text-charcoal mb-4">
+            Frequently asked questions
+          </h2>
+          <div className="space-y-4 text-neutral">
+            <div className="border-b border-border pb-4">
+              <h3 className="font-medium text-charcoal mb-2">Do I need an account to use the calculator?</h3>
+              <p className="text-sm">No account required. All calculations happen entirely in your browser. Your academic data never leaves your device.</p>
             </div>
-            <div className="bg-ivory rounded-lg p-5 space-y-4">
-              <div className="grid gap-3 sm:grid-cols-4 items-center">
-                <div className="sm:col-span-2">
-                  <label htmlFor="preview-course" className="sr-only">Course name</label>
-                  <input
-                    type="text"
-                    id="preview-course"
-                    placeholder="e.g., Calculus I"
-                    className="input-base"
-                    defaultValue="Calculus I"
-                    readOnly
-                  />
-                </div>
-                <div>
-                  <label htmlFor="preview-credits" className="sr-only">Credits</label>
-                  <input
-                    type="number"
-                    id="preview-credits"
-                    placeholder="Credits"
-                    className="input-base text-right"
-                    defaultValue="3"
-                    readOnly
-                    step="0.5"
-                    min="0.5"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="preview-grade" className="sr-only">Grade</label>
-                  <select id="preview-grade" className="select-base" defaultValue="A" disabled>
-                    <option value="">Select grade</option>
-                    <option value="A+">A+ (4.00)</option>
-                    <option value="A">A (4.00)</option>
-                    <option value="A-">A− (3.75)</option>
-                    <option value="B+">B+ (3.50)</option>
-                    <option value="B">B (3.00)</option>
-                    <option value="C+">C+ (2.50)</option>
-                    <option value="C">C (2.00)</option>
-                    <option value="D">D (1.00)</option>
-                    <option value="F">F (0.00)</option>
-                  </select>
-                </div>
-              </div>
-              <div className="pt-3 border-t border-border flex items-center justify-between">
-                <span className="text-sm text-neutral">Semester GPA</span>
-                <div className="text-2xl font-bold text-charcoal font-mono">4.00</div>
-              </div>
-              <Link
-                href="/gpa"
-                className="btn-primary w-full text-center"
-              >
-                Open full calculator
-              </Link>
+            <div className="border-b border-bottom pb-4">
+              <h3 className="font-medium text-charcoal mb-2">Which universities are supported?</h3>
+              <p className="text-sm">
+                Jimma, Addis Ababa, Bahir Dar, Hawassa, and Haramaya universities have verified grading configurations. The standard Ethiopian grading scale is also available for all students.
+              </p>
+            </div>
+            <div className="border-b border-bottom pb-4">
+              <h3 className="font-medium text-charcoal mb-2">Are the GPA calculations official?</h3>
+              <p className="text-sm">
+                The calculations follow standard university GPA formulas. Always confirm with your university registrar for official academic decisions.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-medium text-charcoal mb-2">Can I calculate CGPA?</h3>
+              <p className="text-sm">
+                Yes. Use the dedicated CGPA calculator to compute your cumulative GPA across all completed courses.
+              </p>
             </div>
           </div>
         </section>
+
+        {/* Worked Example */}
+        <section className="mb-14 md:mb-20" aria-labelledby="worked-example-heading">
+          <h2 id="worked-example-heading" className="text-2xl font-bold text-charcoal mb-4">
+            Worked example
+          </h2>
+          <div className="space-y-4 text-neutral">
+            <div className="p-4 bg-ivory rounded border border-border">
+              <h3 className="font-medium text-charcoal mb-3">Example: Semester GPA calculation</h3>
+              <p className="text-sm mb-2">Course: Calculus I, 3 credits, Grade: A (4.00 grade points)</p>
+              <p className="text-sm mb-2">Course: Physics, 4 credits, Grade: B (3.00 grade points)</p>
+              <p className="text-sm mb-2">Course: English, 3 credits, Grade: A- (3.75 grade points)</p>
+              <p className="text-sm font-medium">GPA = (3 × 4.00 + 4 × 3.00 + 3 × 3.75) ÷ (3 + 4 + 3)</p>
+              <p className="text-sm font-mono font-bold text-charcoal">3.69</p>
+            </div>
+            <div className="p-4 bg-ivory rounded border border-border">
+              <h3 className="font-medium text-charcoal mb-3">Another example with different credits</h3>
+              <p className="text-sm mb-2">Course: Chemistry, 3 credits, Grade: B+ (3.50 grade points)</p>
+              <p className="text-sm mb-2">Course: Calculus II, 4 credits, Grade: A (4.00 grade points)</p>
+              <p className="text-sm">GPA = (3 × 3.50 + 4 × 4.00) ÷ (3 + 4)</p>
+              <p className="text-sm font-mono font-bold text-charcoal">3.82</p>
+            </div>
+          </div>
+        </section>
+
+        <HomepageCalculator />
+
       </main>
 
       <Footer />
