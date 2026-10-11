@@ -7,9 +7,18 @@ interface CgpaResultProps {
   courseCount: number;
   validCourseCount: number;
   universityId: SupportedUniversityId;
+  onCopySummary: () => void;
+  copyStatus: "idle" | "copied" | "shared" | "error";
 }
 
-export function CgpaResult({ cgpa, courseCount, validCourseCount, universityId }: CgpaResultProps) {
+export function CgpaResult({
+  cgpa,
+  courseCount,
+  validCourseCount,
+  universityId,
+  onCopySummary,
+  copyStatus,
+}: CgpaResultProps) {
   const config = getUniversityConfig(universityId);
   const maxGradePoint = config?.gradingScale.length > 0
     ? Math.max(...config.gradingScale.map((g) => g.points))
@@ -50,6 +59,40 @@ export function CgpaResult({ cgpa, courseCount, validCourseCount, universityId }
               : `${validCourseCount} courses included in CGPA`}
           </>
         )}
+      </div>
+      <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+        <button
+          type="button"
+          onClick={onCopySummary}
+          disabled={copyStatus !== "idle"}
+          className="btn-secondary flex items-center gap-2"
+          aria-busy={copyStatus !== "idle"}
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v12a2 2 0 002-2V7a2 2 0 00-2-2h-2" />
+          </svg>
+          <span>
+            {copyStatus === "copied" && "Copied!"}
+            {copyStatus === "shared" && "Shared!"}
+            {copyStatus === "error" && "Failed"}
+            {copyStatus === "idle" && "Copy Summary"}
+          </span>
+        </button>
+        <button
+          type="button"
+          onClick={onCopySummary}
+          disabled={copyStatus !== "idle"}
+          className="btn-secondary flex items-center gap-2"
+          aria-busy={copyStatus !== "idle"}
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+          <span>
+            {copyStatus === "shared" && "Shared!"}
+            {copyStatus === "idle" && "Share Result"}
+          </span>
+        </button>
       </div>
     </div>
   );

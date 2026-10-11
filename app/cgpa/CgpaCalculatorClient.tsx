@@ -7,6 +7,7 @@ import { getGradePointForUniversity, isNonGpaGradeForUniversity, getUniversityCo
 import { UniversitySelector } from "@/components/calculator/UniversitySelector";
 import { CourseRow } from "@/components/calculator/CourseRow";
 import { CgpaResult } from "@/components/calculator/CgpaResult";
+import { copyOrShare, generateCgpaSummary } from "@/lib/utils/share";
 
 interface CourseInput {
   id: string;
@@ -127,6 +128,30 @@ export function CgpaCalculatorClient() {
   const validCourseCount = calculationInput.length;
   const hasGradingScale = currentConfig?.gradingScale?.length > 0;
   const totalCoursesWithData = courses.filter((c) => c.credits.trim() || c.grade).length;
+  const totalCredits = calculationInput.reduce((sum, c) => sum + c.credits, 0);
+
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "shared" | "error">("idle");
+
+  const handleCopySummary = async () => {
+    if (!cgpa) return;
+    const summary = generateCgpaSummary({
+      label: "CGPA",
+      value: cgpa.toFixed(2),
+      totalCredits,
+    });
+    await copyOrShare(
+      summary,
+      "CGPA Result",
+      (method) => {
+        setCopyStatus(method === "copy" ? "copied" : "shared");
+        setTimeout(() => setCopyStatus("idle"), 2000);
+      },
+      () => {
+        setCopyStatus("error");
+        setTimeout(() => setCopyStatus("idle"), 2000);
+      }
+    );
+  };
 
   return (
     <div className="space-y-8">
@@ -197,6 +222,8 @@ export function CgpaCalculatorClient() {
             courseCount={totalCoursesWithData}
             validCourseCount={validCourseCount}
             universityId={selectedUniversity}
+            onCopySummary={handleCopySummary}
+            copyStatus={copyStatus}
           />
 
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">

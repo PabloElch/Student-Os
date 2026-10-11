@@ -6,6 +6,7 @@ import { getGradePointForUniversity, isNonGpaGradeForUniversity, getUniversityCo
 import { UniversitySelector } from "@/components/calculator/UniversitySelector";
 import { CourseRow } from "@/components/calculator/CourseRow";
 import { GpaResult } from "@/components/calculator/GpaResult";
+import { copyOrShare, generateGpaSummary } from "@/lib/utils/share";
 
 interface CourseInput {
   id: string;
@@ -126,6 +127,30 @@ export function GPACalculatorClient() {
   const validCourseCount = calculationInput.length;
   const hasGradingScale = currentConfig?.gradingScale?.length > 0;
   const totalCoursesWithData = courses.filter((c) => c.credits.trim() || c.grade).length;
+  const totalCredits = calculationInput.reduce((sum, c) => sum + c.credits, 0);
+
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "shared" | "error">("idle");
+
+  const handleCopySummary = async () => {
+    if (!gpa) return;
+    const summary = generateGpaSummary({
+      label: "GPA",
+      value: gpa.toFixed(2),
+      totalCredits,
+    });
+    await copyOrShare(
+      summary,
+      "GPA Result",
+      (method) => {
+        setCopyStatus(method === "copy" ? "copied" : "shared");
+        setTimeout(() => setCopyStatus("idle"), 2000);
+      },
+      () => {
+        setCopyStatus("error");
+        setTimeout(() => setCopyStatus("idle"), 2000);
+      }
+    );
+  };
 
   return (
     <div className="space-y-8">
@@ -195,6 +220,8 @@ export function GPACalculatorClient() {
             gpa={gpa}
             courseCount={totalCoursesWithData}
             validCourseCount={validCourseCount}
+            onCopySummary={handleCopySummary}
+            copyStatus={copyStatus}
           />
 
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
