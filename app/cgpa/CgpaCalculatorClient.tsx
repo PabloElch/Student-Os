@@ -7,7 +7,7 @@ import { getGradePointForUniversity, isNonGpaGradeForUniversity, getUniversityCo
 import { UniversitySelector } from "@/components/calculator/UniversitySelector";
 import { CourseRow } from "@/components/calculator/CourseRow";
 import { CgpaResult } from "@/components/calculator/CgpaResult";
-import { copyOrShare, generateCgpaSummary } from "@/lib/utils/share";
+import { copyOrShare, copyToClipboardOnly, generateCgpaSummary } from "@/lib/utils/share";
 
 interface CourseInput {
   id: string;
@@ -139,6 +139,23 @@ export function CgpaCalculatorClient() {
       value: cgpa.toFixed(2),
       totalCredits,
     });
+    const copied = await copyToClipboardOnly(summary);
+    if (copied) {
+      setCopyStatus("copied");
+      setTimeout(() => setCopyStatus("idle"), 2000);
+    } else {
+      setCopyStatus("error");
+      setTimeout(() => setCopyStatus("idle"), 2000);
+    }
+  };
+
+  const handleShareResult = async () => {
+    if (!cgpa) return;
+    const summary = generateCgpaSummary({
+      label: "CGPA",
+      value: cgpa.toFixed(2),
+      totalCredits,
+    });
     await copyOrShare(
       summary,
       "CGPA Result",
@@ -223,6 +240,7 @@ export function CgpaCalculatorClient() {
             validCourseCount={validCourseCount}
             universityId={selectedUniversity}
             onCopySummary={handleCopySummary}
+            onShareResult={handleShareResult}
             copyStatus={copyStatus}
           />
 

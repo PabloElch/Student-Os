@@ -7,7 +7,7 @@ import { UniversitySelector } from "@/components/calculator/UniversitySelector";
 import { CourseRow } from "@/components/calculator/CourseRow";
 import { GpaResult } from "@/components/calculator/GpaResult";
 import Link from "next/link";
-import { copyOrShare, generateGpaSummary } from "@/lib/utils/share";
+import { copyOrShare, copyToClipboardOnly, generateGpaSummary } from "@/lib/utils/share";
 
 interface CourseInput {
   id: string;
@@ -144,6 +144,23 @@ export function HomepageCalculator() {
       value: gpa.toFixed(2),
       totalCredits,
     });
+    const copied = await copyToClipboardOnly(summary);
+    if (copied) {
+      setCopyStatus("copied");
+      setTimeout(() => setCopyStatus("idle"), 2000);
+    } else {
+      setCopyStatus("error");
+      setTimeout(() => setCopyStatus("idle"), 2000);
+    }
+  };
+
+  const handleShareResult = async () => {
+    if (!gpa) return;
+    const summary = generateGpaSummary({
+      label: "GPA",
+      value: gpa.toFixed(2),
+      totalCredits,
+    });
     await copyOrShare(
       summary,
       "GPA Result",
@@ -235,6 +252,7 @@ export function HomepageCalculator() {
           courseCount={totalCoursesWithData}
           validCourseCount={validCourseCount}
           onCopySummary={handleCopySummary}
+          onShareResult={handleShareResult}
           copyStatus={copyStatus}
         />
 

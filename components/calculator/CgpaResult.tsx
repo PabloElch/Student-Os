@@ -8,6 +8,7 @@ interface CgpaResultProps {
   validCourseCount: number;
   universityId: SupportedUniversityId;
   onCopySummary: () => void;
+  onShareResult: () => void;
   copyStatus: "idle" | "copied" | "shared" | "error";
 }
 
@@ -17,6 +18,7 @@ export function CgpaResult({
   validCourseCount,
   universityId,
   onCopySummary,
+  onShareResult,
   copyStatus,
 }: CgpaResultProps) {
   const config = getUniversityConfig(universityId);
@@ -73,14 +75,13 @@ export function CgpaResult({
           </svg>
           <span>
             {copyStatus === "copied" && "Copied!"}
-            {copyStatus === "shared" && "Shared!"}
             {copyStatus === "error" && "Failed"}
             {copyStatus === "idle" && "Copy Summary"}
           </span>
         </button>
         <button
           type="button"
-          onClick={onCopySummary}
+          onClick={onShareResult}
           disabled={copyStatus !== "idle"}
           className="btn-secondary flex items-center gap-2"
           aria-busy={copyStatus !== "idle"}

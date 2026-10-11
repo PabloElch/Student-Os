@@ -52,6 +52,10 @@ export async function copyToClipboard(text: string): Promise<boolean> {
   }
 }
 
+export async function copyToClipboardOnly(text: string): Promise<boolean> {
+  return copyToClipboard(text);
+}
+
 export async function shareResult(text: string, title: string): Promise<boolean> {
   if (!navigator.share) {
     return false;

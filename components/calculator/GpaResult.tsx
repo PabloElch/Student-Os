@@ -5,6 +5,7 @@ interface GpaResultProps {
   courseCount: number;
   validCourseCount: number;
   onCopySummary: () => void;
+  onShareResult: () => void;
   copyStatus: "idle" | "copied" | "shared" | "error";
 }
 
@@ -13,6 +14,7 @@ export function GpaResult({
   courseCount,
   validCourseCount,
   onCopySummary,
+  onShareResult,
   copyStatus,
 }: GpaResultProps) {
   if (gpa === null) {
@@ -63,14 +65,13 @@ export function GpaResult({
           </svg>
           <span>
             {copyStatus === "copied" && "Copied!"}
-            {copyStatus === "shared" && "Shared!"}
             {copyStatus === "error" && "Failed"}
             {copyStatus === "idle" && "Copy Summary"}
           </span>
         </button>
         <button
           type="button"
-          onClick={onCopySummary}
+          onClick={onShareResult}
           disabled={copyStatus !== "idle"}
           className="btn-secondary flex items-center gap-2"
           aria-busy={copyStatus !== "idle"}
