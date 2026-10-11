@@ -38,9 +38,10 @@ export function CourseRow({
 
   return (
     <div className="bg-white">
-      <div className="grid gap-3 grid-cols-[minmax(0,1fr)_70px_120px_40px] gap-x-4 px-4 py-3 items-start">
+      <div className="grid gap-3 grid-cols-1 md:grid-cols-[minmax(0,1fr)_80px_140px_50px] gap-x-4 px-4 py-3 items-start">
+        {/* Mobile: Row 1 - Course name full width | Desktop: Column 1 */}
         <div className="space-y-2">
-          <label htmlFor={`course-name-${course.id}`} className="block text-xs font-medium text-neutral sm:hidden">
+          <label htmlFor={`course-name-${course.id}`} className="block text-xs font-medium text-neutral md:hidden">
             Course name
           </label>
           <input
@@ -54,75 +55,78 @@ export function CourseRow({
           />
         </div>
 
-        <div className="space-y-2">
-          <label htmlFor={`course-credits-${course.id}`} className="block text-xs font-medium text-neutral sm:hidden">
-            Credits
-          </label>
-          <div className="relative">
-            <input
-              type="number"
-              id={`course-credits-${course.id}`}
-              value={course.credits}
-              onChange={(e) => onCreditsChange(course.id, e.target.value)}
-              placeholder="3"
-              step="0.5"
-              min="0.5"
-              className={`input-base w-full text-right ${creditsError ? "border-error focus:ring-error" : ""}`}
-              aria-invalid={!!creditsError}
-              aria-describedby={creditsError ? `credits-error-${course.id}` : undefined}
-            />
-            {creditsError && (
-              <p id={`credits-error-${course.id}`} className="absolute -bottom-5 left-0 text-xs text-error sm:static sm:mt-1" role="alert">
-                {creditsError}
-              </p>
+        {/* Mobile: Row 2 - Credits, Grade, Remove | Desktop: Columns 2, 3, 4 */}
+        <div className="grid grid-cols-[70px_1fr_40px] gap-x-3 md:contents md:gap-0">
+          <div className="space-y-2">
+            <label htmlFor={`course-credits-${course.id}`} className="block text-xs font-medium text-neutral md:hidden">
+              Credits
+            </label>
+            <div className="relative">
+              <input
+                type="number"
+                id={`course-credits-${course.id}`}
+                value={course.credits}
+                onChange={(e) => onCreditsChange(course.id, e.target.value)}
+                placeholder="3"
+                step="0.5"
+                min="0.5"
+                className={`input-base w-full text-right ${creditsError ? "border-error focus:ring-error" : ""}`}
+                aria-invalid={!!creditsError}
+                aria-describedby={creditsError ? `credits-error-${course.id}` : undefined}
+              />
+              {creditsError && (
+                <p id={`credits-error-${course.id}`} className="absolute -bottom-5 left-0 text-xs text-error md:static md:mt-1" role="alert">
+                  {creditsError}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor={`course-grade-${course.id}`} className="block text-xs font-medium text-neutral md:hidden">
+              Grade
+            </label>
+            <div className="relative">
+              <select
+                id={`course-grade-${course.id}`}
+                value={course.grade}
+                onChange={(e) => onGradeChange(course.id, e.target.value)}
+                className="select-base w-full"
+                disabled={gradeOptions.length <= 1}
+              >
+                {gradeOptions.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+              {gradeOptions.length <= 1 && (
+                <p className="absolute -bottom-5 left-0 text-xs text-neutral md:static md:mt-1">
+                  No grading scale available
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="flex items-start justify-end pt-1 md:justify-start">
+            {canRemove && (
+              <button
+                type="button"
+                onClick={() => onRemove(course.id)}
+                className="p-2 text-neutral hover:text-charcoal hover:bg-ivory rounded-lg transition-colors md:ml-2"
+                aria-label={`Remove ${course.name || "course"}`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             )}
           </div>
-        </div>
-
-        <div className="space-y-2">
-          <label htmlFor={`course-grade-${course.id}`} className="block text-xs font-medium text-neutral sm:hidden">
-            Grade
-          </label>
-          <div className="relative">
-            <select
-              id={`course-grade-${course.id}`}
-              value={course.grade}
-              onChange={(e) => onGradeChange(course.id, e.target.value)}
-              className="select-base w-full"
-              disabled={gradeOptions.length <= 1}
-            >
-              {gradeOptions.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-            {gradeOptions.length <= 1 && (
-              <p className="absolute -bottom-5 left-0 text-xs text-neutral sm:static sm:mt-1">
-                No grading scale available
-              </p>
-            )}
-          </div>
-        </div>
-
-        <div className="flex items-start justify-end sm:justify-start pt-1">
-          {canRemove && (
-            <button
-              type="button"
-              onClick={() => onRemove(course.id)}
-              className="p-2 text-neutral hover:text-charcoal hover:bg-ivory rounded-lg transition-colors sm:ml-2"
-              aria-label={`Remove ${course.name || "course"}`}
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          )}
         </div>
       </div>
 
       {(course.grade && !hasGrade) || (course.grade && isNonGpaGrade) ? (
-        <div className="px-4 pb-3 sm:hidden">
+        <div className="px-4 pb-3 md:hidden">
           <div className="p-3 bg-ivory border-t border-border rounded-b-xl">
             <div className="flex items-center gap-2 text-xs text-neutral">
               <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -137,11 +141,11 @@ export function CourseRow({
           </div>
         </div>
       ) : course.grade && hasGrade && !isNonGpaGrade ? (
-        <div className="px-4 pb-3 sm:hidden">
+        <div className="px-4 pb-3 md:hidden">
           <div className="p-3 bg-success-bg border-t border-border rounded-b-xl">
             <div className="flex items-center gap-2 text-xs text-success">
               <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span>Grade point: {gradePoint?.toFixed(2)}</span>
             </div>
@@ -149,7 +153,7 @@ export function CourseRow({
         </div>
       ) : null}
 
-      <div className="sm:hidden">
+      <div className="md:hidden">
         <div className="px-4 pb-3">
           <div className="flex items-center gap-2 text-xs text-neutral-light">
             <span>Course {course.name ? `"${course.name}"` : "untitled"}</span>

@@ -148,7 +148,7 @@ export function GPACalculatorClient() {
           )}
 
           <div className="border border-border rounded-xl overflow-hidden">
-            <div className="grid grid-cols-[minmax(0,1fr)_70px_120px_40px] gap-x-4 gap-y-3 px-4 py-3 bg-ivory border-b border-border text-xs font-medium text-neutral uppercase tracking-wider">
+            <div className="hidden md:grid md:grid-cols-[minmax(0,1fr)_80px_140px_50px] md:gap-x-4 md:gap-y-3 px-4 py-3 bg-ivory border-b border-border text-xs font-medium text-neutral uppercase tracking-wider">
               <div>Course Name</div>
               <div className="text-right">Credits</div>
               <div>Grade</div>
