@@ -3,6 +3,7 @@
 import { useState, useMemo, useCallback } from "react";
 import { calculateSemesterGPA, CourseGrade } from "@/lib/calculations/gpa";
 import { getGradePointForUniversity, isNonGpaGradeForUniversity, getUniversityConfig, SupportedUniversityId, GradeRule } from "@/lib/universities";
+import { UniversitySelector } from "@/components/calculator/UniversitySelector";
 import { CourseRow } from "@/components/calculator/CourseRow";
 import { GpaResult } from "@/components/calculator/GpaResult";
 import Link from "next/link";
@@ -143,26 +144,10 @@ export function HomepageCalculator() {
               Add courses with credits and grades to calculate your semester GPA instantly.
             </p>
           </div>
-          <div className="flex items-center gap-3">
-            <label htmlFor="homepage-university-select" className="text-sm font-medium text-charcoal">
-              University
-            </label>
-            <select
-              id="homepage-university-select"
-              value={selectedUniversity}
-              onChange={(e) => setSelectedUniversity(e.target.value as SupportedUniversityId)}
-              className="select-base w-auto min-w-[200px]"
-            >
-              {(["jimma", "addis-ababa", "bahir-dar", "hawassa", "haramaya"] as SupportedUniversityId[]).map((id) => {
-                const config = getUniversityConfig(id);
-                return (
-                  <option key={id} value={id}>
-                    {config.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+          <UniversitySelector
+            selectedUniversity={selectedUniversity}
+            onChange={setSelectedUniversity}
+          />
         </div>
 
         {!hasGradingScale && currentConfig && (
