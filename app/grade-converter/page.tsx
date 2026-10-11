@@ -1,4 +1,6 @@
 import { GradeConverterClient } from "./GradeConverterClient";
+import { Navbar } from "@/components/navigation/Navbar";
+import { Footer } from "@/components/footer/Footer";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/config/site";
 
@@ -38,5 +40,13 @@ export const metadata: Metadata = {
 };
 
 export default function GradeConverterPage() {
-  return <GradeConverterClient />;
+  return (
+    <div className="min-h-screen flex flex-col bg-ivory">
+      <Navbar />
+      <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-12 md:py-20">
+        <GradeConverterClient />
+      </main>
+      <Footer />
+    </div>
+  );
 }

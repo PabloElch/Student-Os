@@ -41,9 +41,9 @@ export const metadata: Metadata = {
 
 export default function SimulatorPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-50">
+    <div className="min-h-screen flex flex-col bg-ivory">
       <Navbar />
-      <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12">
+      <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12 md:py-16">
         <SimulatorCalculatorClient />
       </main>
       <Footer />

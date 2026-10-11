@@ -122,12 +122,13 @@ export function CgpaCalculatorClient() {
 
   const validCourseCount = calculationInput.length;
   const hasGradingScale = currentConfig?.gradingScale?.length > 0;
+  const totalCoursesWithData = courses.filter((c) => c.credits.trim() || c.grade).length;
 
   return (
     <div className="space-y-8">
       <div className="text-center mb-4">
-        <h1 className="text-2xl font-bold text-zinc-900 mb-2">CGPA Calculator</h1>
-        <p className="text-zinc-600">
+        <h1 className="page-heading mb-2">CGPA Calculator</h1>
+        <p className="page-subheading">
           Select your university, add all your courses, and calculate your cumulative GPA.
         </p>
       </div>
@@ -139,23 +140,23 @@ export function CgpaCalculatorClient() {
         />
 
         <div>
-          <h2 className="text-lg font-semibold text-zinc-900 mb-4">Courses</h2>
+          <h2 className="section-heading">Courses</h2>
 
           {!hasGradingScale && currentConfig && (
-            <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
+            <div className="mb-4 p-3 bg-warning-bg border border-warning rounded-lg text-sm text-warning" role="alert">
               Grading scale not available for {currentConfig.name}. Please select another university.
             </div>
           )}
 
-          <div className="border border-zinc-200 rounded-xl overflow-hidden">
-            <div className="hidden md:grid grid-cols-[1fr_80px_140px_50px] gap-x-4 gap-y-3 px-4 py-3 bg-zinc-50 border-b border-zinc-200 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+          <div className="border border-border rounded-xl overflow-hidden">
+            <div className="hidden sm:grid grid-cols-[1fr_80px_140px_50px] gap-x-4 gap-y-3 px-4 py-3 bg-ivory border-b border-border text-xs font-medium text-neutral uppercase tracking-wider">
               <div>Course Name</div>
               <div className="text-right">Credits</div>
               <div>Grade</div>
               <div></div>
             </div>
 
-            <div className="divide-y divide-zinc-200">
+            <div className="divide-y divide-border">
               {courses.map((course) => (
                 <CourseRow
                   key={course.id}
@@ -179,17 +180,17 @@ export function CgpaCalculatorClient() {
             className="btn-secondary w-full sm:w-auto mt-4"
             disabled={!hasGradingScale}
           >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
             Add Course
           </button>
         </div>
 
-        <div className="border-t border-zinc-200 pt-6">
+        <div className="border-t border-border pt-6">
           <CgpaResult
             cgpa={cgpa}
-            courseCount={courses.filter((c) => c.credits.trim() || c.grade).length}
+            courseCount={totalCoursesWithData}
             validCourseCount={validCourseCount}
             universityId={selectedUniversity}
           />
@@ -206,21 +207,41 @@ export function CgpaCalculatorClient() {
         </div>
       </div>
 
-      <div className="card p-4 text-sm text-zinc-600">
-        <h3 className="font-medium text-zinc-900 mb-2">How it works</h3>
-        <ul className="space-y-1 text-zinc-600">
-          <li>• Select your university to load the correct grading scale</li>
-          <li>• Add all courses that count toward your cumulative GPA</li>
-          <li>• Grades marked &ldquo;Not included in GPA&rdquo; don&apos;t affect the calculation</li>
-          <li>• CGPA is calculated using the official formula: &Sigma;(credits &times; grade points) / &Sigma;(credits)</li>
+      <div className="card p-6 space-y-4">
+        <h3 className="font-medium text-charcoal mb-3">How it works</h3>
+        <ul className="space-y-2 text-sm text-neutral">
+          <li className="flex items-start gap-2">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span>Select your university to load the correct grading scale</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span>Add all courses that count toward your cumulative GPA</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span>Grades marked &ldquo;Not included in GPA&rdquo; don&apos;t affect the calculation</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span>CGPA is calculated using the official formula: &Sigma;(credits &times; grade points) / &Sigma;(credits)</span>
+          </li>
         </ul>
         {currentConfig?.source && (
-          <p className="mt-3 text-xs text-zinc-500">
+          <p className="text-xs text-neutral-light mt-4 pt-4 border-t border-border">
             Source: {currentConfig.source.title} ({currentConfig.source.dateAccessed})
           </p>
         )}
-        <p className="mt-3 text-sm text-zinc-600">
-          <a href="/gpa-simulator" className="text-zinc-900 underline hover:text-zinc-700">Try the GPA What-If Simulator</a> to compare baseline vs. hypothetical grades.
+        <p className="text-sm text-neutral mt-4 pt-4 border-t border-border">
+          <a href="/gpa-simulator" className="text-forest underline hover:text-forest-light">Try the GPA What-If Simulator</a> to compare baseline vs. hypothetical grades.
         </p>
       </div>
     </div>

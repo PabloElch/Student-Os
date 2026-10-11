@@ -10,15 +10,15 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="border-b border-zinc-200 bg-white sticky top-0 z-10">
-      <nav className="max-w-4xl mx-auto px-4" aria-label="Main navigation">
+    <header className="border-b border-border bg-white sticky top-0 z-10 shadow-sm">
+      <nav className="container" aria-label="Main navigation">
         <div className="flex h-16 items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-zinc-900 hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded-lg"
+            className="flex items-center gap-2 text-charcoal hover:text-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-ivory rounded-lg"
             aria-label="Wutete Home"
           >
-            <span className="text-xl font-semibold">Wutete</span>
+            <span className="text-xl font-semibold tracking-tight">Wutete</span>
           </Link>
 
           <div className="hidden md:flex md:items-center md:gap-1">
@@ -28,10 +28,10 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 ${
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest ${
                     isActive
-                      ? "bg-zinc-100 text-zinc-900"
-                      : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50"
+                      ? "bg-sage text-forest"
+                      : "text-neutral hover:text-charcoal hover:bg-ivory"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -43,7 +43,7 @@ export function Navbar() {
 
           <button
             type="button"
-            className="md:hidden p-2 rounded-lg text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
+            className="md:hidden p-2 rounded-lg text-neutral hover:text-charcoal hover:bg-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -66,7 +66,7 @@ export function Navbar() {
         </div>
 
         {mobileMenuOpen && (
-          <div id="mobile-menu" className="md:hidden py-4 border-t border-zinc-200">
+          <div id="mobile-menu" className="md:hidden py-4 border-t border-border animate-slide-down">
             <div className="flex flex-col gap-1">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
@@ -74,10 +74,10 @@ export function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-3 py-2.5 rounded-lg text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 ${
+                    className={`px-3 py-3 rounded-lg text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest ${
                       isActive
-                        ? "bg-zinc-100 text-zinc-900"
-                        : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50"
+                        ? "bg-sage text-forest"
+                        : "text-neutral hover:text-charcoal hover:bg-ivory"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                     onClick={() => setMobileMenuOpen(false)}
@@ -90,6 +90,21 @@ export function Navbar() {
           </div>
         )}
       </nav>
+      <style jsx>{`
+        @keyframes slide-down {
+          from {
+            opacity: 0;
+            transform: translateY(-8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-slide-down {
+          animation: slide-down 0.15s ease-out;
+        }
+      `}</style>
     </header>
   );
 }

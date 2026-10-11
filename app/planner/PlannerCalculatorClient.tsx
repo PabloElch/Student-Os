@@ -117,8 +117,8 @@ export function PlannerCalculatorClient() {
   return (
     <div className="space-y-8">
       <div className="text-center mb-4">
-        <h1 className="text-2xl font-bold text-zinc-900 mb-2">GPA Target Planner</h1>
-        <p className="text-zinc-600">
+        <h1 className="page-heading mb-2">GPA Target Planner</h1>
+        <p className="page-subheading">
           Find out what GPA you need to reach your target CGPA.
         </p>
       </div>
@@ -130,14 +130,14 @@ export function PlannerCalculatorClient() {
         />
 
         {!hasGradingScale && currentConfig && (
-          <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
+          <div className="p-3 bg-warning-bg border border-warning rounded-lg text-sm text-warning" role="alert">
             Grading scale not available for {currentConfig.name}. Maximum GPA assumed as 4.00.
           </div>
         )}
 
         <div className="space-y-4">
           <div>
-            <label htmlFor="current-cgpa" className="block text-sm font-medium text-zinc-900 mb-1">
+            <label htmlFor="current-cgpa" className="label-base">
               Current CGPA
             </label>
             <input
@@ -146,19 +146,19 @@ export function PlannerCalculatorClient() {
               value={inputs.currentCGPA}
               onChange={(e) => handleInputChange("currentCGPA", e.target.value)}
               placeholder="3.67"
-              className={`input-base ${errors.currentCGPA ? "border-red-500 focus:ring-red-500" : ""}`}
+              className={`input-base ${errors.currentCGPA ? "border-error focus:ring-error" : ""}`}
               aria-invalid={!!errors.currentCGPA}
               aria-describedby={errors.currentCGPA ? "current-cgpa-error" : undefined}
             />
             {errors.currentCGPA && (
-              <p id="current-cgpa-error" className="mt-1 text-sm text-red-600" role="alert">
+              <p id="current-cgpa-error" className="error-text" role="alert">
                 {errors.currentCGPA}
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="completed-credits" className="block text-sm font-medium text-zinc-900 mb-1">
+            <label htmlFor="completed-credits" className="label-base">
               Completed Credits
             </label>
             <input
@@ -167,19 +167,19 @@ export function PlannerCalculatorClient() {
               value={inputs.completedCredits}
               onChange={(e) => handleInputChange("completedCredits", e.target.value)}
               placeholder="36"
-              className={`input-base ${errors.completedCredits ? "border-red-500 focus:ring-red-500" : ""}`}
+              className={`input-base ${errors.completedCredits ? "border-error focus:ring-error" : ""}`}
               aria-invalid={!!errors.completedCredits}
               aria-describedby={errors.completedCredits ? "completed-credits-error" : undefined}
             />
             {errors.completedCredits && (
-              <p id="completed-credits-error" className="mt-1 text-sm text-red-600" role="alert">
+              <p id="completed-credits-error" className="error-text" role="alert">
                 {errors.completedCredits}
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="target-cgpa" className="block text-sm font-medium text-zinc-900 mb-1">
+            <label htmlFor="target-cgpa" className="label-base">
               Target CGPA
             </label>
             <input
@@ -188,19 +188,19 @@ export function PlannerCalculatorClient() {
               value={inputs.targetCGPA}
               onChange={(e) => handleInputChange("targetCGPA", e.target.value)}
               placeholder="3.80"
-              className={`input-base ${errors.targetCGPA ? "border-red-500 focus:ring-red-500" : ""}`}
+              className={`input-base ${errors.targetCGPA ? "border-error focus:ring-error" : ""}`}
               aria-invalid={!!errors.targetCGPA}
               aria-describedby={errors.targetCGPA ? "target-cgpa-error" : undefined}
             />
             {errors.targetCGPA && (
-              <p id="target-cgpa-error" className="mt-1 text-sm text-red-600" role="alert">
+              <p id="target-cgpa-error" className="error-text" role="alert">
                 {errors.targetCGPA}
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="upcoming-credits" className="block text-sm font-medium text-zinc-900 mb-1">
+            <label htmlFor="upcoming-credits" className="label-base">
               Upcoming Credits
             </label>
             <input
@@ -209,19 +209,19 @@ export function PlannerCalculatorClient() {
               value={inputs.upcomingCredits}
               onChange={(e) => handleInputChange("upcomingCredits", e.target.value)}
               placeholder="18"
-              className={`input-base ${errors.upcomingCredits ? "border-red-500 focus:ring-red-500" : ""}`}
+              className={`input-base ${errors.upcomingCredits ? "border-error focus:ring-error" : ""}`}
               aria-invalid={!!errors.upcomingCredits}
               aria-describedby={errors.upcomingCredits ? "upcoming-credits-error" : undefined}
             />
             {errors.upcomingCredits && (
-              <p id="upcoming-credits-error" className="mt-1 text-sm text-red-600" role="alert">
+              <p id="upcoming-credits-error" className="error-text" role="alert">
                 {errors.upcomingCredits}
               </p>
             )}
           </div>
         </div>
 
-        <div className="border-t border-zinc-200 pt-6">
+        <div className="border-t border-border pt-6">
           <PlannerResult
             result={result}
             upcomingCredits={calculationInput?.upcomingCredits ?? null}
@@ -241,22 +241,47 @@ export function PlannerCalculatorClient() {
         </div>
       </div>
 
-      <div className="card p-4 text-sm text-zinc-600">
-        <h3 className="font-medium text-zinc-900 mb-2">How it works</h3>
-        <ul className="space-y-1 text-zinc-600">
-          <li>• Select your university to use the correct grading scale and maximum GPA</li>
-          <li>• Enter your current CGPA and total completed credits</li>
-          <li>• Enter your target CGPA and upcoming credits (e.g., next semester)</li>
-          <li>• The planner calculates the required future GPA using: (Target × Total - Current × Completed) / Upcoming</li>
-          <li>• Results show whether your target is reachable, requires maximum GPA, or is impossible</li>
+      <div className="card p-6 space-y-4">
+        <h3 className="font-medium text-charcoal mb-3">How it works</h3>
+        <ul className="space-y-2 text-sm text-neutral">
+          <li className="flex items-start gap-2">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span>Select your university to use the correct grading scale and maximum GPA</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span>Enter your current CGPA and total completed credits</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span>Enter your target CGPA and upcoming credits (e.g., next semester)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span>The planner calculates the required future GPA using: (Target × Total - Current × Completed) / Upcoming</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span>Results show whether your target is reachable, requires maximum GPA, or is impossible</span>
+          </li>
         </ul>
         {currentConfig?.source && (
-          <p className="mt-3 text-xs text-zinc-500">
+          <p className="text-xs text-neutral-light mt-4 pt-4 border-t border-border">
             Source: {currentConfig.source.title} ({currentConfig.source.dateAccessed})
           </p>
         )}
-        <p className="mt-3 text-sm text-zinc-600">
-          <a href="/gpa-simulator" className="text-zinc-900 underline hover:text-zinc-700">Try the GPA What-If Simulator</a> to compare baseline vs. hypothetical grades.
+        <p className="text-sm text-neutral mt-4 pt-4 border-t border-border">
+          <a href="/gpa-simulator" className="text-forest underline hover:text-forest-light">Try the GPA What-If Simulator</a> to compare baseline vs. hypothetical grades.
         </p>
       </div>
     </div>

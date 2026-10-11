@@ -69,22 +69,22 @@ export function GradeConverterClient() {
   const errorMessage = getErrorMessage();
 
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-50">
+    <div className="min-h-screen flex flex-col bg-ivory">
       <Navbar />
       <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-12 md:py-20">
         <article className="space-y-10">
           <header className="text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">Percentage to Grade Converter</h1>
-            <p className="text-lg text-zinc-600 max-w-xl mx-auto">
+            <h1 className="page-heading mb-4">Percentage to Grade Converter</h1>
+            <p className="page-subheading">
               Enter a percentage score (0–100) to see the corresponding Ethiopian university letter grade and grade points.
             </p>
           </header>
 
           <section className="card p-6 md:p-8" aria-labelledby="converter-heading">
-            <h2 id="converter-heading" className="text-xl font-semibold text-zinc-900 mb-6">Converter</h2>
+            <h2 id="converter-heading" className="section-heading">Converter</h2>
             <div className="space-y-6">
               <div>
-                <label htmlFor="percentage-input" className="block text-sm font-medium text-zinc-900 mb-2">
+                <label htmlFor="percentage-input" className="label-base">
                   Percentage Score (0–100)
                 </label>
                 <div className="relative">
@@ -95,20 +95,20 @@ export function GradeConverterClient() {
                     onChange={handleInputChange}
                     onBlur={handleBlur}
                     placeholder="e.g., 87"
-                    className={`input-base text-center text-2xl font-mono font-medium ${errorMessage ? "border-red-500 focus:ring-red-500" : ""}`}
+                    className={`input-base text-center text-2xl font-mono font-medium ${errorMessage ? "border-error focus:ring-error" : ""}`}
                     aria-invalid={!!errorMessage}
                     aria-describedby={errorMessage ? "percentage-error" : "percentage-hint"}
                     autoComplete="off"
                     inputMode="decimal"
                   />
-                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 text-sm font-mono">%</span>
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-light text-sm font-mono">%</span>
                   {errorMessage && (
-                    <p id="percentage-error" className="mt-2 text-sm text-red-600" role="alert">
+                    <p id="percentage-error" className="error-text" role="alert">
                       {errorMessage}
                     </p>
                   )}
                   {!errorMessage && rawValue !== "" && (
-                    <p id="percentage-hint" className="mt-2 text-sm text-zinc-500">
+                    <p id="percentage-hint" className="helper-text">
                       Enter a score between 0 and 100
                     </p>
                   )}
@@ -116,40 +116,40 @@ export function GradeConverterClient() {
               </div>
 
               {isValidScore && letterGrade && gradePoints !== null && currentGradeRule && (
-                <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-6 space-y-4" role="status" aria-live="polite">
+                <div className="bg-ivory border border-border rounded-xl p-6 space-y-4" role="status" aria-live="polite">
                   <div className="grid gap-4 md:grid-cols-3 text-center">
-                    <div className="p-4 bg-white rounded-lg border border-zinc-200">
-                      <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-1">Letter Grade</p>
-                      <p className="text-4xl font-bold text-zinc-900 font-mono">{letterGrade}</p>
+                    <div className="p-4 bg-white rounded-lg border border-border">
+                      <p className="text-xs font-medium text-neutral uppercase tracking-wider mb-1">Letter Grade</p>
+                      <p className="text-4xl font-bold text-charcoal font-mono">{letterGrade}</p>
                     </div>
-                    <div className="p-4 bg-white rounded-lg border border-zinc-200">
-                      <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-1">Grade Points</p>
-                      <p className="text-4xl font-bold text-zinc-900 font-mono">{gradePoints.toFixed(2)}</p>
+                    <div className="p-4 bg-white rounded-lg border border-border">
+                      <p className="text-xs font-medium text-neutral uppercase tracking-wider mb-1">Grade Points</p>
+                      <p className="text-4xl font-bold text-charcoal font-mono">{gradePoints.toFixed(2)}</p>
                     </div>
-                    <div className="p-4 bg-white rounded-lg border border-zinc-200">
-                      <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-1">Description</p>
-                      <p className="text-lg font-medium text-zinc-700">{getGradeDescription(letterGrade)}</p>
+                    <div className="p-4 bg-white rounded-lg border border-border">
+                      <p className="text-xs font-medium text-neutral uppercase tracking-wider mb-1">Description</p>
+                      <p className="text-lg font-medium text-charcoal">{getGradeDescription(letterGrade)}</p>
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-zinc-200">
-                    <p className="text-sm text-zinc-600">
-                      Your score of <strong className="text-zinc-900">{parseFloat(rawValue).toFixed(rawValue.includes(".") ? 2 : 0)}%</strong>
-                      falls in the <strong className="text-zinc-900">{currentGradeRule.letter}</strong> range
-                      (<strong className="text-zinc-900">{formatRange(currentGradeRule)}</strong>).
+                  <div className="pt-4 border-t border-border">
+                    <p className="text-sm text-neutral">
+                      Your score of <strong className="text-charcoal">{parseFloat(rawValue).toFixed(rawValue.includes(".") ? 2 : 0)}%</strong>
+                      falls in the <strong className="text-charcoal">{currentGradeRule.letter}</strong> range
+                      (<strong className="text-charcoal">{formatRange(currentGradeRule)}</strong>).
                     </p>
                   </div>
                 </div>
               )}
 
               {!isValidScore && rawValue !== "" && errorMessage && (
-                <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm" role="alert">
+                <div className="p-4 bg-error-light border border-error rounded-lg text-error text-sm" role="alert">
                   {errorMessage}
                 </div>
               )}
 
               {rawValue === "" && (
-                <p className="text-center text-zinc-500 text-sm">
+                <p className="text-center text-neutral text-sm">
                   Enter a percentage score above to see the conversion
                 </p>
               )}
@@ -157,22 +157,22 @@ export function GradeConverterClient() {
           </section>
 
           <section className="card p-6 md:p-8" aria-labelledby="scale-heading">
-            <h2 id="scale-heading" className="text-xl font-semibold text-zinc-900 mb-4">Quick Reference Scale</h2>
+            <h2 id="scale-heading" className="section-heading">Quick Reference Scale</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left">
-                <thead className="bg-zinc-50 border-b border-zinc-200">
+                <thead className="bg-ivory border-b border-border">
                   <tr>
-                    <th className="px-4 py-3 font-medium text-zinc-900">Letter Grade</th>
-                    <th className="px-4 py-3 font-medium text-zinc-900">Percentage Range</th>
-                    <th className="px-4 py-3 font-medium text-zinc-900">Grade Points</th>
+                    <th className="px-4 py-3 font-medium text-charcoal">Letter Grade</th>
+                    <th className="px-4 py-3 font-medium text-charcoal">Percentage Range</th>
+                    <th className="px-4 py-3 font-medium text-charcoal">Grade Points</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-200">
+                <tbody className="divide-y divide-border">
                   {standardEthiopianGradingScale.map((grade, index) => (
-                    <tr key={grade.letter} className={index % 2 === 1 ? "bg-zinc-50" : ""}>
-                      <td className="px-4 py-3 font-mono font-medium text-zinc-900">{grade.letter}</td>
-                      <td className="px-4 py-3 text-zinc-600">{formatRange(grade)}</td>
-                      <td className="px-4 py-3 font-mono text-zinc-900">{grade.points.toFixed(2)}</td>
+                    <tr key={grade.letter} className={index % 2 === 1 ? "bg-ivory" : ""}>
+                      <td className="px-4 py-3 font-mono font-medium text-charcoal">{grade.letter}</td>
+                      <td className="px-4 py-3 text-neutral">{formatRange(grade)}</td>
+                      <td className="px-4 py-3 font-mono text-charcoal">{grade.points.toFixed(2)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -180,12 +180,12 @@ export function GradeConverterClient() {
             </div>
           </section>
 
-          <section className="card p-6 md:p-8 bg-zinc-50 border border-zinc-200" aria-labelledby="boundary-heading">
-            <h2 id="boundary-heading" className="text-xl font-semibold text-zinc-900 mb-2">Boundary Convention</h2>
-            <p className="text-zinc-600 text-sm mb-4">
+          <section className="card p-6 md:p-8 bg-ivory border border-border" aria-labelledby="boundary-heading">
+            <h2 id="boundary-heading" className="section-heading mb-2">Boundary Convention</h2>
+            <p className="text-neutral text-sm mb-4">
               Ranges are inclusive at the lower boundary. For example:
             </p>
-            <ul className="space-y-1 text-zinc-600 text-sm">
+            <ul className="space-y-1 text-neutral text-sm">
               <li>85.00 → A (not A−)</li>
               <li>84.99 → A−</li>
               <li>90.00 → A+</li>
@@ -196,8 +196,8 @@ export function GradeConverterClient() {
           </section>
 
           <section className="card p-6 md:p-8 text-center" aria-labelledby="related-heading">
-            <h2 id="related-heading" className="text-xl font-semibold text-zinc-900 mb-4">Related Tools</h2>
-            <p className="text-zinc-600 mb-4">Use these calculators with the standard grade scale:</p>
+            <h2 id="related-heading" className="section-heading">Related Tools</h2>
+            <p className="text-neutral mb-4">Use these calculators with the standard grade scale:</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/grade-scale"
