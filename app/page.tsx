@@ -133,21 +133,90 @@ export default function Home() {
           <h2 id="worked-example-heading" className="text-2xl font-bold text-charcoal mb-4">
             Worked example
           </h2>
-          <div className="space-y-4 text-neutral">
+          <div className="space-y-6 text-neutral">
             <div className="p-4 bg-ivory rounded border border-border">
-              <h3 className="font-medium text-charcoal mb-3">Example: Semester GPA calculation</h3>
-              <p className="text-sm mb-2">Course: Calculus I, 3 credits, Grade: A (4.00 grade points)</p>
-              <p className="text-sm mb-2">Course: Physics, 4 credits, Grade: B (3.00 grade points)</p>
-              <p className="text-sm mb-2">Course: English, 3 credits, Grade: A- (3.75 grade points)</p>
-              <p className="text-sm font-medium">GPA = (3 × 4.00 + 4 × 3.00 + 3 × 3.75) ÷ (3 + 4 + 3)</p>
-              <p className="text-sm font-mono font-bold text-charcoal">3.69</p>
+              <h3 className="font-medium text-charcoal mb-3">Example 1: Semester GPA calculation</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left" role="table">
+                  <thead>
+                    <tr className="border-b border-border text-xs font-medium text-neutral uppercase tracking-wider">
+                      <th className="pb-2 pr-4">Course</th>
+                      <th className="pb-2 pr-4 text-right">Credits</th>
+                      <th className="pb-2 pr-4 text-center">Grade</th>
+                      <th className="pb-2 text-right">Grade points</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    <tr>
+                      <td className="py-2 pr-4">Calculus I</td>
+                      <td className="py-2 pr-4 text-right">3</td>
+                      <td className="py-2 pr-4 text-center">A</td>
+                      <td className="py-2 text-right font-mono">4.00</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-4">Physics</td>
+                      <td className="py-2 pr-4 text-right">4</td>
+                      <td className="py-2 pr-4 text-center">B</td>
+                      <td className="py-2 text-right font-mono">3.00</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-4">English</td>
+                      <td className="py-2 pr-4 text-right">3</td>
+                      <td className="py-2 pr-4 text-center">A−</td>
+                      <td className="py-2 text-right font-mono">3.75</td>
+                    </tr>
+                    <tr className="bg-ivory font-medium">
+                      <td className="py-2 pr-4">Total</td>
+                      <td className="py-2 pr-4 text-right">10</td>
+                      <td className="py-2 pr-4 text-center">—</td>
+                      <td className="py-2 text-right">—</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-sm font-medium">
+                GPA = (3 × 4.00 + 4 × 3.00 + 3 × 3.75) ÷ (3 + 4 + 3)
+              </p>
+              <p className="mt-2 text-lg font-bold text-forest font-mono">Semester GPA: 3.53</p>
             </div>
             <div className="p-4 bg-ivory rounded border border-border">
-              <h3 className="font-medium text-charcoal mb-3">Another example with different credits</h3>
-              <p className="text-sm mb-2">Course: Chemistry, 3 credits, Grade: B+ (3.50 grade points)</p>
-              <p className="text-sm mb-2">Course: Calculus II, 4 credits, Grade: A (4.00 grade points)</p>
-              <p className="text-sm">GPA = (3 × 3.50 + 4 × 4.00) ÷ (3 + 4)</p>
-              <p className="text-sm font-mono font-bold text-charcoal">3.82</p>
+              <h3 className="font-medium text-charcoal mb-3">Example 2: Another example with different credits</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left" role="table">
+                  <thead>
+                    <tr className="border-b border-border text-xs font-medium text-neutral uppercase tracking-wider">
+                      <th className="pb-2 pr-4">Course</th>
+                      <th className="pb-2 pr-4 text-right">Credits</th>
+                      <th className="pb-2 pr-4 text-center">Grade</th>
+                      <th className="pb-2 text-right">Grade points</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    <tr>
+                      <td className="py-2 pr-4">Chemistry</td>
+                      <td className="py-2 pr-4 text-right">3</td>
+                      <td className="py-2 pr-4 text-center">B+</td>
+                      <td className="py-2 text-right font-mono">3.50</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-4">Calculus II</td>
+                      <td className="py-2 pr-4 text-right">4</td>
+                      <td className="py-2 pr-4 text-center">A</td>
+                      <td className="py-2 text-right font-mono">4.00</td>
+                    </tr>
+                    <tr className="bg-ivory font-medium">
+                      <td className="py-2 pr-4">Total</td>
+                      <td className="py-2 pr-4 text-right">7</td>
+                      <td className="py-2 pr-4 text-center">—</td>
+                      <td className="py-2 text-right">—</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-sm font-medium">
+                GPA = (3 × 3.50 + 4 × 4.00) ÷ (3 + 4)
+              </p>
+              <p className="mt-2 text-lg font-bold text-forest font-mono">Semester GPA: 3.79</p>
             </div>
           </div>
         </section>
