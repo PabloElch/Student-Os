@@ -67,7 +67,11 @@ export function GPACalculatorClient() {
   }, []);
 
   const handleAddCourse = useCallback(() => {
-    setCourses((prev) => [...prev, { ...initialCourse, id: generateId() }]);
+    setCourses((prev) => [
+      ...prev,
+      { ...initialCourse, id: generateId() },
+      { ...initialCourse, id: generateId() },
+    ]);
   }, []);
 
   const handleRemoveCourse = useCallback((id: string) => {
