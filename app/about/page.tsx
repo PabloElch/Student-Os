@@ -62,6 +62,10 @@ export default function AboutPage() {
               The toolkit is built to be simple, fast, and privacy-respecting. No account is required,
               and all calculations happen in your browser. Your academic data never leaves your device.
             </p>
+            <p className="text-zinc-600 leading-relaxed">
+              Wutete uses Google Analytics 4 to measure website usage and page views. This analytics
+              data does not include your calculator inputs, grades, or any academic information.
+            </p>
           </section>
 
           <section className="card p-6 md:p-8 space-y-6">
@@ -140,12 +144,15 @@ export default function AboutPage() {
             <h2 className="text-xl font-semibold text-zinc-900">Privacy & Data</h2>
             <p className="text-zinc-600 leading-relaxed">
               Wutete does not collect, store, or transmit any personal or academic data. All calculator
-              inputs are processed entirely in your browser. There are no accounts, no analytics, and
-              no third-party tracking.
+              inputs are processed entirely in your browser. Your academic data never leaves your device.
             </p>
             <p className="text-zinc-600 leading-relaxed">
-              The only external connection is the optional Feedback link in the footer, which opens
-              a GitHub issue template in a new tab.
+              Wutete uses Google Analytics 4 to measure website usage and page views. This analytics
+              data does not include your calculator inputs, grades, or any academic information.
+            </p>
+            <p className="text-zinc-600 leading-relaxed">
+              The only external connections are Google Analytics (for aggregate usage metrics) and
+              the optional Feedback link in the footer, which opens a GitHub issue template in a new tab.
             </p>
           </section>
 

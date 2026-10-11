@@ -56,7 +56,11 @@ export default function PrivacyPage() {
             <p className="text-zinc-600 leading-relaxed">
               Wutete does not collect, store, or transmit any personal data or academic information.
               All calculator inputs (courses, credits, grades) are processed entirely in your browser.
-              There are no accounts, no analytics, no cookies, and no third-party tracking.
+              Your academic data never leaves your device.
+            </p>
+            <p className="text-zinc-600 leading-relaxed">
+              Wutete uses Google Analytics 4 to measure website usage and page views. This analytics
+              data does not include your calculator inputs, grades, or any academic information.
             </p>
           </section>
 
@@ -79,7 +83,7 @@ export default function PrivacyPage() {
                 <svg className="w-5 h-5 flex-shrink-0 text-zinc-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span><strong>No analytics:</strong> Wutete does not use Google Analytics, Vercel Analytics, or any other analytics service.</span>
+                <span><strong>Analytics:</strong> Wutete uses Google Analytics 4 to measure website usage and page views. This data does not include your calculator inputs, grades, or any academic information. No opt-out mechanism is currently provided.</span>
               </li>
             </ul>
           </section>
