@@ -1,11 +1,13 @@
 import { describe, it, expect } from "vitest";
 import {
   supportedUniversities,
+  configuredUniversityIds,
   getUniversityConfig,
   getAllUniversityConfigs,
   isUniversitySupported,
   getGradePointForUniversity,
   isNonGpaGradeForUniversity,
+  isConfiguredUniversity,
   jimmaUniversity,
   addisAbabaUniversity,
   bahirDarUniversity,
@@ -18,11 +20,11 @@ import {
 
 describe("University Rules Layer", () => {
   describe("Supported universities list", () => {
-    it("contains exactly five universities", () => {
-      expect(supportedUniversities).toHaveLength(5);
+    it("contains 47 universities", () => {
+      expect(supportedUniversities).toHaveLength(47);
     });
 
-    it("includes all required universities", () => {
+    it("includes all previously configured universities", () => {
       expect(supportedUniversities).toContain("jimma");
       expect(supportedUniversities).toContain("addis-ababa");
       expect(supportedUniversities).toContain("bahir-dar");
@@ -30,15 +32,57 @@ describe("University Rules Layer", () => {
       expect(supportedUniversities).toContain("haramaya");
     });
 
+    it("includes major public universities", () => {
+      expect(supportedUniversities).toContain("gondar");
+      expect(supportedUniversities).toContain("mekelle");
+      expect(supportedUniversities).toContain("adama-st");
+      expect(supportedUniversities).toContain("arbaminch");
+      expect(supportedUniversities).toContain("dire-dawa");
+      expect(supportedUniversities).toContain("jigjiga");
+      expect(supportedUniversities).toContain("wolaita-sodo");
+    });
+
     it("has unique IDs", () => {
       const uniqueIds = new Set(supportedUniversities);
       expect(uniqueIds.size).toBe(supportedUniversities.length);
     });
+
+    it("is sorted alphabetically", () => {
+      expect(supportedUniversities).toEqual([...supportedUniversities].sort());
+    });
+  });
+
+  describe("Configured universities list", () => {
+    it("contains exactly five configured universities", () => {
+      expect(configuredUniversityIds).toHaveLength(5);
+    });
+
+    it("includes the original five", () => {
+      expect(configuredUniversityIds).toContain("jimma");
+      expect(configuredUniversityIds).toContain("addis-ababa");
+      expect(configuredUniversityIds).toContain("bahir-dar");
+      expect(configuredUniversityIds).toContain("hawassa");
+      expect(configuredUniversityIds).toContain("haramaya");
+    });
+  });
+
+  describe("isConfiguredUniversity", () => {
+    it("returns true for configured universities", () => {
+      for (const id of configuredUniversityIds) {
+        expect(isConfiguredUniversity(id)).toBe(true);
+      }
+    });
+
+    it("returns false for unconfigured universities", () => {
+      expect(isConfiguredUniversity("gondar")).toBe(false);
+      expect(isConfiguredUniversity("mekelle")).toBe(false);
+      expect(isConfiguredUniversity("unknown")).toBe(false);
+    });
   });
 
   describe("getUniversityConfig", () => {
-    it("returns configuration for each supported university", () => {
-      for (const id of supportedUniversities) {
+    it("returns configuration for each configured university", () => {
+      for (const id of configuredUniversityIds) {
         const config = getUniversityConfig(id);
         expect(config).toBeDefined();
         expect(config.id).toBe(id);
@@ -46,38 +90,49 @@ describe("University Rules Layer", () => {
       }
     });
 
-    it("returns undefined for unsupported university", () => {
-      expect(getUniversityConfig("unknown" as unknown as import("../lib/universities").SupportedUniversityId)).toBeUndefined();
+    it("returns fallback config for unconfigured university", () => {
+      const config = getUniversityConfig("gondar");
+      expect(config).toBeDefined();
+      expect(config.id).toBe("gondar");
+      expect(config.name).toBe("University of Gondar");
+      expect(config.gradingScale).toHaveLength(9);
+      expect(config.status).toBe("needs-verification");
+      expect(config.notes).toContain("standard Ethiopian");
+    });
+
+    it("returns fallback config for unsupported university", () => {
+      const config = getUniversityConfig("unknown" as unknown as import("../lib/universities").SupportedUniversityId);
+      expect(config).toBeDefined();
+      expect(config.id).toBe("unknown");
+      expect(config.gradingScale).toHaveLength(9);
+      expect(config.status).toBe("needs-verification");
     });
   });
 
   describe("getAllUniversityConfigs", () => {
-    it("returns all five configurations", () => {
+    it("returns all 47 universities", () => {
       const configs = getAllUniversityConfigs();
-      expect(configs).toHaveLength(5);
+      expect(configs).toHaveLength(47);
     });
 
-    it("each config has required properties", () => {
+    it("marks configured universities correctly", () => {
+      const configs = getAllUniversityConfigs();
+      const configured = configs.filter((c) => c.hasIndividualConfig);
+      expect(configured).toHaveLength(5);
+    });
+
+    it("each entry has required properties", () => {
       const configs = getAllUniversityConfigs();
       for (const config of configs) {
         expect(config.id).toBeTruthy();
         expect(config.name).toBeTruthy();
-        expect(Array.isArray(config.gradingScale)).toBe(true);
-        expect(config.creditSystem).toBeDefined();
-        expect(config.creditSystem.unit).toBeTruthy();
-        expect(config.calculationPolicy).toBeDefined();
-        expect(config.source).toBeDefined();
-        expect(config.source.title).toBeTruthy();
-        expect(config.source.url).toBeTruthy();
-        expect(config.source.documentType).toBeTruthy();
-        expect(config.source.dateAccessed).toBeTruthy();
-        expect(["verified", "partially-verified", "needs-verification"]).toContain(config.status);
+        expect(typeof config.hasIndividualConfig).toBe("boolean");
       }
     });
   });
 
   describe("isUniversitySupported", () => {
-    it("returns true for supported universities", () => {
+    it("returns true for all supported universities", () => {
       for (const id of supportedUniversities) {
         expect(isUniversitySupported(id)).toBe(true);
       }
@@ -189,7 +244,6 @@ describe("University Rules Layer", () => {
     it("legacy Engineering scale is documented separately", () => {
       expect(Array.isArray(bahirDarEngineeringScaleLegacy)).toBe(true);
       expect(bahirDarEngineeringScaleLegacy.length).toBeGreaterThan(0);
-      // Legacy scale uses inverse (lower = better)
       const aPlusLegacy = bahirDarEngineeringScaleLegacy.find((g) => g.letter === "A+");
       expect(aPlusLegacy?.points).toBe(1.0);
     });
@@ -307,8 +361,6 @@ describe("University Rules Layer", () => {
 
   describe("Generic calculation engine independence", () => {
     it("university configurations do not import calculation engine", async () => {
-      // The university configs should be pure data/policy
-      // They should not import from ../calculations
       const fs = await import("fs");
       const path = await import("path");
       const jimmaCode = fs.readFileSync(
@@ -321,20 +373,39 @@ describe("University Rules Layer", () => {
     });
 
     it("grade point lookup functions work independently", () => {
-      // These functions should work without the calculation engine
       const jimmaA = getGradePointForUniversity("jimma", "A");
       const hawassaA = getGradePointForUniversity("hawassa", "A");
-      // Different universities can have different points for same letter
       expect(typeof jimmaA).toBe("number");
       expect(typeof hawassaA).toBe("number");
     });
   });
 
+  describe("Grade point lookup for unconfigured universities", () => {
+    it("falls back to standard scale for unconfigured universities", () => {
+      expect(getGradePointForUniversity("gondar", "A")).toBe(4.00);
+      expect(getGradePointForUniversity("mekelle", "A+")).toBe(4.00);
+      expect(getGradePointForUniversity("arbaminch", "B+")).toBe(3.50);
+      expect(getGradePointForUniversity("mekelle", "F")).toBe(0.00);
+    });
+
+    it("returns null for unknown grades on unconfigured universities", () => {
+      expect(getGradePointForUniversity("gondar", "X")).toBeNull();
+      expect(getGradePointForUniversity("mekelle", "B-")).toBeNull();
+    });
+  });
+
+  describe("Non-GPA grades for unconfigured universities", () => {
+    it("returns false for all grades on unconfigured universities", () => {
+      expect(isNonGpaGradeForUniversity("gondar", "W")).toBe(false);
+      expect(isNonGpaGradeForUniversity("mekelle", "I")).toBe(false);
+    });
+  });
+
   describe("Verification status integrity", () => {
     it("no university claims verified status without verified grading scale", () => {
-      for (const id of supportedUniversities) {
+      for (const id of configuredUniversityIds) {
         const config = getUniversityConfig(id);
-        if (config.status === "verified") {
+        if (config && config.status === "verified") {
           expect(config.gradingScale.length).toBeGreaterThan(0);
         }
       }
@@ -342,32 +413,33 @@ describe("University Rules Layer", () => {
 
     it("needs-verification universities use standard scale as default", () => {
       const haramaya = getUniversityConfig("haramaya");
-      expect(haramaya.status).toBe("needs-verification");
-      expect(haramaya.gradingScale.length).toBeGreaterThan(0);
+      expect(haramaya?.status).toBe("needs-verification");
+      expect(haramaya?.gradingScale.length).toBeGreaterThan(0);
     });
 
     it("partially-verified universities have some verified rules documented", () => {
       const jimma = getUniversityConfig("jimma");
-      expect(jimma.status).toBe("partially-verified");
-      expect(jimma.gradingScale.length).toBeGreaterThan(0);
-      expect(jimma.notes?.toLowerCase()).toContain("verified");
+      expect(jimma?.status).toBe("partially-verified");
+      expect(jimma?.gradingScale.length).toBeGreaterThan(0);
+      expect(jimma?.notes?.toLowerCase()).toContain("verified");
     });
 
-    it("all configurations have source references", () => {
-      for (const id of supportedUniversities) {
+    it("all configured configurations have source references", () => {
+      for (const id of configuredUniversityIds) {
         const config = getUniversityConfig(id);
-        expect(config.source.title).toBeTruthy();
-        expect(config.source.url).toBeTruthy();
-        expect(config.source.documentType).toBeTruthy();
-        expect(config.source.dateAccessed).toBeTruthy();
+        expect(config?.source.title).toBeTruthy();
+        expect(config?.source.url).toBeTruthy();
+        expect(config?.source.documentType).toBeTruthy();
+        expect(config?.source.dateAccessed).toBeTruthy();
       }
     });
   });
 
   describe("Grade point validity", () => {
     it("all grade points are finite numbers", () => {
-      for (const id of supportedUniversities) {
+      for (const id of configuredUniversityIds) {
         const config = getUniversityConfig(id);
+        if (!config) continue;
         for (const grade of config.gradingScale) {
           expect(Number.isFinite(grade.points)).toBe(true);
           expect(grade.points).toBeGreaterThanOrEqual(0);
@@ -376,8 +448,9 @@ describe("University Rules Layer", () => {
     });
 
     it("no duplicate letter grades in any university scale", () => {
-      for (const id of supportedUniversities) {
+      for (const id of configuredUniversityIds) {
         const config = getUniversityConfig(id);
+        if (!config) continue;
         const letters = config.gradingScale.map((g) => g.letter);
         const uniqueLetters = new Set(letters);
         expect(uniqueLetters.size).toBe(letters.length);
