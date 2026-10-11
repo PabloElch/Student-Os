@@ -38,7 +38,7 @@ export function CourseRow({
 
   return (
     <div className="bg-white">
-      <div className="grid gap-3 sm:grid-cols-[1fr_80px_140px_50px] gap-x-4 px-4 py-3 items-start">
+      <div className="grid gap-3 grid-cols-[minmax(0,1fr)_70px_120px_40px] gap-x-4 px-4 py-3 items-start">
         <div className="space-y-2">
           <label htmlFor={`course-name-${course.id}`} className="block text-xs font-medium text-neutral sm:hidden">
             Course name
@@ -67,7 +67,7 @@ export function CourseRow({
               placeholder="3"
               step="0.5"
               min="0.5"
-              className={`input-base w-full sm:w-[80px] text-right ${creditsError ? "border-error focus:ring-error" : ""}`}
+              className={`input-base w-full text-right ${creditsError ? "border-error focus:ring-error" : ""}`}
               aria-invalid={!!creditsError}
               aria-describedby={creditsError ? `credits-error-${course.id}` : undefined}
             />
@@ -88,7 +88,7 @@ export function CourseRow({
               id={`course-grade-${course.id}`}
               value={course.grade}
               onChange={(e) => onGradeChange(course.id, e.target.value)}
-              className="select-base w-full sm:w-[140px]"
+              className="select-base w-full"
               disabled={gradeOptions.length <= 1}
             >
               {gradeOptions.map((opt) => (
