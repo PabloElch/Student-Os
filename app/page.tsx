@@ -107,92 +107,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Tools Grid */}
-        <section className="mb-14 md:mb-20 lg:mb-24" aria-labelledby="tools-heading">
-          <div className="text-center mb-10 md:mb-12">
-            <h2 id="tools-heading" className="text-2xl md:text-3xl font-bold text-charcoal mb-3">
-              Academic Tools
-            </h2>
-            <p className="text-neutral max-w-xl mx-auto">
-              Each tool uses the standard Ethiopian university grading scale. Select your university for verified configurations where available.
-            </p>
-          </div>
+        <HomepageCalculator />
 
-          <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {tools.map((tool) => (
-              <article key={tool.href} className="card-hover p-6 flex flex-col">
-                <Link href={tool.href} className="flex flex-col h-full group">
-                  <div className="w-11 h-11 rounded-lg bg-sage text-forest flex items-center justify-center mb-4 group-hover:bg-forest group-hover:text-white transition-colors">
-                    {tool.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold text-charcoal mb-2 group-hover:text-forest transition-colors">
-                    {tool.title}
-                  </h3>
-                  <p className="text-sm text-neutral flex-1 mb-4 leading-relaxed">
-                    {tool.description}
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-forest group-hover:gap-2 transition-all self-start">
-                    Open tool
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Trust Statement */}
-        <section className="mb-14 md:mb-20" aria-labelledby="trust-heading">
-          <h2 id="trust-heading" className="sr-only">Why trust Wutete</h2>
-          <div className="card p-6 md:p-8 max-w-3xl mx-auto">
-            <div className="flex items-start gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-sage text-forest flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-charcoal">Privacy-first design</h3>
-                <p className="text-sm text-neutral mt-0.5">
-                  No account, no login, no data collection. All calculations happen in your browser. Your academic data never leaves your device.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-sage text-forest flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-charcoal">Transparent grading</h3>
-                <p className="text-sm text-neutral mt-0.5">
-                  Uses the standard Ethiopian university grading scale. University-specific configurations show verification status. Always confirm with your university for high-stakes decisions.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-lg bg-sage text-forest flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-charcoal">Open source</h3>
-                <p className="text-sm text-neutral mt-0.5">
-                  Code is available on GitHub. No hidden algorithms or proprietary calculations.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* How to Calculate GPA */}
+        {/* How GPA is calculated */}
         <section className="mb-14 md:mb-20" aria-labelledby="how-to-heading">
           <h2 id="how-to-heading" className="text-2xl font-bold text-charcoal mb-4">
-            How to calculate GPA
+            How GPA is calculated
           </h2>
           <div className="text-neutral leading-relaxed">
             <p className="mb-3">
@@ -205,6 +125,105 @@ export default function Home() {
               <li>Grades not recognized by your university&apos;s scale are excluded from GPA</li>
               <li>GPA = Σ(credits × grade points) ÷ Σ(credits)</li>
             </ul>
+          </div>
+        </section>
+
+        {/* Worked example */}
+        <section className="mb-14 md:mb-20" aria-labelledby="worked-example-heading">
+          <h2 id="worked-example-heading" className="text-2xl font-bold text-charcoal mb-4">
+            Worked example
+          </h2>
+          <div className="space-y-4 text-neutral">
+            <div className="p-4 bg-ivory rounded border border-border">
+              <h3 className="font-medium text-charcoal mb-3">Example: Semester GPA calculation</h3>
+              <p className="text-sm mb-2">Course: Calculus I, 3 credits, Grade: A (4.00 grade points)</p>
+              <p className="text-sm mb-2">Course: Physics, 4 credits, Grade: B (3.00 grade points)</p>
+              <p className="text-sm mb-2">Course: English, 3 credits, Grade: A- (3.75 grade points)</p>
+              <p className="text-sm font-medium">GPA = (3 × 4.00 + 4 × 3.00 + 3 × 3.75) ÷ (3 + 4 + 3)</p>
+              <p className="text-sm font-mono font-bold text-charcoal">3.69</p>
+            </div>
+            <div className="p-4 bg-ivory rounded border border-border">
+              <h3 className="font-medium text-charcoal mb-3">Another example with different credits</h3>
+              <p className="text-sm mb-2">Course: Chemistry, 3 credits, Grade: B+ (3.50 grade points)</p>
+              <p className="text-sm mb-2">Course: Calculus II, 4 credits, Grade: A (4.00 grade points)</p>
+              <p className="text-sm">GPA = (3 × 3.50 + 4 × 4.00) ÷ (3 + 4)</p>
+              <p className="text-sm font-mono font-bold text-charcoal">3.82</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Semester GPA vs. CGPA */}
+        <section className="mb-14 md:mb-20" aria-labelledby="semester-vs-cgpa-heading">
+          <h2 id="semester-vs-cgpa-heading" className="text-2xl font-bold text-charcoal mb-4">
+            Semester GPA vs. CGPA
+          </h2>
+          <div className="text-neutral">
+            <p className="mb-3">
+              Your <strong>semester GPA</strong> measures your performance in a single semester, while your <strong>CGPA</strong> (Cumulative Grade Point Average) tracks your overall performance across all completed courses. Use the dedicated CGPA calculator to compute your cumulative average.
+            </p>
+            <div className="flex gap-3">
+              <Link
+                href="/gpa"
+                className="btn-primary flex-1"
+              >
+                Semester GPA Calculator
+              </Link>
+              <Link
+                href="/cgpa"
+                className="btn-secondary flex-1"
+              >
+                CGPA Calculator
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Target GPA planning */}
+        <section className="mb-14 md:mb-20" aria-labelledby="target-planning-heading">
+          <h2 id="target-planning-heading" className="text-2xl font-bold text-charcoal mb-4">
+            Target GPA planning
+          </h2>
+          <div className="text-neutral">
+            <p className="mb-3">
+              The GPA target planner helps you find out what GPA you need in your upcoming credits to reach your desired CGPA. Plan ahead and set realistic academic goals.
+            </p>
+            <Link
+              href="/planner"
+              className="btn-primary"
+            >
+              Open GPA Target Planner
+            </Link>
+          </div>
+        </section>
+
+        {/* Ethiopian grading scale */}
+        <section className="mb-14 md:mb-20" aria-labelledby="grading-scale-heading">
+          <h2 id="grading-scale-heading" className="text-2xl font-bold text-charcoal mb-4">
+            Ethiopian grading scale
+          </h2>
+          <div className="space-y-4 text-neutral">
+            <p className="mb-3">
+              Wutete uses the standard Ethiopian university grading scale to convert letter grades to grade points:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-sm">
+              <li>A+: 90–100 = 4.00</li>
+              <li>A: 85–less than 90 = 4.00</li>
+              <li>A−: 80–less than 85 = 3.75</li>
+              <li>B+: 75–less than 80 = 3.50</li>
+              <li>B: 70–less than 75 = 3.00</li>
+              <li>C+: 65–less than 65 = 2.50</li>
+              <li>C: 60–less than 65 = 2.00</li>
+              <li>D: 50–less than 60 = 1.00</li>
+              <li>F: 0–less than 50 = 0.00</li>
+            </ul>
+            <p className="text-sm">
+              <Link
+                href="/grade-scale"
+                className="text-forest underline hover:text-forest-light"
+              >
+                View the grade scale reference
+              </Link>
+            </p>
           </div>
         </section>
 
@@ -239,31 +258,35 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Worked Example */}
-        <section className="mb-14 md:mb-20" aria-labelledby="worked-example-heading">
-          <h2 id="worked-example-heading" className="text-2xl font-bold text-charcoal mb-4">
-            Worked example
+        {/* Related tools */}
+        <section className="mb-14 md:mb-20" aria-labelledby="related-tools-heading">
+          <h2 id="related-tools-heading" className="text-2xl font-bold text-charcoal mb-4">
+            Related tools
           </h2>
-          <div className="space-y-4 text-neutral">
-            <div className="p-4 bg-ivory rounded border border-border">
-              <h3 className="font-medium text-charcoal mb-3">Example: Semester GPA calculation</h3>
-              <p className="text-sm mb-2">Course: Calculus I, 3 credits, Grade: A (4.00 grade points)</p>
-              <p className="text-sm mb-2">Course: Physics, 4 credits, Grade: B (3.00 grade points)</p>
-              <p className="text-sm mb-2">Course: English, 3 credits, Grade: A- (3.75 grade points)</p>
-              <p className="text-sm font-medium">GPA = (3 × 4.00 + 4 × 3.00 + 3 × 3.75) ÷ (3 + 4 + 3)</p>
-              <p className="text-sm font-mono font-bold text-charcoal">3.69</p>
-            </div>
-            <div className="p-4 bg-ivory rounded border border-border">
-              <h3 className="font-medium text-charcoal mb-3">Another example with different credits</h3>
-              <p className="text-sm mb-2">Course: Chemistry, 3 credits, Grade: B+ (3.50 grade points)</p>
-              <p className="text-sm mb-2">Course: Calculus II, 4 credits, Grade: A (4.00 grade points)</p>
-              <p className="text-sm">GPA = (3 × 3.50 + 4 × 4.00) ÷ (3 + 4)</p>
-              <p className="text-sm font-mono font-bold text-charcoal">3.82</p>
-            </div>
+          <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {tools.map((tool) => (
+              <article key={tool.href} className="card-hover p-6 flex flex-col">
+                <Link href={tool.href} className="flex flex-col h-full group">
+                  <div className="w-11 h-11 rounded-lg bg-sage text-forest flex items-center justify-center mb-4 group-hover:bg-forest group-hover:text-white transition-colors">
+                    {tool.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold text-charcoal mb-2 group-hover:text-forest transition-colors">
+                    {tool.title}
+                  </h3>
+                  <p className="text-sm text-neutral flex-1 mb-4 leading-relaxed">
+                    {tool.description}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-forest group-hover:gap-2 transition-all self-start">
+                    Open tool
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </Link>
+              </article>
+            ))}
           </div>
         </section>
-
-        <HomepageCalculator />
 
       </main>
 
