@@ -1,5 +1,7 @@
 "use client";
 
+import { BiggestBoostResult } from "@/lib/calculations/biggest-boost";
+
 interface GpaResultProps {
   gpa: number | null;
   courseCount: number;
@@ -7,6 +9,7 @@ interface GpaResultProps {
   onCopySummary: () => void;
   onShareResult: () => void;
   copyStatus: "idle" | "copied" | "shared" | "error";
+  biggestBoost: BiggestBoostResult | null;
 }
 
 export function GpaResult({
@@ -16,6 +19,7 @@ export function GpaResult({
   onCopySummary,
   onShareResult,
   copyStatus,
+  biggestBoost,
 }: GpaResultProps) {
   if (gpa === null) {
     return (
@@ -52,6 +56,20 @@ export function GpaResult({
           </>
         )}
       </div>
+
+      {biggestBoost && biggestBoost.increase > 0 && (
+        <div className="mt-6 pt-6 border-t border-border">
+          <h3 className="text-sm font-semibold text-charcoal mb-2">Biggest boost</h3>
+          <p className="text-sm text-neutral leading-relaxed">
+            Get <strong className="text-charcoal">{biggestBoost.courseName}</strong> from{" "}
+            <strong className="text-charcoal">{biggestBoost.currentGrade}</strong> to{" "}
+            <strong className="text-forest">{biggestBoost.targetGrade}</strong> and your GPA goes up to{" "}
+            <strong className="text-forest">{biggestBoost.newGPA.toFixed(2)}</strong>{" "}
+            (<strong className="text-forest">+{biggestBoost.increase.toFixed(2)}</strong>).
+          </p>
+        </div>
+      )}
+
       <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
         <button
           type="button"

@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback } from "react";
 import { calculateSemesterGPA, CourseGrade } from "@/lib/calculations/gpa";
+import { calculateBiggestBoost, BiggestBoostResult } from "@/lib/calculations/biggest-boost";
 import { getGradePointForUniversity, isNonGpaGradeForUniversity, getUniversityConfig, SupportedUniversityId, GradeRule } from "@/lib/universities";
 import { UniversitySelector } from "@/components/calculator/UniversitySelector";
 import { CourseRow } from "@/components/calculator/CourseRow";
@@ -129,6 +130,35 @@ export function GPACalculatorClient() {
   const totalCoursesWithData = courses.filter((c) => c.credits.trim() || c.grade).length;
   const totalCredits = calculationInput.reduce((sum, c) => sum + c.credits, 0);
 
+  const biggestBoostInput = useMemo(() => {
+    const validCoursesWithNames = courses
+      .map((course) => {
+        if (!course.credits.trim() || !course.grade) return null;
+        const creditsNum = parseFloat(course.credits);
+        if (isNaN(creditsNum) || !isFinite(creditsNum) || creditsNum <= 0) return null;
+        const gradePoint = getGradePointForUniversity(selectedUniversity, course.grade);
+        if (gradePoint === null) return null;
+        if (isNonGpaGradeForUniversity(selectedUniversity, course.grade)) return null;
+        return { credits: creditsNum, gradePoint, name: course.name, grade: course.grade };
+      })
+      .filter((c): c is CourseGrade & { name: string; grade: string } => c !== null && c.name.trim() !== "");
+    return {
+      courses: validCoursesWithNames,
+      gradingScale: currentConfig.gradingScale,
+    };
+  }, [courses, selectedUniversity, currentConfig]);
+
+  const biggestBoost = useMemo((): BiggestBoostResult | null => {
+    if (!gpa || biggestBoostInput.courses.length === 0 || biggestBoostInput.gradingScale.length === 0) {
+      return null;
+    }
+    try {
+      return calculateBiggestBoost(biggestBoostInput);
+    } catch {
+      return null;
+    }
+  }, [gpa, biggestBoostInput]);
+
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "shared" | "error">("idle");
 
   const handleCopySummary = async () => {
@@ -233,6 +263,7 @@ export function GPACalculatorClient() {
             onCopySummary={handleCopySummary}
             onShareResult={handleShareResult}
             copyStatus={copyStatus}
+            biggestBoost={biggestBoost}
           />
 
           {currentConfig?.source && (
