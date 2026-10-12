@@ -281,24 +281,13 @@ export function HomepageCalculator() {
           gpa={gpa}
           courseCount={totalCoursesWithData}
           validCourseCount={validCourseCount}
+          totalCredits={totalCredits}
+          totalQualityPoints={totalQualityPoints}
           onCopySummary={handleCopySummary}
           onShareResult={handleShareResult}
           copyStatus={copyStatus}
           biggestBoost={biggestBoost}
         />
-
-        {gpa !== null && (
-          <div className="grid gap-3 sm:grid-cols-2 pt-4 border-t border-border">
-            <div className="text-center p-3 bg-ivory rounded-lg">
-              <div className="text-2xl font-bold text-charcoal font-mono">{totalCredits.toFixed(1)}</div>
-              <div className="text-xs text-neutral">Total Credits</div>
-            </div>
-            <div className="text-center p-3 bg-ivory rounded-lg">
-              <div className="text-2xl font-bold text-charcoal font-mono">{totalQualityPoints.toFixed(2)}</div>
-              <div className="text-xs text-neutral">Quality Points</div>
-            </div>
-          </div>
-        )}
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4 border-t border-border">
           <Link

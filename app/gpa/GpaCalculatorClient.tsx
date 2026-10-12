@@ -129,6 +129,7 @@ export function GPACalculatorClient() {
   const hasGradingScale = currentConfig?.gradingScale?.length > 0;
   const totalCoursesWithData = courses.filter((c) => c.credits.trim() || c.grade).length;
   const totalCredits = calculationInput.reduce((sum, c) => sum + c.credits, 0);
+  const totalQualityPoints = calculationInput.reduce((sum, c) => sum + c.credits * c.gradePoint, 0);
 
   const biggestBoostInput = useMemo(() => {
     const validCoursesWithNames = courses
@@ -260,6 +261,8 @@ export function GPACalculatorClient() {
             gpa={gpa}
             courseCount={totalCoursesWithData}
             validCourseCount={validCourseCount}
+            totalCredits={totalCredits}
+            totalQualityPoints={totalQualityPoints}
             onCopySummary={handleCopySummary}
             onShareResult={handleShareResult}
             copyStatus={copyStatus}

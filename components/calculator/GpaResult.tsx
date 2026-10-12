@@ -6,6 +6,8 @@ interface GpaResultProps {
   gpa: number | null;
   courseCount: number;
   validCourseCount: number;
+  totalCredits: number;
+  totalQualityPoints: number;
   onCopySummary: () => void;
   onShareResult: () => void;
   copyStatus: "idle" | "copied" | "shared" | "error";
@@ -16,6 +18,8 @@ export function GpaResult({
   gpa,
   courseCount,
   validCourseCount,
+  totalCredits,
+  totalQualityPoints,
   onCopySummary,
   onShareResult,
   copyStatus,
@@ -23,13 +27,13 @@ export function GpaResult({
 }: GpaResultProps) {
   if (gpa === null) {
     return (
-      <div className="card p-8 text-center">
-        <div className="w-20 h-20 mx-auto mb-4 bg-ivory rounded-full flex items-center justify-center">
-          <svg className="w-10 h-10 text-neutral-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <div className="card p-6 text-center">
+        <div className="w-16 h-16 mx-auto mb-3 bg-ivory rounded-full flex items-center justify-center">
+          <svg className="w-8 h-8 text-neutral-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
         </div>
-        <h2 className="text-lg font-medium text-charcoal mb-2">Add courses to calculate</h2>
+        <h2 className="text-base font-medium text-charcoal mb-1">Add courses to calculate</h2>
         <p className="text-neutral text-sm leading-relaxed">
           Enter at least one course with credits and a valid grade to see your semester GPA.
         </p>
@@ -38,47 +42,58 @@ export function GpaResult({
   }
 
   return (
-    <div className="card p-8 text-center">
-      <h2 className="text-lg font-medium text-charcoal mb-2">Your Semester GPA</h2>
-      <div className="result-value mb-4">
+    <div className="card p-6 text-center space-y-4">
+      <h2 className="text-base font-medium text-charcoal">Your Semester GPA</h2>
+      <div className="result-value">
         {gpa.toFixed(2)}
       </div>
       <div className="text-sm text-neutral leading-relaxed">
-        {courseCount === 1
-          ? "1 course"
-          : `${courseCount} courses`}
+        {courseCount === 1 ? "1 course" : `${courseCount} courses`}
         {validCourseCount !== courseCount && (
           <>
             &nbsp;·&nbsp;
-            {validCourseCount === 1
-              ? "1 course included in GPA"
-              : `${validCourseCount} courses included in GPA`}
+            {validCourseCount === 1 ? "1 course included in GPA" : `${validCourseCount} courses included in GPA`}
           </>
         )}
       </div>
 
+      <div className="grid gap-3 sm:grid-cols-2 pt-3 border-t border-border">
+        <div className="text-center p-2.5 bg-ivory rounded-lg">
+          <div className="text-xl font-bold text-charcoal font-mono">{totalCredits.toFixed(1)}</div>
+          <div className="text-xs text-neutral">Total Credits</div>
+        </div>
+        <div className="text-center p-2.5 bg-ivory rounded-lg relative group">
+          <div className="text-xl font-bold text-charcoal font-mono">{totalQualityPoints.toFixed(2)}</div>
+          <div className="text-xs text-neutral">Quality Points</div>
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1.5 bg-charcoal text-ivory text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
+            Sum of grade points × course credits
+          </div>
+        </div>
+      </div>
+
       {biggestBoost && biggestBoost.increase > 0 && (
-        <div className="mt-6 pt-6 border-t border-border">
-          <h3 className="text-sm font-semibold text-charcoal mb-2">Biggest boost</h3>
+        <div className="pt-3 border-t border-border text-left">
+          <h3 className="text-sm font-semibold text-charcoal mb-1.5">Biggest boost</h3>
           <p className="text-sm text-neutral leading-relaxed">
-            Get <strong className="text-charcoal">{biggestBoost.courseName}</strong> from{" "}
+            Improve <strong className="text-charcoal">{biggestBoost.courseName}</strong> from{" "}
             <strong className="text-charcoal">{biggestBoost.currentGrade}</strong> to{" "}
-            <strong className="text-forest">{biggestBoost.targetGrade}</strong> and your GPA goes up to{" "}
+            <strong className="text-forest">{biggestBoost.targetGrade}</strong>. Your semester GPA would increase from{" "}
+            <strong className="text-charcoal">{gpa.toFixed(2)}</strong> to{" "}
             <strong className="text-forest">{biggestBoost.newGPA.toFixed(2)}</strong>{" "}
             (<strong className="text-forest">+{biggestBoost.increase.toFixed(2)}</strong>).
           </p>
         </div>
       )}
 
-      <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+      <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
         <button
           type="button"
           onClick={onCopySummary}
           disabled={copyStatus !== "idle"}
-          className="btn-secondary flex items-center gap-2"
+          className="btn-secondary flex items-center gap-1.5 text-sm px-3 py-2"
           aria-busy={copyStatus !== "idle"}
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v12a2 2 0 002-2V7a2 2 0 00-2-2h-2" />
           </svg>
           <span>
@@ -91,10 +106,10 @@ export function GpaResult({
           type="button"
           onClick={onShareResult}
           disabled={copyStatus !== "idle"}
-          className="btn-secondary flex items-center gap-2"
+          className="btn-secondary flex items-center gap-1.5 text-sm px-3 py-2"
           aria-busy={copyStatus !== "idle"}
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
           </svg>
           <span>
