@@ -2,14 +2,7 @@ import Link from "next/link";
 
 export function CgpaPageContent() {
   return (
-    <div className="space-y-8">
-      <div className="text-center mb-4">
-        <h1 className="page-heading mb-2">CGPA Calculator</h1>
-        <p className="page-subheading">
-          Select your university, add all your courses, and calculate your cumulative GPA.
-        </p>
-      </div>
-
+    <div className="space-y-8 mt-8">
       <section className="card p-6 space-y-4" aria-labelledby="how-it-works-heading">
         <h2 id="how-it-works-heading" className="section-heading">How it works</h2>
         <ul className="space-y-2 text-sm text-neutral">
@@ -33,7 +26,7 @@ export function CgpaPageContent() {
           </li>
           <li className="flex items-start gap-2">
             <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 001.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>CGPA is calculated using the official formula: Σ(credits × grade points) / Σ(credits)</span>
           </li>

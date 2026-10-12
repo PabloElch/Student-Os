@@ -2,14 +2,7 @@ import Link from "next/link";
 
 export function GpaPageContent() {
   return (
-    <div className="space-y-8">
-      <div className="text-center mb-4">
-        <h1 className="page-heading mb-2">GPA Calculator</h1>
-        <p className="page-subheading">
-          Select your university, add courses, and calculate your semester GPA.
-        </p>
-      </div>
-
+    <div className="space-y-8 mt-8">
       <section className="card p-6 space-y-4" aria-labelledby="how-it-works-heading">
         <h2 id="how-it-works-heading" className="section-heading">How it works</h2>
         <ul className="space-y-2 text-sm text-neutral">

@@ -1,5 +1,6 @@
 import { CgpaCalculatorClient } from "./CgpaCalculatorClient";
 import { CgpaPageContent } from "./CgpaPageContent";
+import { ImproveGpaGuide } from "@/components/calculator/ImproveGpaGuide";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import type { Metadata } from "next";
@@ -45,8 +46,18 @@ export default function CGPACalculatorPage() {
     <div className="min-h-screen flex flex-col bg-ivory">
       <Navbar />
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12 md:py-16">
-        <CgpaPageContent />
+        <div className="text-center mb-6">
+          <h1 className="page-heading mb-2">CGPA Calculator</h1>
+          <p className="page-subheading">
+            Select your university, add all your courses, and calculate your cumulative GPA.
+          </p>
+        </div>
+
         <CgpaCalculatorClient />
+
+        <CgpaPageContent />
+
+        <ImproveGpaGuide calculatorType="cgpa" />
       </main>
       <Footer />
     </div>
