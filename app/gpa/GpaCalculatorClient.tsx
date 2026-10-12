@@ -130,16 +130,17 @@ export function GPACalculatorClient() {
 
   const biggestBoostInput = useMemo(() => {
     const validCoursesWithNames = courses
-      .map((course) => {
+      .map((course, index) => {
         if (!course.credits.trim() || !course.grade) return null;
         const creditsNum = parseFloat(course.credits);
         if (isNaN(creditsNum) || !isFinite(creditsNum) || creditsNum <= 0) return null;
         const gradePoint = getGradePointForUniversity(selectedUniversity, course.grade);
         if (gradePoint === null) return null;
         if (isNonGpaGradeForUniversity(selectedUniversity, course.grade)) return null;
-        return { credits: creditsNum, gradePoint, name: course.name, grade: course.grade };
+        const fallbackName = course.name.trim() || `Course ${index + 1}`;
+        return { credits: creditsNum, gradePoint, name: fallbackName, grade: course.grade };
       })
-      .filter((c): c is CourseGrade & { name: string; grade: string } => c !== null && c.name.trim() !== "");
+      .filter((c): c is CourseGrade & { name: string; grade: string } => c !== null);
     return {
       courses: validCoursesWithNames,
       gradingScale: currentConfig.gradingScale,
