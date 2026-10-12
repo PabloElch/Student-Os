@@ -1,4 +1,5 @@
 import { GPACalculatorClient } from "./GpaCalculatorClient";
+import { GpaPageContent } from "./GpaPageContent";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import type { Metadata } from "next";
@@ -44,6 +45,7 @@ export default function GPACalculatorPage() {
     <div className="min-h-screen flex flex-col bg-ivory">
       <Navbar />
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12 md:py-16">
+        <GpaPageContent />
         <GPACalculatorClient />
       </main>
       <Footer />

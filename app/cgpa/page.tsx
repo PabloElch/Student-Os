@@ -1,4 +1,5 @@
 import { CgpaCalculatorClient } from "./CgpaCalculatorClient";
+import { CgpaPageContent } from "./CgpaPageContent";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import type { Metadata } from "next";
@@ -44,6 +45,7 @@ export default function CGPACalculatorPage() {
     <div className="min-h-screen flex flex-col bg-ivory">
       <Navbar />
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12 md:py-16">
+        <CgpaPageContent />
         <CgpaCalculatorClient />
       </main>
       <Footer />

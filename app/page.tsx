@@ -280,7 +280,7 @@ export default function Home() {
               <li>A−: 80–less than 85 = 3.75</li>
               <li>B+: 75–less than 80 = 3.50</li>
               <li>B: 70–less than 75 = 3.00</li>
-              <li>C+: 65–less than 65 = 2.50</li>
+              <li>C+: 65–less than 70 = 2.50</li>
               <li>C: 60–less than 65 = 2.00</li>
               <li>D: 50–less than 60 = 1.00</li>
               <li>F: 0–less than 50 = 0.00</li>
