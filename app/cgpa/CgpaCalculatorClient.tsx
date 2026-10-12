@@ -24,7 +24,7 @@ const initialCourse: CourseInput = {
   id: generateId(),
   name: "",
   credits: "",
-  grade: "",
+  grade: "A",
 };
 
 export function CgpaCalculatorClient() {
@@ -92,14 +92,11 @@ export function CgpaCalculatorClient() {
 
   const gradeOptions = useMemo((): { value: string; label: string; points: number }[] => {
     if (!currentConfig?.gradingScale?.length) return [];
-    return [
-      { value: "", label: "Select grade", points: 0 },
-      ...currentConfig.gradingScale.map((g: GradeRule) => ({
-        value: g.letter,
-        label: `${g.letter} (${g.points.toFixed(2)})`,
-        points: g.points,
-      })),
-    ];
+    return currentConfig.gradingScale.map((g: GradeRule) => ({
+      value: g.letter,
+      label: `${g.letter} (${g.points.toFixed(2)})`,
+      points: g.points,
+    }));
   }, [currentConfig]);
 
   const calculationInput = useMemo((): CourseGrade[] => {
