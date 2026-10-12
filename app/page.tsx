@@ -71,11 +71,11 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-ivory">
       <Navbar />
 
-      <main className="flex-1 container py-10 md:py-16 lg:py-20">
+      <main className="flex-1 container py-10 md:py-16">
         {/* Hero Section */}
-        <section className="mb-14 md:mb-20 lg:mb-24" aria-labelledby="hero-heading">
+        <section className="mb-8" aria-labelledby="hero-heading">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 id="hero-heading" className="page-heading text-balance mb-6">
+            <h1 id="hero-heading" className="page-heading text-balance mb-4">
               Calculate your GPA. Plan your path.
             </h1>
             <p className="page-subheading mb-8">
@@ -110,7 +110,7 @@ export default function Home() {
         <HomepageCalculator />
 
         {/* How GPA is calculated */}
-        <section className="mb-14 md:mb-20" aria-labelledby="how-to-heading">
+        <section className="mb-8" aria-labelledby="how-to-heading">
           <h2 id="how-to-heading" className="text-2xl font-bold text-charcoal mb-4">
             How GPA is calculated
           </h2>
@@ -129,7 +129,7 @@ export default function Home() {
         </section>
 
         {/* Worked example */}
-        <section className="mb-14 md:mb-20" aria-labelledby="worked-example-heading">
+        <section className="mb-8" aria-labelledby="worked-example-heading">
           <h2 id="worked-example-heading" className="text-2xl font-bold text-charcoal mb-4">
             Worked example
           </h2>
@@ -222,7 +222,7 @@ export default function Home() {
         </section>
 
         {/* Semester GPA vs. CGPA */}
-        <section className="mb-14 md:mb-20" aria-labelledby="semester-vs-cgpa-heading">
+        <section className="mb-8" aria-labelledby="semester-vs-cgpa-heading">
           <h2 id="semester-vs-cgpa-heading" className="text-2xl font-bold text-charcoal mb-4">
             Semester GPA vs. CGPA
           </h2>
@@ -248,7 +248,7 @@ export default function Home() {
         </section>
 
         {/* Target GPA planning */}
-        <section className="mb-14 md:mb-20" aria-labelledby="target-planning-heading">
+        <section className="mb-8" aria-labelledby="target-planning-heading">
           <h2 id="target-planning-heading" className="text-2xl font-bold text-charcoal mb-4">
             Target GPA planning
           </h2>
@@ -266,7 +266,7 @@ export default function Home() {
         </section>
 
         {/* Ethiopian grading scale */}
-        <section className="mb-14 md:mb-20" aria-labelledby="grading-scale-heading">
+        <section className="mb-8" aria-labelledby="grading-scale-heading">
           <h2 id="grading-scale-heading" className="text-2xl font-bold text-charcoal mb-4">
             Ethiopian grading scale
           </h2>
@@ -297,7 +297,7 @@ export default function Home() {
         </section>
 
         {/* FAQs */}
-        <section className="mb-14 md:mb-20" aria-labelledby="faqs-heading">
+        <section className="mb-8" aria-labelledby="faqs-heading">
           <h2 id="faqs-heading" className="text-2xl font-bold text-charcoal mb-4">
             Frequently asked questions
           </h2>
@@ -328,7 +328,7 @@ export default function Home() {
         </section>
 
         {/* Related tools */}
-        <section className="mb-14 md:mb-20" aria-labelledby="related-tools-heading">
+        <section className="mb-8" aria-labelledby="related-tools-heading">
           <h2 id="related-tools-heading" className="text-2xl font-bold text-charcoal mb-4">
             Related tools
           </h2>

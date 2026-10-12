@@ -26,7 +26,7 @@ export function GpaResult({
           </svg>
         </div>
         <h2 className="text-lg font-medium text-charcoal mb-2">Add courses to calculate</h2>
-        <p className="text-neutral text-sm">
+        <p className="text-neutral text-sm leading-relaxed">
           Enter at least one course with credits and a valid grade to see your semester GPA.
         </p>
       </div>
@@ -36,10 +36,10 @@ export function GpaResult({
   return (
     <div className="card p-8 text-center">
       <h2 className="text-lg font-medium text-charcoal mb-2">Your Semester GPA</h2>
-      <div className="text-5xl md:text-6xl font-bold text-forest mb-4 font-mono">
+      <div className="result-value mb-4">
         {gpa.toFixed(2)}
       </div>
-      <div className="text-sm text-neutral">
+      <div className="text-sm text-neutral leading-relaxed">
         {courseCount === 1
           ? "1 course"
           : `${courseCount} courses`}

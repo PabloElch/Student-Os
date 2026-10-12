@@ -24,7 +24,7 @@ export function PlannerResult({
           </svg>
         </div>
         <h2 className="text-lg font-medium text-charcoal mb-2">Enter your details to calculate</h2>
-        <p className="text-neutral text-sm">
+        <p className="text-neutral text-sm leading-relaxed">
           Fill in your current CGPA, completed credits, target CGPA, and upcoming credits.
         </p>
       </div>
@@ -37,7 +37,7 @@ export function PlannerResult({
     case "already-achieved":
       return (
         <div className="card p-8 text-center">
-          <div className="w-20 h-20 mx-auto mb-4 bg-success-bg rounded-full flex items-center justify-center">
+          <div className="w-20 h-20 mx-auto mb-4 bg-success-light rounded-full flex items-center justify-center">
             <svg className="w-10 h-10 text-success" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
@@ -46,7 +46,7 @@ export function PlannerResult({
           <div className="text-5xl font-bold text-success mb-4 font-mono">
             ✓
           </div>
-          <div className="text-sm text-neutral">
+          <div className="text-sm text-neutral leading-relaxed">
             {currentCGPA !== null && targetCGPA !== null && (
               <>
                 Your current CGPA of <span className="font-medium text-charcoal">{currentCGPA.toFixed(2)}</span> is already above your target of{" "}
@@ -61,10 +61,10 @@ export function PlannerResult({
       return (
         <div className="card p-8 text-center">
           <h2 className="text-lg font-medium text-charcoal mb-2">Required GPA</h2>
-          <div className="text-5xl font-bold text-forest mb-4 font-mono">
+          <div className="result-value mb-4">
             {requiredGPA.toFixed(2)}
           </div>
-          <div className="text-sm text-neutral">
+          <div className="text-sm text-neutral leading-relaxed">
             <p className="mb-2">
               Your target is reachable, but you&apos;ll need the maximum possible GPA across your upcoming credits.
             </p>
@@ -88,10 +88,10 @@ export function PlannerResult({
             </svg>
           </div>
           <h2 className="text-lg font-medium text-error mb-2">Target not reachable</h2>
-          <div className="text-5xl font-bold text-error mb-4 font-mono">
+          <div className="result-value text-error mb-4">
             {requiredGPA.toFixed(2)}
           </div>
-          <div className="text-sm text-neutral">
+          <div className="text-sm text-neutral leading-relaxed">
             <p className="mb-2">
               This target isn&apos;t reachable within the next {upcomingCredits} credits because the maximum GPA is{" "}
               {maxGradePoint !== null ? maxGradePoint.toFixed(2) : "unknown"}.
@@ -112,10 +112,10 @@ export function PlannerResult({
       return (
         <div className="card p-8 text-center">
           <h2 className="text-lg font-medium text-charcoal mb-2">Required GPA</h2>
-          <div className="text-5xl font-bold text-forest mb-4 font-mono">
+          <div className="result-value mb-4">
             {requiredGPA.toFixed(2)}
           </div>
-          <div className="text-sm text-neutral">
+          <div className="text-sm text-neutral leading-relaxed">
             {upcomingCredits && targetCGPA && (
               <p>
                 You need an average GPA of <span className="font-medium text-charcoal">{requiredGPA.toFixed(2)}</span> across your next{" "}

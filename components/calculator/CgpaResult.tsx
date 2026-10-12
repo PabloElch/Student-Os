@@ -35,7 +35,7 @@ export function CgpaResult({
           </svg>
         </div>
         <h2 className="text-lg font-medium text-charcoal mb-2">Add courses to calculate</h2>
-        <p className="text-neutral text-sm">
+        <p className="text-neutral text-sm leading-relaxed">
           Enter at least one course with credits and a valid grade to see your CGPA.
         </p>
       </div>
@@ -45,13 +45,13 @@ export function CgpaResult({
   return (
     <div className="card p-8 text-center">
       <h2 className="text-lg font-medium text-charcoal mb-2">Your CGPA</h2>
-      <div className="text-5xl md:text-6xl font-bold text-forest mb-2 font-mono flex items-baseline justify-center gap-2">
+      <div className="result-value mb-4 flex items-baseline justify-center gap-2">
         <span>{cgpa.toFixed(2)}</span>
         {maxGradePoint !== null && (
           <span className="text-2xl font-normal text-neutral">/ {maxGradePoint.toFixed(2)}</span>
         )}
       </div>
-      <div className="text-sm text-neutral">
+      <div className="text-sm text-neutral leading-relaxed">
         {courseCount === 1 ? "1 course" : `${courseCount} courses`}
         {validCourseCount !== courseCount && (
           <>

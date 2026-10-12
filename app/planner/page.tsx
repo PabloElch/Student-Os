@@ -43,7 +43,14 @@ export default function PlannerPage() {
   return (
     <div className="min-h-screen flex flex-col bg-ivory">
       <Navbar />
-      <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-12 md:py-16">
+      <main className="flex-1 container py-10 md:py-16">
+        <div className="text-center mb-8">
+          <h1 className="page-heading text-balance mb-4">GPA Target Planner</h1>
+          <p className="page-subheading">
+            Find out what GPA you need to reach your target CGPA with Wutete.
+          </p>
+        </div>
+
         <PlannerCalculatorClient />
       </main>
       <Footer />

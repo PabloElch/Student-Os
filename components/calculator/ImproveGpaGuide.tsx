@@ -8,12 +8,15 @@ interface ImproveGpaGuideProps {
 
 export function ImproveGpaGuide({ calculatorType }: ImproveGpaGuideProps) {
   return (
-    <div className="card p-6 space-y-4">
-      <h3 className="font-medium text-charcoal mb-3">How to Improve Your GPA at University</h3>
-      <p className="text-sm text-neutral">
+    <div className="card p-6 md:p-8 space-y-6">
+      <div className="flex items-center gap-2">
+        <span className="mono-label">Guide</span>
+        <h3 className="text-lg font-semibold text-charcoal">How to Improve Your GPA at University</h3>
+      </div>
+      <p className="text-sm text-neutral leading-relaxed">
         There&apos;s no guaranteed shortcut to a higher GPA. But building better study habits, keeping up with coursework, and preparing consistently for assessments can help you understand your courses and improve your chances of earning better grades.
       </p>
-      <div className="space-y-4 text-sm text-neutral">
+      <div className="space-y-5 text-sm text-neutral leading-relaxed">
         <div>
           <h4 className="font-medium text-charcoal mb-1">Attend classes and participate</h4>
           <p>
@@ -50,7 +53,7 @@ export function ImproveGpaGuide({ calculatorType }: ImproveGpaGuideProps) {
             Discussing concepts with classmates, solving practice questions together, and explaining topics to one another can reveal gaps in understanding. Make sure group study remains focused and that you can solve questions independently.
           </p>
         </div>
-        <div>
+        <div className="pt-4 border-t border-line">
           <h4 className="font-medium text-charcoal mb-1">
             {calculatorType === "gpa" ? "Plan for the next semester using CGPA" : "Plan for the next semester using CGPA"}
           </h4>

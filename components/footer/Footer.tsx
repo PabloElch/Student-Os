@@ -3,21 +3,21 @@ import { footerLinks, feedbackUrl } from "@/lib/config/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-white">
-      <div className="container py-10 md:py-14">
-        <div className="mb-8">
+    <footer className="border-t border-line bg-white">
+      <div className="container py-12 md:py-16">
+        <div className="mb-10">
           <Link
             href="/"
             className="text-xl font-semibold text-charcoal hover:text-forest transition-colors"
           >
             Wutete
           </Link>
-          <p className="mt-2 text-sm text-neutral max-w-md leading-relaxed">
+          <p className="mt-3 text-sm text-neutral max-w-md leading-relaxed">
             Your academic toolkit for Ethiopian university students. Calculate GPA, CGPA, and plan your academic targets.
           </p>
         </div>
 
-        <nav aria-label="Footer navigation" className="flex flex-wrap gap-3 md:gap-5 mb-8">
+        <nav aria-label="Footer navigation" className="flex flex-wrap gap-3 md:gap-5 mb-10">
           {footerLinks.map((link) => (
             <Link
               key={link.href}
@@ -37,7 +37,7 @@ export function Footer() {
           </a>
         </nav>
 
-        <div className="mt-8 pt-8 border-t border-border">
+        <div className="mt-10 pt-10 border-t border-line">
           <p className="text-sm text-neutral-light text-center">
             No account required · Anonymous calculation · Built for Ethiopian students
           </p>

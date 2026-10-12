@@ -123,7 +123,7 @@ export function UniversitySelector({ selectedUniversity, onChange, placeholder =
         <div
           id="university-options"
           ref={optionsRef}
-          className="absolute z-50 w-full mt-1 max-h-96 overflow-y-auto bg-white border border-border rounded-xl shadow-lg divide-y divide-border"
+          className="absolute z-50 w-full mt-1.5 max-h-96 overflow-y-auto bg-white border border-line rounded-lg shadow-lg divide-y divide-line"
           role="listbox"
           aria-label="Ethiopian universities"
         >

@@ -10,27 +10,27 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="border-b border-border bg-white sticky top-0 z-10 shadow-sm">
+    <header className="border-b border-line bg-white/80 backdrop-blur-md sticky top-0 z-10">
       <nav className="container" aria-label="Main navigation">
         <div className="flex h-16 items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-charcoal hover:text-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-ivory rounded-lg"
+            className="flex items-center gap-2 text-charcoal hover:text-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-ivory rounded-lg px-2 py-1"
             aria-label="Wutete Home"
           >
             <span className="text-xl font-semibold tracking-tight">Wutete</span>
           </Link>
 
-          <div className="hidden md:flex md:items-center md:gap-1">
+          <div className="hidden md:flex md:items-center md:gap-0.5">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest ${
+                  className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-ivory ${
                     isActive
-                      ? "bg-sage text-forest"
+                      ? "text-forest before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-6 before:h-0.5 before:bg-forest before:rounded-full"
                       : "text-neutral hover:text-charcoal hover:bg-ivory"
                   }`}
                   aria-current={isActive ? "page" : undefined}
@@ -66,7 +66,7 @@ export function Navbar() {
         </div>
 
         {mobileMenuOpen && (
-          <div id="mobile-menu" className="md:hidden py-4 border-t border-border animate-slide-down">
+          <div id="mobile-menu" className="md:hidden py-4 border-t border-line animate-slide-down">
             <div className="flex flex-col gap-1">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
