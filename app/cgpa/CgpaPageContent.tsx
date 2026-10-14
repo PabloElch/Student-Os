@@ -5,28 +5,28 @@ export function CgpaPageContent() {
     <div className="space-y-8 mt-8">
       <section className="card p-6 space-y-4" aria-labelledby="how-it-works-heading">
         <h2 id="how-it-works-heading" className="section-heading">How it works</h2>
-        <ul className="space-y-2 text-sm text-neutral">
+        <ul className="space-y-2 text-sm text-stone">
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Select your university to load the correct grading scale</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Add all courses that count toward your cumulative GPA</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Grades marked &ldquo;Not included in GPA&rdquo; don&apos;t affect the calculation</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 001.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>CGPA is calculated using the official formula: Σ(credits × grade points) / Σ(credits)</span>
           </li>
@@ -35,12 +35,12 @@ export function CgpaPageContent() {
 
       <section className="card p-6 space-y-4" aria-labelledby="worked-example-heading">
         <h2 id="worked-example-heading" className="section-heading">Worked example</h2>
-        <div className="p-4 bg-ivory rounded border border-border">
-          <h3 className="font-medium text-charcoal mb-3">Example: Cumulative GPA across semesters</h3>
+        <div className="p-4 bg-ivory-muted rounded border border-border">
+          <h3 className="font-medium text-ink mb-3">Example: Cumulative GPA across semesters</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left" role="table">
               <thead>
-                <tr className="border-b border-border text-xs font-medium text-neutral uppercase tracking-wider">
+                <tr className="border-b border-border text-xs font-medium text-stone uppercase tracking-wider">
                   <th className="pb-2 pr-4">Course</th>
                   <th className="pb-2 pr-4 text-right">Credits</th>
                   <th className="pb-2 pr-4 text-center">Grade</th>
@@ -78,7 +78,7 @@ export function CgpaPageContent() {
                   <td className="py-2 pr-4 text-center">A</td>
                   <td className="py-2 text-right font-mono">4.00</td>
                 </tr>
-                <tr className="bg-ivory font-medium">
+                <tr className="bg-ivory-muted font-medium">
                   <td className="py-2 pr-4">Total</td>
                   <td className="py-2 pr-4 text-right">17</td>
                   <td className="py-2 pr-4 text-center">—</td>
@@ -90,7 +90,7 @@ export function CgpaPageContent() {
           <p className="mt-3 text-sm font-medium">
             CGPA = (3 × 4.00 + 4 × 3.00 + 3 × 3.75 + 3 × 3.50 + 4 × 4.00) ÷ (3 + 4 + 3 + 3 + 4)
           </p>
-          <p className="mt-2 text-lg font-bold text-forest font-mono">CGPA: 3.63</p>
+          <p className="mt-2 text-lg font-bold text-ink font-mono">CGPA: 3.63</p>
         </div>
       </section>
 
@@ -107,8 +107,8 @@ export function CgpaPageContent() {
             GPA What-If Simulator
           </Link>
         </div>
-        <p className="text-sm text-neutral">
-          Use the <Link href="/grade-scale" className="text-forest underline hover:text-forest-light">Grade Scale Reference</Link> to see the full grading scale with percentage ranges.
+        <p className="text-sm text-stone">
+          Use the <Link href="/grade-scale" className="text-bronze underline hover:text-bronze-light">Grade Scale Reference</Link> to see the full grading scale with percentage ranges.
         </p>
       </section>
     </div>

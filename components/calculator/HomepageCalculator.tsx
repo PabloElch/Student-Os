@@ -208,8 +208,8 @@ export function HomepageCalculator() {
       <div className="card p-6 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-xl font-semibold text-charcoal">GPA Calculator</h2>
-            <p className="text-sm text-neutral mt-1">
+            <h2 className="text-xl font-semibold text-ink">GPA Calculator</h2>
+            <p className="text-sm text-stone mt-1">
               Add courses with credits and grades to calculate your semester GPA instantly.
             </p>
           </div>
@@ -220,13 +220,13 @@ export function HomepageCalculator() {
         </div>
 
         {!hasGradingScale && currentConfig && (
-          <div className="p-3 bg-warning-bg border border-warning rounded-lg text-sm text-warning" role="alert">
+          <div className="p-3 bg-warning-light border border-warning rounded-lg text-sm text-warning" role="alert">
             Grading scale not available for {currentConfig.name}. Please select another university.
           </div>
         )}
 
         <div className="border border-border rounded-xl overflow-hidden">
-          <div className="hidden sm:grid grid-cols-[1fr_80px_140px_50px] gap-x-4 gap-y-3 px-4 py-3 bg-ivory border-b border-border text-xs font-medium text-neutral uppercase tracking-wider">
+          <div className="hidden sm:grid grid-cols-[1fr_80px_140px_50px] gap-x-4 gap-y-3 px-4 py-3 bg-ivory-muted border-b border-border text-xs font-medium text-stone uppercase tracking-wider">
             <div>Course Name</div>
             <div className="text-right">Credits</div>
             <div>Grade</div>
@@ -251,7 +251,7 @@ export function HomepageCalculator() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center pt-4 border-t border-border">
+        <div className="flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center pt-4 border-t border-line">
           <button
             type="button"
             onClick={handleAddCourse}
@@ -267,7 +267,7 @@ export function HomepageCalculator() {
             type="button"
             onClick={handleReset}
             className="btn-ghost w-full sm:w-auto"
-            disabled={courses.length === 3 && courses.every(c => !c.name && !c.credits && !c.grade)}
+            disabled={courses.length === 3 && courses.every(c => !c.name && !c.credits && c.grade === "A")}
           >
             Reset
           </button>
@@ -287,7 +287,7 @@ export function HomepageCalculator() {
           biggestBoost={biggestBoost}
         />
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4 border-t border-border">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4 border-t border-line">
           <Link
             href="/gpa"
             className="btn-primary w-full sm:w-auto text-center"

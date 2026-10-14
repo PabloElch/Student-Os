@@ -113,7 +113,7 @@ export function UniversitySelector({ selectedUniversity, onChange, placeholder =
           aria-haspopup="listbox"
         />
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-          <svg className="w-5 h-5 text-neutral" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg className="w-5 h-5 text-stone" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </div>
@@ -138,18 +138,18 @@ export function UniversitySelector({ selectedUniversity, onChange, placeholder =
                 onMouseEnter={() => setHighlightedIndex(index)}
                 className={`w-full px-4 py-3 text-left transition-colors ${
                   index === highlightedIndex
-                    ? "bg-ivory"
-                    : "hover:bg-ivory"
+                    ? "bg-ivory-muted"
+                    : "hover:bg-ivory-muted"
                 } ${
                   selectedUniversity === university.id
-                    ? "text-forest font-medium"
-                    : "text-charcoal"
+                    ? "text-bronze font-medium"
+                    : "text-ink"
                 }`}
               >
                 <div className="font-medium">{university.name}</div>
-                <div className="flex items-center gap-2 mt-0.5 text-xs text-neutral">
+                <div className="flex items-center gap-2 mt-0.5 text-xs text-stone">
                   {university.abbreviation && (
-                    <span className="px-2 py-0.5 bg-ivory rounded text-neutral">
+                    <span className="px-2 py-0.5 bg-ivory-muted rounded text-stone">
                       {university.abbreviation}
                     </span>
                   )}
@@ -158,7 +158,7 @@ export function UniversitySelector({ selectedUniversity, onChange, placeholder =
               </button>
             ))
           ) : (
-            <div className="px-4 py-3 text-center text-sm text-neutral">
+            <div className="px-4 py-3 text-center text-sm text-stone">
               No universities match &ldquo;{searchQuery}&rdquo;
             </div>
           )}

@@ -35,8 +35,8 @@ const initialCourse: CourseInput = {
   id: generateId(),
   name: "",
   credits: "",
-  baselineGrade: "",
-  hypotheticalGrade: "",
+  baselineGrade: "A",
+  hypotheticalGrade: "A",
 };
 
 const initialCGPAInputs: CGPAProjectionInput = {
@@ -161,14 +161,11 @@ export function SimulatorCalculatorClient() {
 
   const gradeOptions = useMemo((): { value: string; label: string; points: number }[] => {
     if (!currentConfig?.gradingScale?.length) return [];
-    return [
-      { value: "", label: "Select grade", points: 0 },
-      ...currentConfig.gradingScale.map((g) => ({
-        value: g.letter,
-        label: `${g.letter} (${g.points.toFixed(2)})`,
-        points: g.points,
-      })),
-    ];
+    return currentConfig.gradingScale.map((g) => ({
+      value: g.letter,
+      label: `${g.letter} (${g.points.toFixed(2)})`,
+      points: g.points,
+    }));
   }, [currentConfig]);
 
   const calculationInput = useMemo(() => {
@@ -286,7 +283,7 @@ export function SimulatorCalculatorClient() {
         />
 
         {!hasGradingScale && currentConfig && (
-          <div className="p-3 bg-warning-bg border border-warning rounded-lg text-sm text-warning" role="alert">
+          <div className="p-3 bg-warning-light border border-warning rounded-lg text-sm text-warning" role="alert">
             Grading scale not available for {currentConfig.name}. Please select another university.
           </div>
         )}
@@ -295,7 +292,7 @@ export function SimulatorCalculatorClient() {
           <h2 className="section-heading">Courses</h2>
 
           <div className="border border-border rounded-xl overflow-hidden">
-            <div className="hidden md:grid grid-cols-[1fr_80px_140px_140px_50px] gap-x-4 gap-y-3 px-4 py-3 bg-ivory border-b border-border text-xs font-medium text-neutral uppercase tracking-wider">
+            <div className="hidden md:grid grid-cols-[1fr_80px_140px_140px_50px] gap-x-4 gap-y-3 px-4 py-3 bg-ivory-muted border-b border-border text-xs font-medium text-stone uppercase tracking-wider">
               <div>Course Name</div>
               <div className="text-right">Credits</div>
               <div>Baseline Grade</div>
@@ -335,7 +332,7 @@ export function SimulatorCalculatorClient() {
           </button>
         </div>
 
-        <div className="border-t border-border pt-6">
+        <div className="border-t border-line pt-6">
           <SimulatorResult
             baselineGPA={simulatorResult.baselineGPA}
             hypotheticalGPA={simulatorResult.hypotheticalGPA}
@@ -366,9 +363,9 @@ export function SimulatorCalculatorClient() {
           </div>
         </div>
 
-        <div className="border-t border-border pt-6">
+        <div className="border-t border-line pt-6">
           <h3 className="section-heading">Cumulative CGPA Projection (Optional)</h3>
-          <p className="text-neutral mb-4">
+          <p className="text-stone mb-4">
             Enter your current CGPA and completed credits to see how this semester affects your cumulative GPA.
           </p>
 
@@ -426,29 +423,29 @@ export function SimulatorCalculatorClient() {
 
               {cgpaProjection.baselineProjectedCGPA !== null || cgpaProjection.hypotheticalProjectedCGPA !== null || cgpaProjection.error ? (
                 <div className="card p-6 space-y-4">
-                  <h4 className="font-semibold text-charcoal">Projected CGPA</h4>
+                  <h4 className="font-semibold text-ink">Projected CGPA</h4>
                   {cgpaProjection.error && (
                     <p className="text-sm text-error">{cgpaProjection.error}</p>
                   )}
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="card p-4">
-                      <h5 className="text-sm font-medium text-neutral uppercase tracking-wider mb-2">Baseline Projected CGPA</h5>
-                      <div className="text-3xl font-bold text-charcoal font-mono">
+                      <h5 className="text-sm font-medium text-stone uppercase tracking-wider mb-2">Baseline Projected CGPA</h5>
+                      <div className="text-3xl font-bold text-ink font-mono">
                         {cgpaProjection.baselineProjectedCGPA !== null ? cgpaProjection.baselineProjectedCGPA.toFixed(2) : "—"}
                       </div>
                     </div>
                     <div className="card p-4">
-                      <h5 className="text-sm font-medium text-neutral uppercase tracking-wider mb-2">Hypothetical Projected CGPA</h5>
-                      <div className="text-3xl font-bold text-charcoal font-mono">
+                      <h5 className="text-sm font-medium text-stone uppercase tracking-wider mb-2">Hypothetical Projected CGPA</h5>
+                      <div className="text-3xl font-bold text-ink font-mono">
                         {cgpaProjection.hypotheticalProjectedCGPA !== null ? cgpaProjection.hypotheticalProjectedCGPA.toFixed(2) : "—"}
                       </div>
                     </div>
                   </div>
                   {cgpaProjection.difference !== null && (
-                    <div className="card p-4 bg-ivory border-border">
+                    <div className="card p-4 bg-ivory-muted border border-border">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-charcoal">CGPA Difference</span>
-                        <span className={`font-mono font-semibold ${cgpaProjection.difference > 0 ? "text-success" : cgpaProjection.difference < 0 ? "text-error" : "text-neutral"}`}>
+                        <span className="text-sm font-medium text-ink">CGPA Difference</span>
+                        <span className={`font-mono font-semibold ${cgpaProjection.difference > 0 ? "text-success" : cgpaProjection.difference < 0 ? "text-error" : "text-stone"}`}>
                           {cgpaProjection.difference > 0 ? "+" : ""}{cgpaProjection.difference.toFixed(2)}
                         </span>
                       </div>
@@ -456,7 +453,7 @@ export function SimulatorCalculatorClient() {
                   )}
                 </div>
               ) : (
-                <p className="text-sm text-neutral-light text-center py-4">Enter CGPA and completed credits to see projection</p>
+                <p className="text-sm text-stone-light text-center py-4">Enter CGPA and completed credits to see projection</p>
               )}
             </div>
           )}
@@ -464,47 +461,47 @@ export function SimulatorCalculatorClient() {
       </div>
 
       <div className="card p-6 space-y-4">
-        <h3 className="font-medium text-charcoal mb-3">How it works</h3>
-        <ul className="space-y-2 text-sm text-neutral">
+        <h3 className="font-medium text-ink mb-3">How it works</h3>
+        <ul className="space-y-2 text-sm text-stone">
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Select your university to load the correct grading scale</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Add courses with credits, baseline grades, and hypothetical grades</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Hypothetical grades start matching baseline grades</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Changing a baseline grade updates the hypothetical grade if they were the same</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>GPA is calculated using: Σ(credits × grade points) / Σ(credits)</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Use the optional CGPA projection to see cumulative impact</span>
           </li>
         </ul>
         {currentConfig?.source && (
-          <p className="text-xs text-neutral-light mt-4 pt-4 border-t border-border">
+          <p className="text-xs text-stone-light mt-4 pt-4 border-t border-line">
             Source: {currentConfig.source.title} ({currentConfig.source.dateAccessed})
           </p>
         )}

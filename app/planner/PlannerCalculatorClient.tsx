@@ -130,7 +130,7 @@ export function PlannerCalculatorClient() {
         />
 
         {!hasGradingScale && currentConfig && (
-          <div className="p-3 bg-warning-bg border border-warning rounded-lg text-sm text-warning" role="alert">
+          <div className="p-3 bg-warning-light border border-warning rounded-lg text-sm text-warning" role="alert">
             Grading scale not available for {currentConfig.name}. Maximum GPA assumed as 4.00.
           </div>
         )}
@@ -221,7 +221,7 @@ export function PlannerCalculatorClient() {
           </div>
         </div>
 
-        <div className="border-t border-border pt-6">
+        <div className="border-t border-line pt-6">
           <PlannerResult
             result={result}
             upcomingCredits={calculationInput?.upcomingCredits ?? null}
@@ -242,46 +242,46 @@ export function PlannerCalculatorClient() {
       </div>
 
       <div className="card p-6 space-y-4">
-        <h3 className="font-medium text-charcoal mb-3">How it works</h3>
-        <ul className="space-y-2 text-sm text-neutral">
+        <h3 className="font-medium text-ink mb-3">How it works</h3>
+        <ul className="space-y-2 text-sm text-stone">
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Select your university to use the correct grading scale and maximum GPA</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Enter your current CGPA and total completed credits</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Enter your target CGPA and upcoming credits (e.g., next semester)</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>The planner calculates the required future GPA using: (Target × Total - Current × Completed) / Upcoming</span>
           </li>
           <li className="flex items-start gap-2">
-            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-forest" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-bronze" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span>Results show whether your target is reachable, requires maximum GPA, or is impossible</span>
           </li>
         </ul>
         {currentConfig?.source && (
-          <p className="text-xs text-neutral-light mt-4 pt-4 border-t border-border">
+          <p className="text-xs text-stone-light mt-4 pt-4 border-t border-line">
             Source: {currentConfig.source.title} ({currentConfig.source.dateAccessed})
           </p>
         )}
-        <p className="text-sm text-neutral mt-4 pt-4 border-t border-border">
-          <a href="/gpa-simulator" className="text-forest underline hover:text-forest-light">Try the GPA What-If Simulator</a> to compare baseline vs. hypothetical grades.
+        <p className="text-sm text-stone mt-4 pt-4 border-t border-line">
+          <a href="/gpa-simulator" className="text-bronze underline hover:text-bronze-light">Try the GPA What-If Simulator</a> to compare baseline vs. hypothetical grades.
         </p>
       </div>
     </div>

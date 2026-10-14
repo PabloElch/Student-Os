@@ -101,7 +101,7 @@ export default function Home() {
                 Plan your target
               </Link>
             </div>
-            <p className="mt-6 text-sm text-neutral">
+            <p className="mt-6 text-sm text-stone">
               No account required · Anonymous calculation · All processing in your browser
             </p>
           </div>
@@ -111,10 +111,10 @@ export default function Home() {
 
         {/* How GPA is calculated */}
         <section className="mb-8" aria-labelledby="how-to-heading">
-          <h2 id="how-to-heading" className="text-2xl font-bold text-charcoal mb-4">
+          <h2 id="how-to-heading" className="text-2xl font-bold text-ink mb-4">
             How GPA is calculated
           </h2>
-          <div className="text-neutral leading-relaxed">
+          <div className="text-stone leading-relaxed">
             <p className="mb-3">
               Wutete uses the standard Ethiopian university grading scale to calculate your semester GPA. Each course&apos;s grade points are weighted by credit hours, then divided by the total credits.
             </p>
@@ -130,16 +130,16 @@ export default function Home() {
 
         {/* Worked example */}
         <section className="mb-8" aria-labelledby="worked-example-heading">
-          <h2 id="worked-example-heading" className="text-2xl font-bold text-charcoal mb-4">
+          <h2 id="worked-example-heading" className="text-2xl font-bold text-ink mb-4">
             Worked example
           </h2>
-          <div className="space-y-6 text-neutral">
-            <div className="p-4 bg-ivory rounded border border-border">
-              <h3 className="font-medium text-charcoal mb-3">Example 1: Semester GPA calculation</h3>
+          <div className="space-y-6 text-stone">
+            <div className="p-4 bg-ivory-muted rounded border border-border">
+              <h3 className="font-medium text-ink mb-3">Example 1: Semester GPA calculation</h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm text-left" role="table">
                   <thead>
-                    <tr className="border-b border-border text-xs font-medium text-neutral uppercase tracking-wider">
+                    <tr className="border-b border-border text-xs font-medium text-stone uppercase tracking-wider">
                       <th className="pb-2 pr-4">Course</th>
                       <th className="pb-2 pr-4 text-right">Credits</th>
                       <th className="pb-2 pr-4 text-center">Grade</th>
@@ -165,7 +165,7 @@ export default function Home() {
                       <td className="py-2 pr-4 text-center">A−</td>
                       <td className="py-2 text-right font-mono">3.75</td>
                     </tr>
-                    <tr className="bg-ivory font-medium">
+                    <tr className="bg-ivory-muted font-medium">
                       <td className="py-2 pr-4">Total</td>
                       <td className="py-2 pr-4 text-right">10</td>
                       <td className="py-2 pr-4 text-center">—</td>
@@ -177,14 +177,14 @@ export default function Home() {
               <p className="mt-3 text-sm font-medium">
                 GPA = (3 × 4.00 + 4 × 3.00 + 3 × 3.75) ÷ (3 + 4 + 3)
               </p>
-              <p className="mt-2 text-lg font-bold text-forest font-mono">Semester GPA: 3.53</p>
+              <p className="mt-2 text-lg font-bold text-ink font-mono">Semester GPA: 3.53</p>
             </div>
-            <div className="p-4 bg-ivory rounded border border-border">
-              <h3 className="font-medium text-charcoal mb-3">Example 2: Another example with different credits</h3>
+            <div className="p-4 bg-ivory-muted rounded border border-border">
+              <h3 className="font-medium text-ink mb-3">Example 2: Another example with different credits</h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm text-left" role="table">
                   <thead>
-                    <tr className="border-b border-border text-xs font-medium text-neutral uppercase tracking-wider">
+                    <tr className="border-b border-border text-xs font-medium text-stone uppercase tracking-wider">
                       <th className="pb-2 pr-4">Course</th>
                       <th className="pb-2 pr-4 text-right">Credits</th>
                       <th className="pb-2 pr-4 text-center">Grade</th>
@@ -204,7 +204,7 @@ export default function Home() {
                       <td className="py-2 pr-4 text-center">A</td>
                       <td className="py-2 text-right font-mono">4.00</td>
                     </tr>
-                    <tr className="bg-ivory font-medium">
+                    <tr className="bg-ivory-muted font-medium">
                       <td className="py-2 pr-4">Total</td>
                       <td className="py-2 pr-4 text-right">7</td>
                       <td className="py-2 pr-4 text-center">—</td>
@@ -216,17 +216,17 @@ export default function Home() {
               <p className="mt-3 text-sm font-medium">
                 GPA = (3 × 3.50 + 4 × 4.00) ÷ (3 + 4)
               </p>
-              <p className="mt-2 text-lg font-bold text-forest font-mono">Semester GPA: 3.79</p>
+              <p className="mt-2 text-lg font-bold text-ink font-mono">Semester GPA: 3.79</p>
             </div>
           </div>
         </section>
 
         {/* Semester GPA vs. CGPA */}
         <section className="mb-8" aria-labelledby="semester-vs-cgpa-heading">
-          <h2 id="semester-vs-cgpa-heading" className="text-2xl font-bold text-charcoal mb-4">
+          <h2 id="semester-vs-cgpa-heading" className="text-2xl font-bold text-ink mb-4">
             Semester GPA vs. CGPA
           </h2>
-          <div className="text-neutral">
+          <div className="text-stone">
             <p className="mb-3">
               Your <strong>semester GPA</strong> measures your performance in a single semester, while your <strong>CGPA</strong> (Cumulative Grade Point Average) tracks your overall performance across all completed courses. Use the dedicated CGPA calculator to compute your cumulative average.
             </p>
@@ -249,10 +249,10 @@ export default function Home() {
 
         {/* Target GPA planning */}
         <section className="mb-8" aria-labelledby="target-planning-heading">
-          <h2 id="target-planning-heading" className="text-2xl font-bold text-charcoal mb-4">
+          <h2 id="target-planning-heading" className="text-2xl font-bold text-ink mb-4">
             Target GPA planning
           </h2>
-          <div className="text-neutral">
+          <div className="text-stone">
             <p className="mb-3">
               The GPA target planner helps you find out what GPA you need in your upcoming credits to reach your desired CGPA. Plan ahead and set realistic academic goals.
             </p>
@@ -267,10 +267,10 @@ export default function Home() {
 
         {/* Ethiopian grading scale */}
         <section className="mb-8" aria-labelledby="grading-scale-heading">
-          <h2 id="grading-scale-heading" className="text-2xl font-bold text-charcoal mb-4">
+          <h2 id="grading-scale-heading" className="text-2xl font-bold text-ink mb-4">
             Ethiopian grading scale
           </h2>
-          <div className="space-y-4 text-neutral">
+          <div className="space-y-4 text-stone">
             <p className="mb-3">
               Wutete uses the standard Ethiopian university grading scale to convert letter grades to grade points:
             </p>
@@ -288,7 +288,7 @@ export default function Home() {
             <p className="text-sm">
               <Link
                 href="/grade-scale"
-                className="text-forest underline hover:text-forest-light"
+                className="text-bronze underline hover:text-bronze-light"
               >
                 View the grade scale reference
               </Link>
@@ -298,28 +298,28 @@ export default function Home() {
 
         {/* FAQs */}
         <section className="mb-8" aria-labelledby="faqs-heading">
-          <h2 id="faqs-heading" className="text-2xl font-bold text-charcoal mb-4">
+          <h2 id="faqs-heading" className="text-2xl font-bold text-ink mb-4">
             Frequently asked questions
           </h2>
-          <div className="space-y-4 text-neutral">
+          <div className="space-y-4 text-stone">
             <div className="border-b border-border pb-4">
-              <h3 className="font-medium text-charcoal mb-2">Do I need an account to use the calculator?</h3>
+              <h3 className="font-medium text-ink mb-2">Do I need an account to use the calculator?</h3>
               <p className="text-sm">No account required. All calculations happen entirely in your browser. Your academic data never leaves your device.</p>
             </div>
-            <div className="border-b border-bottom pb-4">
-              <h3 className="font-medium text-charcoal mb-2">Which universities are supported?</h3>
+            <div className="border-b border-border pb-4">
+              <h3 className="font-medium text-ink mb-2">Which universities are supported?</h3>
               <p className="text-sm">
                 Jimma, Addis Ababa, Bahir Dar, Hawassa, and Haramaya universities have verified grading configurations. The standard Ethiopian grading scale is also available for all students.
               </p>
             </div>
-            <div className="border-b border-bottom pb-4">
-              <h3 className="font-medium text-charcoal mb-2">Are the GPA calculations official?</h3>
+            <div className="border-b border-border pb-4">
+              <h3 className="font-medium text-ink mb-2">Are the GPA calculations official?</h3>
               <p className="text-sm">
                 The calculations follow standard university GPA formulas. Always confirm with your university registrar for official academic decisions.
               </p>
             </div>
             <div>
-              <h3 className="font-medium text-charcoal mb-2">Can I calculate CGPA?</h3>
+              <h3 className="font-medium text-ink mb-2">Can I calculate CGPA?</h3>
               <p className="text-sm">
                 Yes. Use the dedicated CGPA calculator to compute your cumulative GPA across all completed courses.
               </p>
@@ -329,23 +329,23 @@ export default function Home() {
 
         {/* Related tools */}
         <section className="mb-8" aria-labelledby="related-tools-heading">
-          <h2 id="related-tools-heading" className="text-2xl font-bold text-charcoal mb-4">
+          <h2 id="related-tools-heading" className="text-2xl font-bold text-ink mb-4">
             Related tools
           </h2>
           <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {tools.map((tool) => (
               <article key={tool.href} className="card-hover p-6 flex flex-col">
                 <Link href={tool.href} className="flex flex-col h-full group">
-                  <div className="w-11 h-11 rounded-lg bg-sage text-forest flex items-center justify-center mb-4 group-hover:bg-forest group-hover:text-white transition-colors">
+                  <div className="w-11 h-11 rounded-lg bg-bronze-muted text-bronze flex items-center justify-center mb-4 group-hover:bg-bronze group-hover:text-white transition-colors">
                     {tool.icon}
                   </div>
-                  <h3 className="text-lg font-semibold text-charcoal mb-2 group-hover:text-forest transition-colors">
+                  <h3 className="text-lg font-semibold text-ink mb-2 group-hover:text-bronze transition-colors">
                     {tool.title}
                   </h3>
-                  <p className="text-sm text-neutral flex-1 mb-4 leading-relaxed">
+                  <p className="text-sm text-stone flex-1 mb-4 leading-relaxed">
                     {tool.description}
                   </p>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-forest group-hover:gap-2 transition-all self-start">
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-bronze group-hover:gap-2 transition-all self-start">
                     Open tool
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

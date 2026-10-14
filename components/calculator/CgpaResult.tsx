@@ -29,13 +29,13 @@ export function CgpaResult({
   if (cgpa === null) {
     return (
       <div className="card p-6 text-center">
-        <div className="w-16 h-16 mx-auto mb-3 bg-ivory rounded-full flex items-center justify-center">
-          <svg className="w-8 h-8 text-neutral-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <div className="w-16 h-16 mx-auto mb-3 bg-ivory-muted rounded-full flex items-center justify-center">
+          <svg className="w-8 h-8 text-stone-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
         </div>
-        <h2 className="text-base font-medium text-charcoal mb-1">Add courses to calculate</h2>
-        <p className="text-neutral text-sm leading-relaxed">
+        <h2 className="text-base font-medium text-ink mb-1">Add courses to calculate</h2>
+        <p className="text-stone text-sm leading-relaxed">
           Enter at least one course with credits and a valid grade to see your CGPA.
         </p>
       </div>
@@ -44,14 +44,14 @@ export function CgpaResult({
 
   return (
     <div className="card p-6 text-center space-y-4">
-      <h2 className="text-base font-medium text-charcoal">Your CGPA</h2>
+      <h2 className="text-base font-medium text-ink">Your CGPA</h2>
       <div className="result-value flex items-baseline justify-center gap-2">
         <span>{cgpa.toFixed(2)}</span>
         {maxGradePoint !== null && (
-          <span className="text-2xl font-normal text-neutral">/ {maxGradePoint.toFixed(2)}</span>
+          <span className="text-2xl font-normal text-stone">/ {maxGradePoint.toFixed(2)}</span>
         )}
       </div>
-      <div className="text-sm text-neutral leading-relaxed">
+      <div className="text-sm text-stone leading-relaxed">
         {courseCount === 1 ? "1 course" : `${courseCount} courses`}
         {validCourseCount !== courseCount && (
           <>
