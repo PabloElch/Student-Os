@@ -96,11 +96,11 @@ export default function GradeScalePage() {
 
           <section className="card p-6 md:p-8" aria-labelledby="boundary-heading">
             <h2 id="boundary-heading" className="section-heading mb-2">Boundary Convention</h2>
-            <p className="text-stone text-sm mb-4">
+            <p className="text-neutral text-sm mb-4">
               All ranges are inclusive at the lower boundary and exclusive at the upper boundary,
               except the top (A+) and bottom (F) ranges which are fully inclusive.
             </p>
-            <ul className="space-y-2 text-stone text-sm">
+            <ul className="space-y-2 text-neutral text-sm">
               <li>Score ≥ 90 → A+</li>
               <li>Score ≥ 85 → A</li>
               <li>Score ≥ 80 → A−</li>
@@ -116,21 +116,21 @@ export default function GradeScalePage() {
           <section className="card p-6 md:p-8 overflow-x-auto" aria-labelledby="scale-table-heading">
             <h2 id="scale-table-heading" className="section-heading">Grade Scale Table</h2>
             <table className="w-full text-sm text-left" role="table">
-              <thead className="bg-ivory-muted border-b border-border">
+              <thead className="bg-ivory border-b border-border">
                 <tr>
-                  <th className="px-4 py-3 font-medium text-ink">Letter Grade</th>
-                  <th className="px-4 py-3 font-medium text-ink">Percentage Range</th>
-                  <th className="px-4 py-3 font-medium text-ink">Grade Points</th>
-                  <th className="px-4 py-3 font-medium text-ink">Description</th>
+                  <th className="px-4 py-3 font-medium text-charcoal">Letter Grade</th>
+                  <th className="px-4 py-3 font-medium text-charcoal">Percentage Range</th>
+                  <th className="px-4 py-3 font-medium text-charcoal">Grade Points</th>
+                  <th className="px-4 py-3 font-medium text-charcoal">Description</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
                 {standardEthiopianGradingScale.map((grade, index) => (
-                  <tr key={grade.letter} className={index % 2 === 1 ? "bg-ivory-muted" : ""}>
-                    <td className="px-4 py-3 font-mono font-medium text-ink">{grade.letter}</td>
-                    <td className="px-4 py-3 text-stone">{formatRange(grade)}</td>
-                    <td className="px-4 py-3 font-mono text-ink">{grade.points.toFixed(2)}</td>
-                    <td className="px-4 py-3 text-stone">
+                  <tr key={grade.letter} className={index % 2 === 1 ? "bg-ivory" : ""}>
+                    <td className="px-4 py-3 font-mono font-medium text-charcoal">{grade.letter}</td>
+                    <td className="px-4 py-3 text-neutral">{formatRange(grade)}</td>
+                    <td className="px-4 py-3 font-mono text-charcoal">{grade.points.toFixed(2)}</td>
+                    <td className="px-4 py-3 text-neutral">
                       {grade.letter === "A+" && "Outstanding"}
                       {grade.letter === "A" && "Excellent"}
                       {grade.letter === "A-" && "Excellent"}
@@ -149,13 +149,13 @@ export default function GradeScalePage() {
 
           <section className="card p-6 md:p-8" aria-labelledby="examples-heading">
             <h2 id="examples-heading" className="section-heading">Practical Examples</h2>
-            <p className="text-stone text-sm mb-4">
+            <p className="text-neutral text-sm mb-4">
               How specific percentage scores map to letter grades and grade points:
             </p>
             <ul className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
               {boundaryExamples.map((ex) => (
-                <li key={ex.score} className="flex items-center gap-3 p-3 bg-ivory-muted rounded-lg">
-                  <code className="font-mono text-ink bg-white px-2 py-1 rounded border border-border">{ex.label}</code>
+                <li key={ex.score} className="flex items-center gap-3 p-3 bg-ivory rounded-lg">
+                  <code className="font-mono text-charcoal bg-white px-2 py-1 rounded border border-border">{ex.label}</code>
                 </li>
               ))}
             </ul>
@@ -166,16 +166,16 @@ export default function GradeScalePage() {
             <dl className="space-y-6">
               {faqs.map((faq, index) => (
                 <div key={index} className="space-y-2">
-                  <dt className="font-medium text-ink">{faq.q}</dt>
-                  <dd className="text-stone text-sm">{faq.a}</dd>
+                  <dt className="font-medium text-charcoal">{faq.q}</dt>
+                  <dd className="text-neutral text-sm">{faq.a}</dd>
                 </div>
               ))}
             </dl>
           </section>
 
-          <section className="card p-6 md:p-8 bg-ivory-muted border border-border" aria-labelledby="disclaimer-heading">
+          <section className="card p-6 md:p-8 bg-ivory border border-border" aria-labelledby="disclaimer-heading">
             <h2 id="disclaimer-heading" className="section-heading mb-2">Important Note</h2>
-            <p className="text-stone text-sm">
+            <p className="text-neutral text-sm">
               This is the standard grading scale implemented in Wutete as the default mapping.
               Some universities may have variations (e.g., different boundaries, additional grades like B− or C−).
               Always confirm with your university&rsquo;s official regulations for high-stakes academic decisions.
@@ -184,7 +184,7 @@ export default function GradeScalePage() {
 
           <section className="card p-6 md:p-8 text-center" aria-labelledby="related-heading">
             <h2 id="related-heading" className="section-heading">Related Tools</h2>
-            <p className="text-stone mb-4">Use these calculators with the standard grade scale:</p>
+            <p className="text-neutral mb-4">Use these calculators with the standard grade scale:</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/grade-converter"

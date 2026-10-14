@@ -46,23 +46,23 @@ export default function AboutPage() {
         <article className="space-y-10">
           <header className="text-center">
             <h1 className="page-heading mb-4">About Wutete</h1>
-            <p className="text-lg text-stone max-w-2xl mx-auto">
+            <p className="text-lg text-neutral max-w-2xl mx-auto">
               An independent academic toolkit for Ethiopian university students.
             </p>
           </header>
 
           <section className="card p-6 md:p-8 space-y-6">
             <h2 className="section-heading">Purpose</h2>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               Wutete (ውጤቴ) helps Ethiopian university students calculate their GPA and CGPA
               accurately, and plan what grades they need to reach their academic targets.
               The name means &ldquo;my result&rdquo; in Amharic.
             </p>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               The toolkit is built to be simple, fast, and privacy-respecting. No account is required,
               and all calculations happen in your browser. Your academic data never leaves your device.
             </p>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               Wutete uses Google Analytics 4 to measure website usage and page views. This analytics
               data does not include your calculator inputs, grades, or any academic information.
             </p>
@@ -70,21 +70,21 @@ export default function AboutPage() {
 
           <section className="card p-6 md:p-8 space-y-6">
             <h2 className="section-heading">How It Works</h2>
-            <ul className="space-y-4 text-stone leading-relaxed">
+            <ul className="space-y-4 text-neutral leading-relaxed">
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 flex-shrink-0 text-bronze mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <svg className="w-5 h-5 flex-shrink-0 text-forest mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span><strong>GPA Calculator:</strong> Calculate your semester GPA using your courses, credits, and grades.</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 flex-shrink-0 text-bronze mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <svg className="w-5 h-5 flex-shrink-0 text-forest mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span><strong>CGPA Calculator:</strong> Calculate your cumulative GPA across all completed courses.</span>
               </li>
               <li className="flex items-start gap-3">
-                <svg className="w-5 h-5 flex-shrink-0 text-bronze mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <svg className="w-5 h-5 flex-shrink-0 text-forest mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 001.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span><strong>GPA Target Planner:</strong> Find out what GPA you need in upcoming credits to reach your target CGPA.</span>
@@ -94,49 +94,49 @@ export default function AboutPage() {
 
           <section className="card p-6 md:p-8 space-y-6">
             <h2 className="section-heading">Grading Scale</h2>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               Wutete uses the standard Ethiopian university grading scale as its default mapping:
             </p>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm text-stone border border-border rounded-lg overflow-hidden">
-                <thead className="bg-ivory-muted border-b border-border">
+              <table className="w-full text-sm text-neutral border border-border rounded-lg overflow-hidden">
+                <thead className="bg-ivory border-b border-border">
                   <tr>
-                    <th className="px-4 py-3 text-left font-medium text-ink">Letter Grade</th>
-                    <th className="px-4 py-3 text-left font-medium text-ink">Score Range</th>
-                    <th className="px-4 py-3 text-left font-medium text-ink">Grade Point</th>
+                    <th className="px-4 py-3 text-left font-medium text-charcoal">Letter Grade</th>
+                    <th className="px-4 py-3 text-left font-medium text-charcoal">Score Range</th>
+                    <th className="px-4 py-3 text-left font-medium text-charcoal">Grade Point</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
                   <tr><td className="px-4 py-3 font-mono">A+</td><td className="px-4 py-3">90–100</td><td className="px-4 py-3">4.00</td></tr>
-                  <tr className="bg-ivory-muted"><td className="px-4 py-3 font-mono">A</td><td className="px-4 py-3">85–89</td><td className="px-4 py-3">4.00</td></tr>
+                  <tr className="bg-ivory"><td className="px-4 py-3 font-mono">A</td><td className="px-4 py-3">85–89</td><td className="px-4 py-3">4.00</td></tr>
                   <tr><td className="px-4 py-3 font-mono">A−</td><td className="px-4 py-3">80–84</td><td className="px-4 py-3">3.75</td></tr>
-                  <tr className="bg-ivory-muted"><td className="px-4 py-3 font-mono">B+</td><td className="px-4 py-3">75–79</td><td className="px-4 py-3">3.50</td></tr>
+                  <tr className="bg-ivory"><td className="px-4 py-3 font-mono">B+</td><td className="px-4 py-3">75–79</td><td className="px-4 py-3">3.50</td></tr>
                   <tr><td className="px-4 py-3 font-mono">B</td><td className="px-4 py-3">70–74</td><td className="px-4 py-3">3.00</td></tr>
-                  <tr className="bg-ivory-muted"><td className="px-4 py-3 font-mono">C+</td><td className="px-4 py-3">65–69</td><td className="px-4 py-3">2.50</td></tr>
+                  <tr className="bg-ivory"><td className="px-4 py-3 font-mono">C+</td><td className="px-4 py-3">65–69</td><td className="px-4 py-3">2.50</td></tr>
                   <tr><td className="px-4 py-3 font-mono">C</td><td className="px-4 py-3">60–64</td><td className="px-4 py-3">2.00</td></tr>
-                  <tr className="bg-ivory-muted"><td className="px-4 py-3 font-mono">D</td><td className="px-4 py-3">50–59</td><td className="px-4 py-3">1.00</td></tr>
+                  <tr className="bg-ivory"><td className="px-4 py-3 font-mono">D</td><td className="px-4 py-3">50–59</td><td className="px-4 py-3">1.00</td></tr>
                   <tr><td className="px-4 py-3 font-mono">F</td><td className="px-4 py-3">0–49</td><td className="px-4 py-3">0.00</td></tr>
                 </tbody>
               </table>
             </div>
-            <p className="text-sm text-stone-light">
+            <p className="text-sm text-neutral-light">
               Individual universities may have variations. Always confirm official academic rules with your university.
             </p>
           </section>
 
           <section className="card p-6 md:p-8 space-y-6">
             <h2 className="section-heading">Independence & Verification</h2>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               Wutete is an independent project and is not affiliated with, endorsed by, or officially
               connected to any Ethiopian university or government body.
             </p>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               University configurations are documented with their verification status. Some scales are
               fully verified from official sources, while others are based on secondary sources and
               marked as needing verification. The standard Ethiopian grading scale is implemented as
               the product owner&rsquo;s supplied default mapping.
             </p>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               Users should confirm institution-specific academic rules directly with their university
               before making important academic decisions.
             </p>
@@ -144,15 +144,15 @@ export default function AboutPage() {
 
           <section className="card p-6 md:p-8 space-y-6">
             <h2 className="section-heading">Privacy & Data</h2>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               Wutete does not collect, store, or transmit any personal or academic data. All calculator
               inputs are processed entirely in your browser. Your academic data never leaves your device.
             </p>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               Wutete uses Google Analytics 4 to measure website usage and page views. This analytics
               data does not include your calculator inputs, grades, or any academic information.
             </p>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               The only external connections are Google Analytics (for aggregate usage metrics) and
               the optional Feedback link in the footer, which opens a GitHub issue template in a new tab.
             </p>
@@ -160,7 +160,7 @@ export default function AboutPage() {
 
           <section className="card p-6 md:p-8 space-y-6">
             <h2 className="section-heading">Open Source</h2>
-            <p className="text-stone leading-relaxed">
+            <p className="text-neutral leading-relaxed">
               Wutete is open source. The code is available on GitHub:
             </p>
             <p className="text-center">

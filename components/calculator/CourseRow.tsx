@@ -41,7 +41,7 @@ export function CourseRow({
       <div className="grid gap-3 grid-cols-1 md:grid-cols-[minmax(0,1fr)_80px_140px_50px] gap-x-4 px-4 py-3 items-start">
         {/* Mobile: Row 1 - Course name full width | Desktop: Column 1 */}
         <div className="space-y-1.5">
-          <label htmlFor={`course-name-${course.id}`} className="block text-xs font-medium text-stone md:hidden">
+          <label htmlFor={`course-name-${course.id}`} className="block text-xs font-medium text-neutral md:hidden">
             Course name
           </label>
           <input
@@ -58,7 +58,7 @@ export function CourseRow({
         {/* Mobile: Row 2 - Credits, Grade, Remove | Desktop: Columns 2, 3, 4 */}
         <div className="grid grid-cols-[70px_1fr_40px] gap-x-3 md:contents md:gap-0">
           <div className="space-y-1.5">
-            <label htmlFor={`course-credits-${course.id}`} className="block text-xs font-medium text-stone md:hidden">
+            <label htmlFor={`course-credits-${course.id}`} className="block text-xs font-medium text-neutral md:hidden">
               Credits
             </label>
             <div className="relative">
@@ -83,7 +83,7 @@ export function CourseRow({
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor={`course-grade-${course.id}`} className="block text-xs font-medium text-stone md:hidden">
+            <label htmlFor={`course-grade-${course.id}`} className="block text-xs font-medium text-neutral md:hidden">
               Grade
             </label>
             <div className="relative">
@@ -101,7 +101,7 @@ export function CourseRow({
                 ))}
               </select>
               {gradeOptions.length <= 1 && (
-                <p className="absolute -bottom-5 left-0 text-xs text-stone md:static md:mt-1">
+                <p className="absolute -bottom-5 left-0 text-xs text-neutral md:static md:mt-1">
                   No grading scale available
                 </p>
               )}
@@ -113,7 +113,7 @@ export function CourseRow({
               <button
                 type="button"
                 onClick={() => onRemove(course.id)}
-                className="p-2 text-stone hover:text-ink hover:bg-ivory-muted rounded-lg transition-colors md:ml-2"
+                className="p-2 text-neutral hover:text-charcoal hover:bg-ivory rounded-lg transition-colors md:ml-2"
                 aria-label={`Remove ${course.name || "course"}`}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -127,8 +127,8 @@ export function CourseRow({
 
       {(course.grade && !hasGrade) || (course.grade && isNonGpaGrade) ? (
         <div className="px-4 pb-3 md:hidden">
-          <div className="p-3 bg-ivory-muted border-t border-line rounded-b-lg">
-            <div className="flex items-center gap-2 text-xs text-stone">
+          <div className="p-3 bg-ivory border-t border-line rounded-b-lg">
+            <div className="flex items-center gap-2 text-xs text-neutral">
               <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
               </svg>
@@ -155,11 +155,11 @@ export function CourseRow({
 
       <div className="md:hidden">
         <div className="px-4 pb-3">
-          <div className="flex items-center gap-2 text-xs text-stone-light">
+          <div className="flex items-center gap-2 text-xs text-neutral-light">
             <span>Course {course.name ? `"${course.name}"` : "untitled"}</span>
             <span className="flex-1"></span>
             {course.credits && (
-              <span className="font-medium text-stone">{course.credits} credits</span>
+              <span className="font-medium text-neutral">{course.credits} credits</span>
             )}
           </div>
         </div>

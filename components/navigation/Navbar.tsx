@@ -15,7 +15,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-ink hover:text-bronze focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-ivory rounded-lg px-2 py-1"
+            className="flex items-center gap-2 text-charcoal hover:text-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-ivory rounded-lg px-2 py-1"
             aria-label="Wutete Home"
           >
             <span className="text-xl font-semibold tracking-tight">Wutete</span>
@@ -28,10 +28,10 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-ivory ${
+                  className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-ivory ${
                     isActive
-                      ? "text-ink before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-6 before:h-0.5 before:bg-ink before:rounded-full"
-                      : "text-stone hover:text-ink hover:bg-ivory-muted"
+                      ? "text-forest before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-6 before:h-0.5 before:bg-forest before:rounded-full"
+                      : "text-neutral hover:text-charcoal hover:bg-ivory"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -43,7 +43,7 @@ export function Navbar() {
 
           <button
             type="button"
-            className="md:hidden p-2 rounded-lg text-stone hover:text-ink hover:bg-ivory-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
+            className="md:hidden p-2 rounded-lg text-neutral hover:text-charcoal hover:bg-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -74,10 +74,10 @@ export function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-3 py-3 rounded-lg text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze ${
+                    className={`px-3 py-3 rounded-lg text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest ${
                       isActive
-                        ? "bg-ivory-muted text-ink"
-                        : "text-stone hover:text-ink hover:bg-ivory-muted"
+                        ? "bg-sage text-forest"
+                        : "text-neutral hover:text-charcoal hover:bg-ivory"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                     onClick={() => setMobileMenuOpen(false)}

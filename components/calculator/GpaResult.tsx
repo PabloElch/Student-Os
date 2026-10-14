@@ -28,13 +28,13 @@ export function GpaResult({
   if (gpa === null) {
     return (
       <div className="card p-6 text-center">
-        <div className="w-16 h-16 mx-auto mb-3 bg-ivory-muted rounded-full flex items-center justify-center">
-          <svg className="w-8 h-8 text-stone-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <div className="w-16 h-16 mx-auto mb-3 bg-ivory rounded-full flex items-center justify-center">
+          <svg className="w-8 h-8 text-neutral-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
         </div>
-        <h2 className="text-base font-medium text-ink mb-1">Add courses to calculate</h2>
-        <p className="text-stone text-sm leading-relaxed">
+        <h2 className="text-base font-medium text-charcoal mb-1">Add courses to calculate</h2>
+        <p className="text-neutral text-sm leading-relaxed">
           Enter at least one course with credits and a valid grade to see your semester GPA.
         </p>
       </div>
@@ -43,11 +43,11 @@ export function GpaResult({
 
   return (
     <div className="card p-6 text-center space-y-4">
-      <h2 className="text-base font-medium text-ink">Your Semester GPA</h2>
+      <h2 className="text-base font-medium text-charcoal">Your Semester GPA</h2>
       <div className="result-value">
         {gpa.toFixed(2)}
       </div>
-      <div className="text-sm text-stone leading-relaxed">
+      <div className="text-sm text-neutral leading-relaxed">
         {courseCount === 1 ? "1 course" : `${courseCount} courses`}
         {validCourseCount !== courseCount && (
           <>
@@ -57,30 +57,30 @@ export function GpaResult({
         )}
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 pt-3 border-t border-line">
-        <div className="text-center p-2.5 bg-ivory-muted rounded-lg">
-          <div className="text-xl font-bold text-ink font-mono">{totalCredits.toFixed(1)}</div>
-          <div className="text-xs text-stone">Total Credits</div>
+      <div className="grid gap-3 sm:grid-cols-2 pt-3 border-t border-border">
+        <div className="text-center p-2.5 bg-ivory rounded-lg">
+          <div className="text-xl font-bold text-charcoal font-mono">{totalCredits.toFixed(1)}</div>
+          <div className="text-xs text-neutral">Total Credits</div>
         </div>
-        <div className="text-center p-2.5 bg-ivory-muted rounded-lg relative group">
-          <div className="text-xl font-bold text-ink font-mono">{totalQualityPoints.toFixed(2)}</div>
-          <div className="text-xs text-stone">Quality Points</div>
-          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1.5 bg-ink text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
+        <div className="text-center p-2.5 bg-ivory rounded-lg relative group">
+          <div className="text-xl font-bold text-charcoal font-mono">{totalQualityPoints.toFixed(2)}</div>
+          <div className="text-xs text-neutral">Quality Points</div>
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1.5 bg-charcoal text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
             Sum of grade points × course credits
           </div>
         </div>
       </div>
 
       {biggestBoost && biggestBoost.increase > 0 && (
-        <div className="pt-3 border-t border-line text-left">
-          <h3 className="text-sm font-semibold text-ink mb-1.5">Biggest boost</h3>
-          <p className="text-sm text-stone leading-relaxed">
-            Improve <strong className="text-ink">{biggestBoost.courseName}</strong> from{" "}
-            <strong className="text-ink">{biggestBoost.currentGrade}</strong> to{" "}
-            <strong className="text-bronze">{biggestBoost.targetGrade}</strong>. Your semester GPA would increase from{" "}
-            <strong className="text-ink">{gpa.toFixed(2)}</strong> to{" "}
-            <strong className="text-bronze">{biggestBoost.newGPA.toFixed(2)}</strong>{" "}
-            (<strong className="text-bronze">+{biggestBoost.increase.toFixed(2)}</strong>).
+        <div className="pt-3 border-t border-border text-left">
+          <h3 className="text-sm font-semibold text-charcoal mb-1.5">Biggest boost</h3>
+          <p className="text-sm text-neutral leading-relaxed">
+            Improve <strong className="text-charcoal">{biggestBoost.courseName}</strong> from{" "}
+            <strong className="text-charcoal">{biggestBoost.currentGrade}</strong> to{" "}
+            <strong className="text-forest">{biggestBoost.targetGrade}</strong>. Your semester GPA would increase from{" "}
+            <strong className="text-charcoal">{gpa.toFixed(2)}</strong> to{" "}
+            <strong className="text-forest">{biggestBoost.newGPA.toFixed(2)}</strong>{" "}
+            (<strong className="text-forest">+{biggestBoost.increase.toFixed(2)}</strong>).
           </p>
         </div>
       )}

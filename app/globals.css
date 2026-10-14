@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ivory: #F7F5F0;
-  --color-ivory-muted: #F0EEE8;
+  --color-ivory: #F7F6F1;
+  --color-ivory-dark: #EDEBE3;
   --color-white: #FFFFFF;
-  --color-ink: #20211F;
-  --color-ink-dark: #111210;
-  --color-stone: #74746E;
-  --color-stone-light: #A8A89E;
-  --color-border: #E5E0D7;
-  --color-border-strong: #D6D0C5;
-  --color-bronze: #A68A64;
-  --color-bronze-light: #C9B395;
-  --color-bronze-muted: #E8E0D5;
-  --color-olive: #6B6F4A;
-  --color-olive-light: #8E946B;
-  --color-olive-muted: #EBECE1;
+  --color-forest: #245B45;
+  --color-forest-light: #2D7A5A;
+  --color-forest-dark: #1A4434;
+  --color-sage: #DCE9DE;
+  --color-sage-light: #EAF2EC;
+  --color-charcoal: #20251F;
+  --color-charcoal-light: #3D443C;
+  --color-neutral: #6B7269;
+  --color-neutral-light: #9AA096;
+  --color-border: #E7E2D8;
+  --color-border-strong: #D4CFBF;
   --color-error: #B53A3A;
   --color-error-light: #FDF2F2;
   --color-success: #2E7D32;
@@ -25,45 +24,41 @@
   --color-info: #1A73A8;
   --color-info-light: #E3F2FD;
 
-  --color-muted: rgba(32, 33, 31, 0.70);
-  --color-faint: rgba(32, 33, 31, 0.50);
-  --color-line: rgba(32, 33, 31, 0.06);
+  --color-muted: rgba(32, 37, 31, 0.70);
+  --color-faint: rgba(32, 37, 31, 0.55);
+  --color-line: rgba(32, 37, 31, 0.08);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
   --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 10px;
-  --radius-xl: 12px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 
-  --shadow-sm: 0 1px 2px rgba(32, 33, 31, 0.03), 0 1px 1px rgba(32, 33, 31, 0.02);
-  --shadow-md: 0 4px 12px rgba(32, 33, 31, 0.04), 0 2px 4px rgba(32, 33, 31, 0.03);
-  --shadow-lg: 0 12px 28px rgba(32, 33, 31, 0.06), 0 4px 8px rgba(32, 33, 31, 0.04);
-  --shadow-focus: 0 0 0 3px rgba(166, 138, 100, 0.25);
-  --shadow-lift: 0 8px 24px rgba(32, 33, 31, 0.08), 0 2px 6px rgba(32, 33, 31, 0.05);
-
-  --transition-fast: 150ms ease;
-  --transition-normal: 200ms ease;
+  --shadow-sm: 0 1px 2px rgba(32, 37, 31, 0.04), 0 1px 1px rgba(32, 37, 31, 0.03);
+  --shadow-md: 0 4px 12px rgba(32, 37, 31, 0.06), 0 2px 4px rgba(32, 37, 31, 0.04);
+  --shadow-lg: 0 12px 28px rgba(32, 37, 31, 0.08), 0 4px 8px rgba(32, 37, 31, 0.05);
+  --shadow-focus: 0 0 0 3px rgba(36, 91, 69, 0.25);
+  --shadow-lift: 0 8px 24px rgba(32, 37, 31, 0.10), 0 2px 6px rgba(32, 37, 31, 0.06);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-ivory: #1C1D1A;
-    --color-ivory-muted: #252622;
-    --color-white: #20211F;
-    --color-ink: #F7F5F0;
-    --color-ink-dark: #FFFFFF;
-    --color-stone: #A8A89E;
-    --color-stone-light: #74746E;
-    --color-border: #3D3D37;
-    --color-border-strong: #4A4A44;
-    --color-bronze: #C9B395;
-    --color-bronze-light: #DCCBA8;
-    --color-bronze-muted: #3D3830;
-    --color-olive: #8E946B;
-    --color-olive-light: #A8AF8A;
-    --color-olive-muted: #36382A;
+    --color-ivory: #1C1F1A;
+    --color-ivory-dark: #252922;
+    --color-white: #20251F;
+    --color-forest: #4ADE80;
+    --color-forest-light: #6EE7A0;
+    --color-forest-dark: #34D36E;
+    --color-sage: #2D4A37;
+    --color-sage-light: #365842;
+    --color-charcoal: #F7F6F1;
+    --color-charcoal-light: #EDEBE3;
+    --color-neutral: #9AA096;
+    --color-neutral-light: #6B7269;
+    --color-border: #3D443C;
+    --color-border-strong: #4A5247;
     --color-error: #EF5350;
     --color-error-light: #3D1A1A;
     --color-success: #66BB6A;
@@ -73,9 +68,9 @@
     --color-info: #64B5F6;
     --color-info-light: #1A2D3D;
 
-    --color-muted: rgba(247, 245, 240, 0.70);
-    --color-faint: rgba(247, 245, 240, 0.50);
-    --color-line: rgba(247, 245, 240, 0.08);
+    --color-muted: rgba(247, 246, 241, 0.70);
+    --color-faint: rgba(247, 246, 241, 0.55);
+    --color-line: rgba(247, 246, 241, 0.10);
   }
 }
 
@@ -89,7 +84,7 @@ html {
 
 body {
   background: var(--color-ivory);
-  color: var(--color-ink);
+  color: var(--color-charcoal);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -97,7 +92,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-bronze);
+  outline: 2px solid var(--color-forest);
   outline-offset: 3px;
 }
 
@@ -122,25 +117,25 @@ body {
 }
 
 @utility btn-primary {
-  @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-ink text-white font-medium text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-ivory disabled:opacity-50 disabled:cursor-not-allowed hover:bg-ink-dark hover:shadow-md;
+  @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-forest text-white font-medium text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-ivory disabled:opacity-50 disabled:cursor-not-allowed hover:bg-forest-light hover:shadow-md;
 }
 
 @utility btn-secondary {
-  @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-white text-ink font-medium text-sm border border-border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-ivory disabled:opacity-50 disabled:cursor-not-allowed hover:bg-ivory-muted hover:border-border-strong hover:shadow-sm;
+  @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-white text-charcoal font-medium text-sm border border-border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-ivory disabled:opacity-50 disabled:cursor-not-allowed hover:bg-ivory hover:border-border-strong hover:shadow-sm;
 }
 
 @utility btn-ghost {
-  @apply inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-ink font-medium text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-ivory disabled:opacity-50 disabled:cursor-not-allowed hover:bg-ivory-muted;
+  @apply inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-charcoal font-medium text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-ivory disabled:opacity-50 disabled:cursor-not-allowed hover:bg-ivory;
 }
 
 @utility input-base {
-  @apply w-full px-4 py-2.5 rounded-lg border border-border bg-white text-ink placeholder:text-stone-light text-base focus:outline-none focus:ring-2 focus:ring-bronze focus:ring-offset-2 focus:ring-offset-white focus:border-transparent transition-all duration-200 disabled:bg-ivory-muted disabled:cursor-not-allowed;
+  @apply w-full px-4 py-2.5 rounded-lg border border-border bg-white text-charcoal placeholder:text-neutral-light text-base focus:outline-none focus:ring-2 focus:ring-forest focus:ring-offset-2 focus:ring-offset-white focus:border-transparent transition-all duration-200 disabled:bg-ivory disabled:cursor-not-allowed;
 }
 
 @utility select-base {
-  @apply w-full px-4 py-2.5 rounded-lg border border-border bg-white text-ink text-base focus:outline-none focus:ring-2 focus:ring-bronze focus:ring-offset-2 focus:ring-offset-white focus:border-transparent transition-all duration-200 disabled:bg-ivory-muted disabled:cursor-not-allowed appearance-none bg-no-repeat bg-center;
+  @apply w-full px-4 py-2.5 rounded-lg border border-border bg-white text-charcoal text-base focus:outline-none focus:ring-2 focus:ring-forest focus:ring-offset-2 focus:ring-offset-white focus:border-transparent transition-all duration-200 disabled:bg-ivory disabled:cursor-not-allowed appearance-none bg-no-repeat bg-center;
   background-position: right 0.75rem center;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2374746E' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236B7269' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
   background-size: 1.25rem;
   padding-right: 2.5rem;
 }
@@ -154,15 +149,15 @@ body {
 }
 
 @utility page-heading {
-  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-ink tracking-tight leading-[1.05];
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal tracking-tight leading-[1.05];
 }
 
 @utility page-subheading {
-  @apply text-base md:text-lg text-stone max-w-2xl mx-auto leading-relaxed;
+  @apply text-base md:text-lg text-neutral max-w-2xl mx-auto leading-relaxed;
 }
 
 @utility section-heading {
-  @apply text-2xl font-semibold text-ink tracking-tight leading-[1.1] mb-6;
+  @apply text-2xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6;
 }
 
 @utility mono-label {
@@ -174,7 +169,7 @@ body {
 }
 
 @utility label-base {
-  @apply block text-sm font-medium text-ink mb-1.5 leading-[1.4];
+  @apply block text-sm font-medium text-charcoal mb-1.5 leading-[1.4];
 }
 
 @utility error-text {
@@ -182,19 +177,19 @@ body {
 }
 
 @utility helper-text {
-  @apply mt-1.5 text-sm text-stone leading-[1.4];
+  @apply mt-1.5 text-sm text-neutral leading-[1.4];
 }
 
 @utility focus-ring {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-white;
 }
 
 @utility result-value {
-  @apply text-5xl md:text-6xl font-bold font-mono tabular-nums text-ink leading-[1.05];
+  @apply text-5xl md:text-6xl font-bold font-mono tabular-nums text-forest leading-[1.05];
 }
 
 @utility result-value-sm {
-  @apply text-4xl md:text-5xl font-bold font-mono tabular-nums text-ink leading-[1.05];
+  @apply text-4xl md:text-5xl font-bold font-mono tabular-nums text-forest leading-[1.05];
 }
 
 @utility text-balance {
